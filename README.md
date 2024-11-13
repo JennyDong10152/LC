@@ -1,4 +1,4 @@
 # LC
 
-Leetcode practice
+Leetcode practice <br>
 Branch organized by date
