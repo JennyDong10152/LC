@@ -3,23 +3,23 @@ class Solution:
         if not matrix or not matrix[0]:
             return False
         
-        for i in range(len(matrix)):
-            if matrix[i][-1] < target:
+        for row in matrix:
+            if target > row[-1]:
                 continue
-            elif matrix[i][0] > target:
+            if target < row[0]:
                 return False
             else:
-                if self.search(matrix[i], target):
+                if self.search(row, target):
                     return True
         return False
     
-    def search(self, interval, target):
+    def search(self, row, target):
         left = 0
-        right = len(interval)-1
-        while left <= right:
-            mid = left + (right-left)//2
-            midV = interval[mid]
+        right = len(row)-1
 
+        while left <= right:
+            mid = left + (right- left)//2
+            midV = row[mid]
             if midV == target:
                 return True
             if midV > target:
