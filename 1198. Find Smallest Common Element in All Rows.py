@@ -1,7 +1,9 @@
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
+        idx = 0
         for i in range(len(mat[0])):
             target = mat[0][i]
+            
             for row in range(1,len(mat)):
                 found = self.search(mat[row], target)
                 if not found:

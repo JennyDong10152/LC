@@ -13,6 +13,7 @@ class Solution:
                     return True
         return False
     
+    
     def search(self, row, target):
         left = 0
         right = len(row)-1
@@ -20,7 +21,6 @@ class Solution:
         while left <= right:
             mid = left + (right- left)//2
             midV = row[mid]
-
             if midV == target:
                 return True
             if midV > target:
@@ -28,4 +28,3 @@ class Solution:
             else:
                 left = mid + 1
         return False
-

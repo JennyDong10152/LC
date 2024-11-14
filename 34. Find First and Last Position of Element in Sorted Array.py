@@ -1,10 +1,11 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if not nums:
-            return [-1, -1]
-
-        idx1 = self.search(nums, target, True) 
+            return [-1,-1]
+        
+        idx1 = self.search(nums, target, True)
         idx2 = self.search(nums, target, False)
+
         return [idx1, idx2]
     
     def search(self, nums, target, isFirst):
@@ -15,8 +16,8 @@ class Solution:
         while left <= right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            ans = mid
             if midV == target:
+                ans = mid
                 if isFirst:
                     right = mid - 1
                 else:
@@ -26,3 +27,4 @@ class Solution:
             else:
                 left = mid + 1
         return ans
+            

@@ -6,7 +6,7 @@ class Solution:
         n = len(nums)
         arr = []
         cnt = []
-
+        
         for num in reversed(nums):
             idx = self.search(arr, num)
             cnt.append(idx)

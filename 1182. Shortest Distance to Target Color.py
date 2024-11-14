@@ -3,12 +3,11 @@ class Solution:
         if not colors or not queries:
             return []
         ans = []
-        maps = {}
-        for idx, c in enumerate(colors):
+        maps = dict()
+        for i, c in enumerate(colors):
             if not c in maps:
                 maps[c] = []
-            maps[c].append(idx)
-        
+            maps[c].append(i)
         for i, c in queries:
             if not c in maps:
                 ans.append(-1)
@@ -24,15 +23,13 @@ class Solution:
         while left <= right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            diff = min(diff, abs(target-midV))
+            diff = min(diff, abs(midV-target))
             if midV == target:
                 return 0
-            elif midV > target:
-                right = mid - 1
+            if midV > target:
+                right = mid-1
             else:
-                left = mid + 1
+                left = mid+1
         return diff
-            
-                
 
 

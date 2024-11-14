@@ -1,27 +1,29 @@
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
-        ab = self.lcm(a, b)
-        bc = self.lcm(b, c)
-        ac = self.lcm(a, c)
-        abc = self.lcm(a, bc)
+        multiple_of_ab = self.leastCommonFactor(a, b)
+        multiple_of_bc = self.leastCommonFactor(b, c)
+        multiple_of_ac = self.leastCommonFactor(a, c)
+        multiple_of_abc = self.leastCommonFactor(a, multiple_of_bc)
 
-        left = 1
-        right = 2 * 10**9
+        left = 0
+        right = 2 * 10 ** 9
         ans = 0
 
         while left <= right:
             mid = left + (right-left)//2
-            cnt = mid//a + mid//b + mid//c - mid//ab - mid//bc - mid//ac + mid//abc
+            cnt = mid//a + mid//b + mid//c - mid//multiple_of_ab - mid//multiple_of_bc - mid//multiple_of_ac + mid//multiple_of_abc
             if cnt >= n:
-                right = mid - 1
                 ans = mid
+                right = mid - 1
             else:
                 left = mid + 1
         return ans
+            
+
     
-    def lcm(self, a, b):
-        def gcd(a, b):
-            if not a:
-                return b
-            return gcd(b%a, a)
-        return a * b // gcd(a, b)
+    def leastCommonFactor(self, x, y):
+        def greatestCommonDivisor(x, y):
+            if not x:
+                return y
+            return greatestCommonDivisor(y%x, x)
+        return x * y / greatestCommonDivisor(x, y)
