@@ -10,5 +10,4 @@ class Solution:
                 size = min(size, i-left+1)
                 total -= nums[left]
                 left += 1
-                
         return size if size != len(nums)+1 else 0
