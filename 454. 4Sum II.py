@@ -1,7 +1,7 @@
 class Solution:
     def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
         freq_firstTwoSum = {}
-        freq_lastTwoSum = {} #possible sums of A and B / C and D and sums' frequencies
+        freq_lastTwoSum = {} #possible sums of nums 1 and nums2 / nums3 and nums4 and sums' frequencies
 
         for i in range(len(nums1)):
             for j in range(len(nums1)):
