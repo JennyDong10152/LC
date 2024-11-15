@@ -1,10 +1,9 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        
         for idx, n in enumerate(numbers):
-            left = idx + 1
-            right = len(numbers) - 1
-            
+            left = idx+1
+            right = len(numbers)-1
+
             while left <= right:
                 mid = left + (right-left)//2
                 midV = numbers[mid]

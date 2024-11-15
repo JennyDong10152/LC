@@ -15,7 +15,6 @@ class Solution:
     def search(self, nums, target):
         left = 0
         right = len(nums) - 1
-
         while (left <= right):
             mid = left + (right-left)//2
             midV = nums[mid]
