@@ -13,7 +13,6 @@ class Solution:
         while left <= right:
             mid = left + (right-left)//2
             midV = reader.get(mid)
-            
             if midV == target:
                 return mid
             elif midV == 2**31-1 or midV > target:
@@ -21,4 +20,3 @@ class Solution:
             else:
                 left = mid + 1
         return -1
-        
