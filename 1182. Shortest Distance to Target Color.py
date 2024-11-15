@@ -15,6 +15,7 @@ class Solution:
                 ans.append(self.search(i, maps[c]))
         return ans
     
+    
     def search(self, target, nums):
         left = 0
         right = len(nums)-1
@@ -31,5 +32,3 @@ class Solution:
             else:
                 left = mid+1
         return diff
-
-

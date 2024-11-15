@@ -18,8 +18,6 @@ class Solution:
             else:
                 left = mid + 1
         return ans
-            
-
     
     def leastCommonFactor(self, x, y):
         def greatestCommonDivisor(x, y):
