@@ -7,8 +7,8 @@ class Solution:
         for i, c in enumerate(colors):
             if not c in maps:
                 maps[c] = []
-            maps[c].append(i)
-        for i, c in queries:
+            maps[c].append(idx)        
+        for idx, c in queries:
             if not c in maps:
                 ans.append(-1)
             else:
@@ -30,5 +30,5 @@ class Solution:
             if midV > target:
                 right = mid-1
             else:
-                left = mid+1
+                left = mid + 1
         return diff

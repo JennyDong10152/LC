@@ -3,27 +3,22 @@ class Solution:
         left = max(nums)
         right = sum(nums)
 
-        if k == 1:
-            return right
-        if k==len(nums):
-            return left
-        
         while left <= right:
             mid = left + (right-left)//2
-            num_sub = self.split(nums, mid)
+            num_sub = self.count(nums, mid)
             if num_sub > k:
                 left = mid + 1
             else:
                 right = mid - 1
         return left
-    
-    def split(self, nums, target):
+        
+    def count(self, nums, target):
         cnt = 1
-        cur_sum = 0
+        temp_sum = 0
         for n in nums:
-            if cur_sum + n > target:
+            if n + temp_sum > target:
                 cnt += 1
-                cur_sum = n
+                temp_sum = n
             else:
-                cur_sum += n
+                temp_sum += n
         return cnt

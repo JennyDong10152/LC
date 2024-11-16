@@ -7,17 +7,17 @@ class Solution:
 
         while left <= right:
             mid = left + (right-left)//2
-            temp_sum = sum(min(i, mid) for i in arr)
-            cur_diff = abs(target-temp_sum)
+            temp_sum = sum(min(mid, i) for i in arr)
+            cur_diff = abs(target - temp_sum)
+
             if not cur_diff:
                 return mid
-
             if cur_diff == min_diff:
                 ans = min(ans, mid)
             elif cur_diff < min_diff:
                 min_diff = cur_diff
                 ans = mid
-            
+                
             if temp_sum > target:
                 right = mid - 1
             else:

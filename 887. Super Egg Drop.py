@@ -8,11 +8,10 @@ class Solution:
             return floor
         if (egg, floor) in self.dp:
             return self.dp[(egg, floor)]
-        
-        broken = notBroken = 0
         left = 1
         right = floor
         cnt = floor + 1
+        broken = notBroken = 0
 
         while left <= right:
             mid = left + (right-left)//2

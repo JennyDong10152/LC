@@ -11,8 +11,9 @@ class Solution:
             else:
                 right = mid
         return left
-
-    def count(self, piles, target):
+    
+    
+    def count(self, piles, mid):
         cnt = 0
         
         for p in piles:

@@ -1,13 +1,13 @@
 class Solution:
-    def findMin(self, nums: List[int]) -> int:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
         left = 0
-        right = len(nums)-1
+        right = len(arr)-1
 
         while left < right:
             mid = left + (right-left)//2
-            midV = nums[mid]
-            if midV < nums[right]:
+            midV = arr[mid]
+            if midV > arr[mid+1]:
                 right = mid
             else:
                 left = mid + 1
-        return nums[left]
+        return left

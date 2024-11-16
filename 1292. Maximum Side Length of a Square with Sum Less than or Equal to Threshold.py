@@ -19,12 +19,11 @@ class Solution:
         while left <= right:
             mid = left + (right-left)//2
             if self.count(mid, prefix, threshold):
-                ans = mid 
                 left = mid + 1
             else:
                 right = mid - 1
-        return ans
-
+        return right
+    
     def count(self, idx, prefix, threshold):
         for i in range(idx, len(prefix)):
             for j in range(idx, len(prefix[0])):

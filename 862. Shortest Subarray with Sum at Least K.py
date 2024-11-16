@@ -1,11 +1,10 @@
 class Solution:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
-        n = len(nums)
-        stk = [(0, -1)] #sum, idx
-
         prefix = 0
         min_length = float("inf")
-
+        n = len(nums)
+        stk = [(0,-1)]
+        
         for i in range(n):
             prefix += nums[i]
             while stk and prefix <= stk[-1][0]:
@@ -22,7 +21,7 @@ class Solution:
 
     def search(self, nums, target):
         left = 0
-        right = len(nums) - 1
+        right = len(nums)-1
 
         while left <= right:
             mid = left + (right - left) // 2

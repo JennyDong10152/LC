@@ -1,6 +1,5 @@
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
-        idx = 0
         for i in range(len(mat[0])):
             target = mat[0][i]
             
