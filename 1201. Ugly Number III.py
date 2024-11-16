@@ -19,11 +19,6 @@ class Solution:
             else:
                 left = mid + 1
         return ans
-<<<<<<< Updated upstream
-    
-=======
-
->>>>>>> Stashed changes
     def leastCommonFactor(self, x, y):
         def greatestCommonDivisor(x, y):
             if not x:

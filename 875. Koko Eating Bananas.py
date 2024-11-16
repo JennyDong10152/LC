@@ -11,14 +11,9 @@ class Solution:
             else:
                 right = mid
         return left
-<<<<<<< Updated upstream
-
-    def count(self, piles, target):
-=======
     
     
     def count(self, piles, mid):
->>>>>>> Stashed changes
         cnt = 0
         
         for p in piles:
