@@ -8,11 +8,16 @@ class Solution:
             return floor
         if (egg, floor) in self.dp:
             return self.dp[(egg, floor)]
+<<<<<<< Updated upstream
         
         broken = notBroken = 0
+=======
+
+>>>>>>> Stashed changes
         left = 1
         right = floor
         cnt = floor + 1
+        broken = notBroken = 0
 
         while left <= right:
             mid = left + (right-left)//2

@@ -18,7 +18,11 @@ class Solution:
                 cnt += (freq_firstTwoSum[sum1] * freq_lastTwoSum[sum2])
         return cnt
 
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     def search(self, sum1, nums):
         left = 0
         right = len(nums)-1
@@ -33,3 +37,4 @@ class Solution:
             else:
                 left = mid+1
         return None
+    

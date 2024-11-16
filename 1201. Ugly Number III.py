@@ -1,5 +1,6 @@
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
+        
         multiple_of_ab = self.leastCommonFactor(a, b)
         multiple_of_bc = self.leastCommonFactor(b, c)
         multiple_of_ac = self.leastCommonFactor(a, c)
@@ -18,10 +19,14 @@ class Solution:
             else:
                 left = mid + 1
         return ans
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     def leastCommonFactor(self, x, y):
         def greatestCommonDivisor(x, y):
             if not x:
                 return y
-            return greatestCommonDivisor(y%x, x)
+            return greatestCommonDivisor(y % x, x)
         return x * y / greatestCommonDivisor(x, y)

@@ -7,8 +7,13 @@ class Solution:
         for i, c in enumerate(colors):
             if not c in maps:
                 maps[c] = []
+<<<<<<< Updated upstream
             maps[c].append(i)
         for i, c in queries:
+=======
+            maps[c].append(idx)        
+        for idx, c in queries:
+>>>>>>> Stashed changes
             if not c in maps:
                 ans.append(-1)
             else:
@@ -30,5 +35,10 @@ class Solution:
             if midV > target:
                 right = mid-1
             else:
+<<<<<<< Updated upstream
                 left = mid+1
         return diff
+=======
+                left = mid + 1
+        return diff
+>>>>>>> Stashed changes
