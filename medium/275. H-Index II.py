@@ -1,6 +1,5 @@
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        
         left = 0
         right = len(citations)-1
         h_idx = 0

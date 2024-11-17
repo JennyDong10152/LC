@@ -32,4 +32,3 @@ class Solution:
             else:
                 left = mid+1
         return None
-    

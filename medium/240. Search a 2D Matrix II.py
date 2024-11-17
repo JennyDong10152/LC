@@ -2,6 +2,7 @@ class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if not matrix or not matrix[0]:
             return -1
+        
         for row in matrix:
             if target > row[-1]:
                 continue
@@ -14,7 +15,6 @@ class Solution:
     def search(self, row, target):
         left = 0
         right = len(row)-1
-
         while left <= right:
             mid = left + (right-left)//2
             midV = row[mid]
