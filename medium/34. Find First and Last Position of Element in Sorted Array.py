@@ -2,7 +2,6 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if not nums:
             return [-1, -1]
-            
         idx1 = self.search(nums, target, True)
         idx2 = self.search(nums, target, False)
         return [idx1, idx2]

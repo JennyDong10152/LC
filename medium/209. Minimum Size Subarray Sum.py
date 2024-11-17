@@ -11,4 +11,3 @@ class Solution:
                 total -= nums[left]
                 left += 1
         return size if size != len(nums)+1 else 0
-

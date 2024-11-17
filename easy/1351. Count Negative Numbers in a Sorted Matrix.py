@@ -6,6 +6,7 @@ class Solution:
             cnt += (len(grid[row])-idx)
         return cnt
     
+    
     def search(self, row):
         left = 0
         right = len(row)
