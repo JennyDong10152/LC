@@ -1,15 +1,15 @@
 class Solution:
-    def findMedianSortedArrays(self, A: List[int], B: List[int]) -> float:
-        len_a = len(A)
-        len_b = len(B)
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        len_a = len(nums1)
+        len_b = len(nums2)
         total = len_a + len_b
-        self.A = A
-        self.B = B
+        self.A = nums1
+        self.B = nums2
 
         if total % 2:
             return self.search(total//2, 0, len_a-1, 0, len_b-1)
         else:
-            return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1)) / 2
+            return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1))/2
     
     def search(self, k, left_a, right_a, left_b, right_b):
         if left_a > right_a:
@@ -17,8 +17,8 @@ class Solution:
         if left_b > right_b:
             return self.A[k-left_b]
         
-        mid_a = left_a + (right_a - left_a)//2
-        mid_b = left_b + (right_b - left_b)//2
+        mid_a = left_a + (right_a-left_a)//2
+        mid_b = left_b + (right_b-left_b)//2
         midV_a = self.A[mid_a]
         midV_b = self.B[mid_b]
 
