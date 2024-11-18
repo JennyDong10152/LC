@@ -6,7 +6,7 @@ class Solution:
         self.A = nums1
         self.B = nums2
 
-        if total % 2:
+        if total%2:
             return self.search(total//2, 0, len_a-1, 0, len_b-1)
         else:
             return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1))/2

@@ -1,16 +1,19 @@
 class Solution:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
-        stk = [(0,-1)] #prefix. idx
+        min_length = float('inf')
+        stk = [(0, -1)] #prefix, idx
         prefix = 0
-        min_length = float("inf")
 
         for i in range(len(nums)):
             prefix += nums[i]
+            #cur_prefix - target >= k
+            #cur_prefix - k >= target
             while stk and stk[-1][0] >= prefix:
                 stk.pop()
             stk.append((prefix, i))
-            idx = self.search(stk, prefix-k) #closest prefix smaller than prefix-k
-            if idx != -1:
+            target = prefix-k
+            idx = self.search(stk, target)
+            if idx >= 0:
                 min_length = min(min_length, i-stk[idx][1])
         return min_length if min_length != float("inf") else -1
     
