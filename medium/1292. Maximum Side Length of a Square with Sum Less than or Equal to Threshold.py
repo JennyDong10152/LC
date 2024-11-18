@@ -1,18 +1,17 @@
 class Solution:
     def maxSideLength(self, mat: List[List[int]], threshold: int) -> int:
-        if min(min(i) for i in mat) > threshold:
+        if min(min(row) for row in mat) > threshold:
             return 0
-
+        
         m = len(mat)
         n = len(mat[0])
-
-        prefix = [[0] * (n+1) for _ in range(m+1)]
+        prefix = [[0]* (n+1) for _ in range(m+1)]
 
         for i in range(m):
             for j in range(n):
                 prefix[i+1][j+1] = mat[i][j] + prefix[i+1][j] + prefix[i][j+1] - prefix[i][j]
-
-        left = 1
+        
+        left = 0
         right = min(m, n)
 
         while left <= right:

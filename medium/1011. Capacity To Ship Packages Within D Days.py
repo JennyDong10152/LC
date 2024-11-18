@@ -2,9 +2,12 @@ class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         left = max(weights)
         right = sum(weights)
+
         if days == 1:
             return right
-            
+        if days == len(weights):
+            return left
+        
         while left <= right:
             mid = left + (right-left)//2
             days_needed = self.count(weights, mid)
@@ -14,13 +17,14 @@ class Solution:
                 right = mid - 1
         return left
     
-    def count(self, weight, capacity):
+    def count(self, weights, target):
         cnt = 1
-        temp_sum = 0
-        for w in weight:
-            if w + temp_sum > capacity:
+        cur_sum = 0
+
+        for w in weights:
+            if w+cur_sum > target:
                 cnt += 1
-                temp_sum = w
+                cur_sum = w
             else:
-                temp_sum += w
+                cur_sum += w
         return cnt

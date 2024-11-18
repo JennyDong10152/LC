@@ -1,8 +1,5 @@
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
-        if len(mat) == 1:
-            return mat[0][0]
-
         for i in mat[0]:
             target = i
             for row in range(1, len(mat)):

@@ -1,16 +1,12 @@
 class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
-        if not intervals:
-            return []
-        
         interval = []
-        for idx, [i,j] in enumerate(intervals):
+        for idx, (i, j) in enumerate(intervals):
             interval.append([i, j, idx])
         interval.sort()
         
-        ans = [-1] * len(intervals)
-
-        for [i, j, idx_o] in interval:
+        ans = [-1] * len(interval)
+        for i, j, idx_o in interval:
             left = 0
             right = len(interval)
 
