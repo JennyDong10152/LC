@@ -6,14 +6,16 @@ class Solution:
         self.A = nums1
         self.B = nums2
 
-        if total%2:
+        if total % 2:
             return self.search(total//2, 0, len_a-1, 0, len_b-1)
         else:
-            return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1))/2
+            return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1)) / 2
+        
     
     def search(self, k, left_a, right_a, left_b, right_b):
         if left_a > right_a:
             return self.B[k-left_a]
+        
         if left_b > right_b:
             return self.A[k-left_b]
         
