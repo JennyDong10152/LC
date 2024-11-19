@@ -5,30 +5,31 @@ class Solution:
 
         for i in range(len(nums1)):
             for j in range(len(nums2)):
-                freq_firstTwoSum[nums1[i]+nums2[j]] = freq_firstTwoSum.get(nums1[i]+nums2[j], 0)+1
-                freq_lastTwoSum[nums3[i]+nums4[j]] = freq_lastTwoSum.get(nums3[i]+nums4[j], 0)+1
+                freq_firstTwoSum[nums1[i]+nums2[j]] = freq_firstTwoSum.get(nums1[i]+nums2[j], 0) + 1
+                freq_lastTwoSum[nums3[i]+nums4[j]] = freq_lastTwoSum.get(nums3[i]+nums4[j], 0) + 1
+        
         firstTwoSum = sorted(list(freq_firstTwoSum))
         lastTwoSum = sorted(list(freq_lastTwoSum))
         cnt = 0
+
         for sum1 in firstTwoSum:
             sum2 = self.search(sum1, lastTwoSum)
-            if sum2 is None:
-                continue
-            else:
+            if not sum2 is None:
                 cnt += (freq_firstTwoSum[sum1] * freq_lastTwoSum[sum2])
         return cnt
 
-    def search(self, sum1, nums):
+
+    def search(self, target, nums):
         left = 0
         right = len(nums)-1
 
         while left <= right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            if midV + sum1 == 0:
+            if midV + target == 0:
                 return midV
-            elif midV + sum1 > 0:
-                right = mid-1
+            elif midV + target > 0:
+                right = mid - 1
             else:
-                left = mid+1
+                left = mid + 1
         return None

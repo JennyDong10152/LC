@@ -2,22 +2,21 @@ class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
         cnt = []
         arr = []
-
         for n in reversed(nums):
-            idx = self.search(arr, n)
+            idx = self.search(n, arr)
             cnt.append(idx)
             arr.insert(idx, n)
         return cnt[::-1]
     
-    def search(self, arr, target):
+    def search(self, target, nums):
         left = 0
-        right = len(arr)-1
+        right = len(nums)-1
 
         while left <= right:
             mid = left + (right-left)//2
-            midV = arr[mid]
+            midV = nums[mid]
             if midV >= target:
-                right = mid - 1
+                right = mid-1
             else:
-                left = mid + 1
+                left = mid+1
         return left

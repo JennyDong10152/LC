@@ -3,10 +3,10 @@ class Solution:
         left = max(nums)
         right = sum(nums)
 
-        if k == len(nums):
-            return left
         if k == 1:
             return right
+        if k == len(nums):
+            return left
         
         while left <= right:
             mid = left + (right-left)//2
@@ -20,9 +20,8 @@ class Solution:
     def count(self, nums, target):
         temp_sum = 0
         cnt = 1
-
         for n in nums:
-            if n + temp_sum > target:
+            if temp_sum + n > target:
                 cnt += 1
                 temp_sum = n
             else:

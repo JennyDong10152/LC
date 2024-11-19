@@ -1,10 +1,10 @@
 class TopVotedCandidate:
 
     def __init__(self, persons: List[int], times: List[int]):
+        self.vote_cnt = {}
         self.leadings = []
         self.times = times
         leading = -1
-        self.vote_cnt = dict()
 
         for p in persons:
             if not p in self.vote_cnt:
@@ -16,7 +16,7 @@ class TopVotedCandidate:
 
     def q(self, t: int) -> int:
         idx = self.search(t)
-        return self.leadings[idx] if idx >= 0 else None
+        return self.leadings[idx] if idx>= 0 else None
     
     def search(self, t):
         left = 0
@@ -30,8 +30,3 @@ class TopVotedCandidate:
             else:
                 left = mid + 1
         return right
-
-
-# Your TopVotedCandidate object will be instantiated and called as such:
-# obj = TopVotedCandidate(persons, times)
-# param_1 = obj.q(t)
