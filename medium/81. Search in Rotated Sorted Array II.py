@@ -13,7 +13,6 @@ class Solution:
                 left += 1
                 right -= 1
                 continue
-                
             if midV >= nums[left]:
                 if nums[left] <= target <= midV:
                     right = mid - 1

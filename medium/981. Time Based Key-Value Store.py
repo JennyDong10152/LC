@@ -3,7 +3,6 @@ class TimeMap:
     def __init__(self):
         self.maps = {} #key : [timestamp, value]
         
-
     def set(self, key: str, value: str, timestamp: int) -> None:
         if not key in self.maps:
             self.maps[key] = []
