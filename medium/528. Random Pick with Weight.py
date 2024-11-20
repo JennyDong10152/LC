@@ -11,7 +11,6 @@ class Solution:
 
     def pickIndex(self) -> int:
         target = random.randint(1, self.total)
-        
         left = 0
         right = len(self.prefix) - 1
 

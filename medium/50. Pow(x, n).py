@@ -12,7 +12,6 @@ class Solution:
             return 1
         if n == 1:
             return x
-        
         half = self.calc(x, n//2)
         if n % 2 == 1:
             return half * half * x

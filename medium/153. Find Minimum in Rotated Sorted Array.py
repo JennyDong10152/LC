@@ -6,7 +6,6 @@ class Solution:
         while left < right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            
             if midV <= nums[right]:
                 right = mid
             else:

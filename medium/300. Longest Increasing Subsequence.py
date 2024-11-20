@@ -1,13 +1,13 @@
 class Solution:
-    def countSmaller(self, nums: List[int]) -> List[int]:
-        arr = []
-        cnt = []
-
-        for n in reversed(nums):
-            idx = self.search(n, arr)
-            cnt.append(idx)
-            arr.insert(idx, n)
-        return cnt[::-1]
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        sub = []
+        for n in nums:
+            if not sub or sub[-1] < n:
+                sub.append(n)
+            else:
+                idx = self.search(n, sub)
+                sub[idx] = n
+        return len(sub)
     
     def search(self, target, nums):
         left = 0

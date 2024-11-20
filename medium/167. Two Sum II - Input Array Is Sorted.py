@@ -1,7 +1,7 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         for idx, n in enumerate(numbers):
-            left = idx + 1
+            left = idx+1
             right = len(numbers)-1
 
             while left <= right:
@@ -13,4 +13,4 @@ class Solution:
                     right = mid - 1
                 else:
                     left = mid + 1
-        return -1
+        return [-1, -1]
