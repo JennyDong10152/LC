@@ -3,17 +3,14 @@ class Solution(object):
 
         envelopes.sort(key=lambda x: (x[0], -x[1]))
         heights = [envelope[1] for envelope in envelopes]
-
         ans = []
 
         for height in heights:
             idx = self.search(ans, height)
-
             if idx == len(ans):
                 ans.append(height)
             else:
                 ans[idx] = height
-
         return len(ans)
     
     def search(self, nums, target):

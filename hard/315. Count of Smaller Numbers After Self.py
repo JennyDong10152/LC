@@ -1,7 +1,7 @@
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        arr = []
         cnt = []
+        arr = []
 
         for n in reversed(nums):
             idx = self.search(n, arr)

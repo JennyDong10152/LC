@@ -2,7 +2,6 @@ class SummaryRanges:
 
     def __init__(self):
         self.intervals = []
-        
 
     def addNum(self, value: int) -> None:
         idx = self.search(value)
@@ -17,7 +16,6 @@ class SummaryRanges:
         while idx < len(self.intervals) and self.intervals[idx][0] <= new_interval[1] + 1:
             new_interval[1] = max(new_interval[1], self.intervals[idx][1])
             del self.intervals[idx]
-
         self.intervals.insert(idx, new_interval)
 
     
@@ -35,10 +33,3 @@ class SummaryRanges:
 
     def getIntervals(self) -> List[List[int]]:
         return self.intervals
-        
-
-
-# Your SummaryRanges object will be instantiated and called as such:
-# obj = SummaryRanges()
-# obj.addNum(value)
-# param_2 = obj.getIntervals()
