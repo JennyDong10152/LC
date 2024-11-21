@@ -1,7 +1,7 @@
 class Solution:
     def maximizeSweetness(self, sweetness: List[int], k: int) -> int:
 
-        left = 1  
+        left = min(sweetness)
         right = sum(sweetness) 
 
         while left <= right:
@@ -10,16 +10,15 @@ class Solution:
                 left = mid + 1 
             else:
                 right = mid - 1
-                
         return right
 
-    def divide(self, nums, target, pieces):
+    def divide(self, nums, target, k):
         curr = 0
         cnt = 0
 
-        for sweet in nums:
-            curr += sweet
+        for n in nums:
+            curr += n
             if curr >= target:  
                 cnt += 1
-                curr = 0  
-        return cnt >= pieces
+                curr = 0
+        return cnt >= k
