@@ -9,16 +9,16 @@ class Solution:
         if (egg, floor) in self.dp:
             return self.dp[(egg, floor)]
         
-        cnt = floor + 1
-        broken = notBroken = 0
         left = 1
         right = floor
+        cnt = floor + 1
+        broken = notBroken = 1
 
         while left <= right:
             mid = left + (right-left)//2
             broken = self.search(egg-1, mid-1)
             notBroken = self.search(egg, floor-mid)
-            temp_cnt = max(broken, notBroken) + 1
+            temp_cnt = 1 + max(broken, notBroken)
 
             if broken >= notBroken:
                 right = mid - 1

@@ -1,7 +1,7 @@
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        cnt = []
         arr = []
+        cnt = []
 
         for n in reversed(nums):
             idx = self.search(n, arr)
@@ -9,13 +9,12 @@ class Solution:
             arr.insert(idx, n)
         return cnt[::-1]
     
-    def search(self, target, nums):
+    def search(self, target, arr):
         left = 0
-        right = len(nums)-1
-
+        right = len(arr)-1
         while left <= right:
             mid = left + (right-left)//2
-            midV = nums[mid]
+            midV = arr[mid]
             if midV >= target:
                 right = mid - 1
             else:
