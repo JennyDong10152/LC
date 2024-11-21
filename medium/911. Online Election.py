@@ -1,9 +1,9 @@
 class TopVotedCandidate:
 
     def __init__(self, persons: List[int], times: List[int]):
+        self.times = times
         self.vote_cnt = {}
         self.leadings = []
-        self.times = times
         leading = -1
 
         for p in persons:
@@ -16,12 +16,11 @@ class TopVotedCandidate:
 
     def q(self, t: int) -> int:
         idx = self.search(t)
-        return self.leadings[idx] if idx>= 0 else None
+        return self.leadings[idx] if idx>=0 else None
     
     def search(self, t):
         left = 0
         right = len(self.times)-1
-
         while left <= right:
             mid = left + (right-left)//2
             midV = self.times[mid]

@@ -5,8 +5,8 @@ class Solution:
                 continue
             if target < row[0]:
                 return False
-            if self.search(row, target):
-                    return True
+            elif self.search(row, target):
+                return True
         return False
     
     def search(self, nums, target):

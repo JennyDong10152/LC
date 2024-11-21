@@ -3,14 +3,14 @@ class Solution:
         left = 1
         right = len(nums)
 
-        while left < right:
+        while left <= right:
             mid = left + (right-left)//2
             cnt = 0
-            for i in nums:
-                if i <= mid:
+            for n in nums:
+                if n <= mid:
                     cnt += 1
             if cnt > mid:
-                right = mid
+                right = mid - 1
             else:
                 left = mid + 1
-        return right
+        return left
