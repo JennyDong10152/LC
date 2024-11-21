@@ -8,14 +8,13 @@ class Solution:
             midV = nums[mid]
             if midV == target:
                 return mid
-            
             if midV >= nums[left]:
-                if nums[left] <= target <= midV:
+                if nums[left] <= target < midV:
                     right = mid - 1
                 else:
                     left = mid + 1
             else:
-                if midV <= target <= nums[right]:
+                if midV < target <= nums[right]:
                     left = mid + 1
                 else:
                     right = mid - 1

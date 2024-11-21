@@ -1,15 +1,15 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        sub = []
+        ans = []
         for n in nums:
-            if not sub or sub[-1] < n:
-                sub.append(n)
+            idx = self.search(ans, n)
+            if idx < len(ans):
+                ans[idx] = n
             else:
-                idx = self.search(n, sub)
-                sub[idx] = n
-        return len(sub)
+                ans.append(n)
+        return len(ans)
     
-    def search(self, target, nums):
+    def search(self, nums, target):
         left = 0
         right = len(nums)-1
 

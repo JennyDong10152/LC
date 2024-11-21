@@ -13,7 +13,7 @@ class Solution:
     
     def search(self, root, k):
         if not root:
-            return
+            return 
         self.search(root.left, k)
         self.cnt += 1
         if self.cnt == k:

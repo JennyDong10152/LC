@@ -1,29 +1,28 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        m = len(matrix)-1
+        n = len(matrix)
         left = matrix[0][0]
-        right = matrix[m][m]
+        right = matrix[n-1][n-1]
 
         while left <= right:
             mid = left + (right-left)//2
-            cnt, cur_max = self.count(matrix, mid, left)
-            if cnt == k:
-                return cur_max
-            if cnt > k:
+            cnt = self.search(matrix, mid)
+            if cnt >= k:
                 right = mid - 1
             else:
                 left = mid + 1
         return left
+
     
-    def count(self, matrix, target, cur_max):
+    def search(self, matrix, target):
         cnt = 0
         for i in range(len(matrix)):
-            j = len(matrix)-1
+            j = len(matrix) - 1
             while j >= 0 and matrix[i][j] > target:
                 j -= 1
             if j >= 0:
-                cnt += (j+1)
-                cur_max = max(cur_max, matrix[i][j])
+                cnt += (j + 1)
             else:
                 break
-        return cnt, cur_max
+        return cnt
+            

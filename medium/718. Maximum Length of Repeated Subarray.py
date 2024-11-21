@@ -15,7 +15,6 @@ class Solution:
         sub_nums1 = set()
         for i in range(len(nums1)-length+1):
             sub_nums1.add(tuple(nums1[i:i+length]))
-        
         for i in range(len(nums2)-length+1):
             if tuple(nums2[i:i+length]) in sub_nums1:
                 return True
