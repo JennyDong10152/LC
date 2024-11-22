@@ -2,8 +2,6 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         left = 1
         right = sum(piles)
-        if h == 1:
-            return right
 
         while left <= right:
             mid = left + (right-left)//2
@@ -13,11 +11,11 @@ class Solution:
             else:
                 right = mid - 1
         return left
-
+    
     def search(self, piles, target):
         cnt = 0
         for p in piles:
             if p % target != 0:
                 cnt += 1
-            cnt += (p // target)
+            cnt += p // target
         return cnt

@@ -1,12 +1,12 @@
 class Solution:
     def shortestDistanceColor(self, colors: List[int], queries: List[List[int]]) -> List[int]:
         maps = {}
-        ans = []
         for i, c in enumerate(colors):
             if not c in maps:
                 maps[c] = []
             maps[c].append(i)
         
+        ans = []
         for i, c in queries:
             if not c in maps:
                 ans.append(-1)
@@ -17,16 +17,17 @@ class Solution:
     def search(self, nums, target):
         left = 0
         right = len(nums)-1
-        diff = float("inf")
+        min_diff = float("inf")
 
         while left <= right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            diff = min(diff, abs(midV-target))
-            if midV == target:
-                return diff
-            elif midV > target:
+            min_diff = min(min_diff, abs(midV-target))
+            if not min_diff:
+                return 0
+            if midV > target:
                 right = mid - 1
             else:
                 left = mid + 1
-        return diff
+        return min_diff
+                

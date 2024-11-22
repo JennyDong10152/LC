@@ -4,16 +4,12 @@ class Solution:
         left = 1
         right = max(nums)
 
-        while left < right:
+        while left <= right:
             mid = left + (right-left)//2
-            if self.isValid(nums, mid, threshold):
-                right = mid
-            else:
+            temp_sum = sum(math.ceil(i/mid) for i in nums)
+            if temp_sum > threshold:
                 left = mid + 1
-        return right
-    
-    def isValid(self, nums, div, threshold):
-        sums = 0
-        for n in nums:
-            sums += int(math.ceil(n / div))
-        return sums <= threshold
+            else:
+                right = mid - 1
+        return left
+        

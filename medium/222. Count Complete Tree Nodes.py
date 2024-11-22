@@ -8,12 +8,13 @@ class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
+        
         leftHeight = self.getLeftHeight(root)
         rightHeight = self.getRightHeight(root)
+
         if leftHeight == rightHeight:
             return 2 ** leftHeight - 1
-        else:
-            return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+        return 1 + self.countNodes(root.left) + self.countNodes(root.right)
     
     def getLeftHeight(self, root):
         cnt = 0
@@ -21,7 +22,7 @@ class Solution:
             cnt += 1
             root = root.left
         return cnt
-    
+
     def getRightHeight(self, root):
         cnt = 0
         while root:

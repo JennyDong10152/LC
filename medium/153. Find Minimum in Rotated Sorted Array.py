@@ -10,4 +10,4 @@ class Solution:
                 right = mid
             else:
                 left = mid + 1
-        return nums[right]
+        return nums[left]

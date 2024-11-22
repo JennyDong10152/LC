@@ -1,8 +1,8 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        n = len(matrix)
+        m = len(matrix)
         left = matrix[0][0]
-        right = matrix[n-1][n-1]
+        right = matrix[m-1][m-1]
 
         while left <= right:
             mid = left + (right-left)//2
@@ -14,15 +14,14 @@ class Solution:
         return left
 
     
-    def search(self, matrix, target):
+    def search(self, mat, target):
         cnt = 0
-        for i in range(len(matrix)):
-            j = len(matrix) - 1
-            while j >= 0 and matrix[i][j] > target:
+        for i in range(len(mat)):
+            j = len(mat[0])-1
+            while j >= 0 and mat[i][j] > target:
                 j -= 1
             if j >= 0:
-                cnt += (j + 1)
+                cnt += (j+1)
             else:
                 break
         return cnt
-            

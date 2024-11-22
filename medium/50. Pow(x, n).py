@@ -1,10 +1,10 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         ans = self.calc(x, abs(n))
-        if n > 0:
-            return ans
-        return 1/ans
-
+        if n < 0:
+            return 1/ans
+        return ans
+    
     def calc(self, x, n):
         if not x:
             return 0

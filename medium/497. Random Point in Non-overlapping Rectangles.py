@@ -17,20 +17,15 @@ class Solution:
         u = random.randint(a, x)
         v = random.randint(b, y)
         return [u,v]
-    
+
     def search(self, target):
         left = 0
-        right = len(self.prefix)-1
-
+        right = len(self.rects)-1
         while left < right:
-            mid = left + (right-left)//2
+            mid = left + (right - left)//2
             midV = self.prefix[mid]
             if midV >= target:
                 right = mid
             else:
                 left = mid + 1
         return left
-
-# Your Solution object will be instantiated and called as such:
-# obj = Solution(rects)
-# param_1 = obj.pick()
