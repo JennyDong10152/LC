@@ -11,8 +11,7 @@ class Solution:
             if nums[left] == midV and midV == nums[right]:
                 left += 1
                 right -= 1
-                continue
-            if midV >= nums[left]:
+            elif midV >= nums[left]:
                 if nums[left] <= target < midV:
                     right = mid - 1
                 else:
@@ -23,4 +22,3 @@ class Solution:
                 else:
                     right = mid - 1
         return False
-                

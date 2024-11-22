@@ -2,10 +2,6 @@ class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
         left = max(nums)
         right = sum(nums)
-        if k == 1:
-            return right
-        if k == len(nums):
-            return left
 
         while left <= right:
             mid = left + (right-left)//2
@@ -15,6 +11,7 @@ class Solution:
             else:
                 right = mid - 1
         return left
+    
     
     def search(self, nums, mid):
         cnt = 1

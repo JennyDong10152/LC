@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        self.cnt = 0
         self.ans = 0
+        self.cnt = 0
         self.search(root, k)
         return self.ans
     
@@ -18,5 +18,4 @@ class Solution:
         self.cnt += 1
         if self.cnt == k:
             self.ans = root.val
-            return 
         self.search(root.right, k)

@@ -3,11 +3,6 @@ class Solution:
         left = max(weights)
         right = sum(weights)
 
-        if days == 1:
-            return right
-        if days == len(weights):
-            return left
-        
         while left <= right:
             mid = left + (right-left)//2
             days_needed = self.search(weights, mid)
@@ -19,11 +14,11 @@ class Solution:
     
     def search(self, nums, target):
         cnt = 1
-        temp_sum = 0
+        curr = 0
         for n in nums:
-            if n + temp_sum > target:
+            if n + curr > target:
                 cnt += 1
-                temp_sum = n
+                curr = n
             else:
-                temp_sum += n
+                curr += n
         return cnt

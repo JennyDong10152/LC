@@ -2,7 +2,7 @@ class Solution:
     def hIndex(self, citations: List[int]) -> int:
         n = len(citations)
         left = 0
-        right = n-1
+        right = n - 1
         h_idx = 0
 
         while left <= right:

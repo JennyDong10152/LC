@@ -2,20 +2,21 @@ import random
 class Solution:
 
     def __init__(self, w: List[int]):
-        self.total = 0
-        cur_sum = 0
+        cur = 0
         self.prefix = []
-
         for weight in w:
-            cur_sum += weight
-            self.prefix.append(cur_sum)
-        self.total = cur_sum
+            cur += weight
+            self.prefix.append(cur)
+        self.total = cur
 
     def pickIndex(self) -> int:
         target = random.randint(1, self.total)
+        idx = self.search(target)
+        return idx
+    
+    def search(self, target):
         left = 0
-        right = len(self.prefix)
-
+        right = len(self.prefix)-1
         while left < right:
             mid = left + (right-left)//2
             midV = self.prefix[mid]
