@@ -8,18 +8,19 @@ class Solution:
 
         dp = [0] * (n+1)
         for i, [cur_end, cur_start, cur_profit] in enumerate(jobs):
-            idx = self.search(cur_start, jobs, i)
+            idx = self.search(jobs, cur_start, i)
             dp[i+1] = max(dp[i], cur_profit + dp[idx+1])
         return dp[n]
     
-    def search(self, target, jobs, i):
+    def search(self, jobs, target, i):
         left = 0
         right = i - 1
+
         while left <= right:
             mid = left + (right-left)//2
             midV = jobs[mid][0]
             if midV > target:
-                right = mid-1
+                right = mid - 1
             else:
                 left = mid + 1
         return right

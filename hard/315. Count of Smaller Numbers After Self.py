@@ -2,16 +2,16 @@ class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
         arr = []
         cnt = []
-
         for n in reversed(nums):
-            idx = self.search(n, arr)
+            idx = self.search(arr, n)
             cnt.append(idx)
             arr.insert(idx, n)
         return cnt[::-1]
     
-    def search(self, target, arr):
+    def search(self, arr, target):
         left = 0
         right = len(arr)-1
+
         while left <= right:
             mid = left + (right-left)//2
             midV = arr[mid]
