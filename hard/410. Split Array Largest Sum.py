@@ -12,7 +12,6 @@ class Solution:
                 right = mid - 1
         return left
     
-    
     def search(self, nums, mid):
         cnt = 1
         temp_sum = 0

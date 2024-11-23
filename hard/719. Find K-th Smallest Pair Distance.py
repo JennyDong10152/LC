@@ -1,7 +1,6 @@
 class Solution:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
         nums.sort()
-
         left = 0
         right = nums[-1]-nums[0]
 
@@ -13,6 +12,7 @@ class Solution:
                 left = mid + 1
         return left
     
+
     def search(self, nums, mid):
         cnt = 0
         left = 0
