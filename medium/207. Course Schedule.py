@@ -1,5 +1,3 @@
-from collections import deque
-
 class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         prereq = defaultdict(list)
@@ -8,12 +6,14 @@ class Solution(object):
         for child, parent in prerequisites:
             prereq[parent].append(child)
             degree[child] += 1
+
         noMorePrereq = deque()
         for idx, n in enumerate(degree):
             if not n:
                 noMorePrereq.append(idx)
 
         cnt = 0
+        
         while noMorePrereq:
             parent = noMorePrereq.popleft()
             cnt += 1

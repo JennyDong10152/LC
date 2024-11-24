@@ -3,8 +3,8 @@ class Solution:
         if n == 1:
             return [0]
         
-        graph = defaultdict(set)
         degrees = [0] * n
+        graph = defaultdict(set)
         
         for u, v in edges:
             graph[u].add(v)
@@ -13,6 +13,7 @@ class Solution:
             degrees[v] += 1
 
         leaves = deque()
+        
         for i in range(n):
             if degrees[i] == 1:
                 leaves.append(i)
@@ -21,7 +22,7 @@ class Solution:
             num_leaves = len(leaves)
             n -= num_leaves
             
-            for _ in range(num_leaves):
+            for i in range(num_leaves):
                 leaf = leaves.popleft()
                 for neighbor in graph[leaf]:
                     degrees[neighbor] -= 1
