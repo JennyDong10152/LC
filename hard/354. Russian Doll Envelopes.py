@@ -1,9 +1,9 @@
 class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         envelopes.sort(key = lambda x : (x[0], -x[1]))
-        ans = []
         heights = [envelope[1] for envelope in envelopes]
 
+        ans = []
         for height in heights:
             idx = self.search(ans, height)
             if idx == len(ans):
