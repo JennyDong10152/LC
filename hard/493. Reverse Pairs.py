@@ -11,6 +11,7 @@ class Solution:
             sorted_nums.insert(idx_insert, n)
         return cnt
     
+    
     def search(self, nums, target):
         left = 0
         right = len(nums)

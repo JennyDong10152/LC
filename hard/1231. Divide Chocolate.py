@@ -14,7 +14,6 @@ class Solution:
     def divide(self, target, nums, k):
         cnt = 0
         curr = 0
-
         for n in nums:
             curr += n
             if curr >= target:

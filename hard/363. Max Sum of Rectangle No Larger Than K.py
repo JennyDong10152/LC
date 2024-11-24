@@ -22,6 +22,7 @@ class Solution:
                     sorted_sums.insert(idx_insert, curr_sum)
         return max_sum
     
+    
     def search(self, nums, target):
         left = 0
         right = len(nums)-1
