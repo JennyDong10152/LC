@@ -5,22 +5,21 @@ class Solution:
         max_sum = -float('inf')
 
         for left in range(n):
-            prefix = [0] * m
+            prefix = [0] * (m)
             for right in range(left, n):
                 for r in range(m):
                     prefix[r] += matrix[r][right]
                 
-                cur_sum = 0
                 sorted_sums = [0]
-
+                curr_sum = 0
                 for val in prefix:
-                    cur_sum += val
+                    curr_sum += val
                     #curr - k <= target
-                    idx = self.search(sorted_sums, cur_sum-k)
+                    idx = self.search(sorted_sums, curr_sum-k)
                     if 0 <= idx < len(sorted_sums):
-                        max_sum = max(max_sum, cur_sum-sorted_sums[idx])
-                    idx_inserted = self.search(sorted_sums, cur_sum)
-                    sorted_sums.insert(idx_inserted, cur_sum)
+                        max_sum = max(max_sum, curr_sum - sorted_sums[idx])
+                    idx_insert = self.search(sorted_sums, curr_sum)
+                    sorted_sums.insert(idx_insert, curr_sum)
         return max_sum
 
     def search(self, nums, target):
