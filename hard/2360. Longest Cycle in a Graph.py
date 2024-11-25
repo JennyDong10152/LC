@@ -7,11 +7,12 @@ class Solution:
         for start, end in enumerate(edges):
             if end != -1:
                 degree[end] += 1
-
+        
         q = deque()
         for i in range(n):
             if not degree[i]:
                 q.append(i)
+        
         while q:
             curr = q.popleft()
             visited.add(curr)
@@ -20,12 +21,12 @@ class Solution:
                 degree[neighbor] -= 1
                 if not degree[neighbor]:
                     q.append(neighbor)
-
+        
         max_cycle = -1
         for node in range(n):
-            if node not in visited:
-                temp_cycle = 0
+            if not node in visited:
                 curr = node
+                temp_cycle = 0
                 while curr not in visited:
                     visited.add(curr)
                     temp_cycle += 1

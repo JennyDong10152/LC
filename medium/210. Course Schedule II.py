@@ -1,25 +1,23 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        order = []
+        graph = defaultdict(list)
         degree = [0] * numCourses
-        prereq = defaultdict(list)
 
-        for child, parent in prerequisites:
-            prereq[parent].append(child)
-            degree[child] += 1
+        for course, prev in prerequisites:
+            graph[prev].append(course)
+            degree[course] += 1
         
-        noMorePrereq = deque()
+        q = deque()
+        for i in range(numCourses):
+            if not degree[i]:
+                q.append(i)
 
-        for i, n in enumerate(degree):
-            if not n:
-                noMorePrereq.append(i)
-        
-        while noMorePrereq:
-            parent = noMorePrereq.popleft()
-            order.append(parent)
-            
-            for child in prereq[parent]:
-                degree[child] -= 1
-                if not degree[child]:
-                    noMorePrereq.append(child)
-        return order if len(order) == numCourses else []
+        order = []
+        while q:
+            curr = q.popleft()
+            order.append(curr)
+            for course in graph[curr]:
+                degree[course] -= 1
+                if not degree[course]:
+                    q.append(course)
+        return order if len(order)==numCourses else []
