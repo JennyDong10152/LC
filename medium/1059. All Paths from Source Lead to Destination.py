@@ -8,16 +8,15 @@ class Solution:
                 return False
             graph[end].append(start)
             degree[start] += 1
-
+        
         q = deque([destination])
-
         while q:
-            cur = q.popleft()
-            if cur == source:
+            curr = q.popleft()
+            if curr == source:
                 return True
-
-            for prev in graph[cur]:
-                degree[prev] -= 1
-                if not degree[prev]:
-                    q.append(prev)
+            for neighbor in graph[curr]:
+                degree[neighbor] -= 1
+                if not degree[neighbor]:
+                    q.append(neighbor)
         return False
+        

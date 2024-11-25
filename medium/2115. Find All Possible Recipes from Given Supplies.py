@@ -1,22 +1,23 @@
 class Solution:
     def findAllRecipes(self, recipes: List[str], ingredients: List[List[str]], supplies: List[str]) -> List[str]:
-        degree = defaultdict(int)
-        recipe = defaultdict(list)
+        recipe = defaultdict(list) #ingredient : [food created with the ingredient]
+        degree = defaultdict(int) #food : count of ingredients needed
 
-        for i in range(len(ingredients)):
-            for j in range(len(ingredients[i])):
-                recipe[ingredients[i][j]].append(recipes[i])
+        for i, ingredient in enumerate(ingredients):
+            for ing in ingredient:
+                recipe[ing].append(recipes[i])
                 degree[recipes[i]] += 1
-        ans = []
+
         q = deque()
+        ans = []
         for supply in supplies:
             q.append(supply)
         
         while q:
-            ingredient = q.popleft()
-            for i in recipe[ingredient]:
-                degree[i] -= 1
-                if not degree[i]:
-                    ans.append(i)
-                    q.append(i)
+            cur = q.popleft()
+            for food in recipe[cur]:
+                degree[food] -= 1
+                if not degree[food]:
+                    ans.append(food)
+                    q.append(food)
         return ans
