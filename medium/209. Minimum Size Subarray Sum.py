@@ -3,11 +3,12 @@ class Solution:
         if sum(nums) < target:
             return 0
         n = len(nums)
-        left = 1
+        left = 0
         right = n-1
+
         prefix = [0] * (n+1)
-        for i in range(n):
-            prefix[i+1] = prefix[i] + nums[i]
+        for i, n in enumerate(nums):
+            prefix[i+1] = prefix[i] + n 
 
         while left <= right:
             mid = left + (right-left)//2
@@ -19,6 +20,6 @@ class Solution:
     
     def search(self, prefix, length, target):
         for i in range(length, len(prefix)):
-            if prefix[i] - prefix[i-length] >= target:
+            if prefix[i]-prefix[i-length] >= target:
                 return True
         return False

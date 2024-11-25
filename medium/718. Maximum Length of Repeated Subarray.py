@@ -11,12 +11,11 @@ class Solution:
                 right = mid - 1
         return right
     
-    def hasCommon(self, nums1, nums2, length):
+    def hasCommon(self, nums1, nums2, idx):
         nums1_set = set()
-        for i in range(length, len(nums1)+1):
-            nums1_set.add(tuple(nums1[i-length:i]))
-        
-        for i in range(length, len(nums2)+1):
-            if tuple(nums2[i-length:i]) in nums1_set:
+        for i in range(idx, len(nums1)+1):
+            nums1_set.add(tuple(nums1[i-idx:i]))
+        for i in range(idx, len(nums2)+1):
+            if tuple(nums2[i-idx:i]) in nums1_set:
                 return True
         return False
