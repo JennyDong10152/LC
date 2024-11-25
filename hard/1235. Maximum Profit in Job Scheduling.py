@@ -7,11 +7,10 @@ class Solution:
         jobs.sort()
 
         dp = [0] * (n+1)
-        for i, [_, cur_start, cur_profit] in enumerate(jobs):
+        for i, [cur_end, cur_start, cur_profit] in enumerate(jobs):
             idx = self.search(jobs, cur_start, i)
-            dp[i+1] = max(dp[i], cur_profit + dp[idx+1])
+            dp[i+1] = max(dp[i], cur_profit+dp[idx+1])
         return dp[n]
-    
     
     def search(self, jobs, target, i):
         left = 0

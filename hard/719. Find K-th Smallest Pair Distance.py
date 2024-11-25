@@ -6,18 +6,17 @@ class Solution:
 
         while left < right:
             mid = left + (right-left)//2
-            if self.search(nums, mid) >= k:
-                right = mid
-            else:
+            if k > self.count(nums, mid):
                 left = mid + 1
-        return left
+            else:
+                right = mid
+        return right
     
-
-    def search(self, nums, mid):
+    def count(self, nums, target):
         cnt = 0
         left = 0
         for right in range(1, len(nums)):
-            while nums[right]-nums[left] > mid:
+            while nums[right]-nums[left] > target:
                 left += 1
             cnt += (right-left)
         return cnt

@@ -8,40 +8,39 @@
 
 class Solution:
     def findInMountainArray(self, target: int, mountainArr: 'MountainArray') -> int:
-        self.n = mountainArr.length()-1
-
-        peak = self.findPeak(mountainArr)
+        n = mountainArr.length()
+        peak = self.findPeak(n, mountainArr)
         if mountainArr.get(peak) == target:
             return peak
 
         leftSearch = self.search(mountainArr, target, 0, peak-1, True)
         if leftSearch != -1:
             return leftSearch
-        rightSearch = self.search(mountainArr, target, peak+1, self.n, False)
+        rightSearch = self.search(mountainArr, target, peak+1, n-1, False)
         return rightSearch
     
-    def search(self, mountainArr, target, left, right, isAscending):
+    def search(self, mountainArr, target, left, right, ascending):
         while left <= right:
             mid = left + (right-left)//2
             midV = mountainArr.get(mid)
             if midV == target:
                 return mid
             elif midV > target:
-                if isAscending:
+                if ascending:
                     right = mid - 1
                 else:
                     left = mid + 1
             else:
-                if isAscending:
+                if ascending:
                     left = mid + 1
                 else:
                     right = mid - 1
         return -1
         
-    
-    def findPeak(self, mountainArr):
+
+    def findPeak(self, n, mountainArr):
         left = 0
-        right = self.n
+        right = n-1
 
         while left < right:
             mid = left + (right-left)//2
@@ -51,3 +50,4 @@ class Solution:
             else:
                 left = mid + 1
         return right
+        
