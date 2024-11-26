@@ -2,19 +2,9 @@ class Solution:
     def largestIsland(self, grid: List[List[int]]) -> int:
         N = len(grid)
         
-        parent = {
-            (r, c): (r, c)
-            for r in range(N)
-            for c in range(N)
-            if grid[r][c]
-        }
+        parent = {(i, j): (i, j) for i in range(N) for j in range(N) if grid[i][j]}
         
-        size = {
-            (r, c): 1
-            for r in range(N)
-            for c in range(N)
-            if grid[r][c]
-        }
+        size = {(i, j): 1 for i in range(N) for j in range(N) if grid[i][j]}
     
         directions = [(1, 0), (0, 1)]
 
