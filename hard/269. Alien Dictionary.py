@@ -18,9 +18,8 @@ class Solution:
         for c in degree:
             if not degree[c]:
                 q.append(c)
-
+        
         ans = ""
-
         while q:
             char = q.popleft()
             ans += char
