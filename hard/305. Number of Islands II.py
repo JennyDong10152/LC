@@ -11,7 +11,6 @@ class Solution:
             if grid[i][j] == 1:
                 ans.append(num_island)
                 continue
-            adjacent_islands = set()
             grid[i][j] = 1
             parent[(i, j)] = (i, j)
             num_island += 1
