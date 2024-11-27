@@ -1,17 +1,15 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        m = len(isConnected)
-        parent = [i for i in range(m)]
+        n = len(isConnected)
+        parent = [i for i in range(n)]
+        disjoint = n
 
-        disjoint = m
-        for i in range(m):
-            for j in range(m):
+        for i in range(n):
+            for j in range(n):
                 if isConnected[i][j]:
-                    connected = self.union(parent, i, j)
-                    if connected:
+                    connect = self.union(parent, i, j)
+                    if connect:
                         disjoint -= 1
-        # for i in range(m):
-        #     disjoint.add(self.find(parent, i))
         return disjoint
     
     def union(self, parent, x, y):
