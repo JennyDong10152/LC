@@ -1,7 +1,7 @@
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         graph = defaultdict(set)
-        degree = {char : 0  for word in words for char in word}
+        degree = {char:0 for word in words for char in word}
 
         for word1, word2 in zip(words, words[1:]):
             for c, d in zip(word1, word2):
@@ -13,18 +13,16 @@ class Solution:
             else:
                 if len(word1) > len(word2):
                     return ""
-        
         q = deque()
-        for c in degree:
-            if not degree[c]:
-                q.append(c)
-        
+        for i in degree:
+            if not degree[i]:
+                q.append(i)
         ans = ""
         while q:
-            char = q.popleft()
-            ans += char
-            for c in graph[char]:
-                degree[c] -= 1
-                if not degree[c]:
-                    q.append(c)
+            curr = q.popleft()
+            ans += curr
+            for neighbor in graph[curr]:
+                degree[neighbor] -= 1
+                if not degree[neighbor]:
+                    q.append(neighbor)
         return ans if len(ans) == len(degree) else ""
