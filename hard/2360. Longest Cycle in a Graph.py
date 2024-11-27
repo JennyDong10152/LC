@@ -1,14 +1,14 @@
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
         n = len(edges)
-        visited = set()
         degree = [0] * n
 
-        for start, end in enumerate(edges):
-            if end != -1:
-                degree[end] += 1
+        for u, v in enumerate(edges):
+            if v != -1:
+                degree[v] += 1
         
         q = deque()
+        visited = set()
         for i in range(n):
             if not degree[i]:
                 q.append(i)
@@ -24,15 +24,16 @@ class Solution:
         
         max_cycle = -1
         for node in range(n):
-            if not node in visited:
-                curr = node
-                temp_cycle = 0
-                while curr not in visited:
-                    visited.add(curr)
-                    temp_cycle += 1
-                    curr = edges[curr]
-                    if curr == -1:
-                        break
-                if curr == node:
-                    max_cycle = max(max_cycle, temp_cycle)
+            if node in visited:
+                continue
+            curr = node
+            temp_cycle = 0
+            while not curr in visited:
+                visited.add(curr)
+                temp_cycle += 1
+                curr = edges[curr]
+                if curr == -1:
+                    break
+            if curr == node:
+                max_cycle = max(max_cycle, temp_cycle)
         return max_cycle

@@ -1,9 +1,9 @@
 class Solution:
     def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
-        graph = defaultdict(list)
         degree = [0] * (n+1)
+        graph = defaultdict(list)
         waitTime = [0] * (n+1)
-        maxWaitTime = -1
+        maxWaitTime = 0
 
         for prev, course in relations:
             graph[prev].append(course)
@@ -20,7 +20,7 @@ class Solution:
             curr = q.popleft()
             for course in graph[curr]:
                 degree[course] -= 1
-                waitTime[course] = max(time[course-1]+waitTime[curr], waitTime[course])
+                waitTime[course] = max(waitTime[course], waitTime[curr]+time[course-1])
                 maxWaitTime = max(maxWaitTime, waitTime[course])
                 if not degree[course]:
                     q.append(course)
