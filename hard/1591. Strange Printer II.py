@@ -1,10 +1,11 @@
 class Solution:
     def isPrintable(self, targetGrid: List[List[int]]) -> bool:
-        m = len(targetGrid)
-        n = len(targetGrid[0])
         colors = set()  
         graph = defaultdict(set)
         degree = defaultdict(int)
+
+        m = len(targetGrid)
+        n = len(targetGrid[0])
 
         bounds = defaultdict(lambda: [n, -1, m, -1])
         for i in range(m):
@@ -20,7 +21,8 @@ class Solution:
                 for j in range(left, right + 1):
                     if targetGrid[i][j] != color:
                         if color not in graph[targetGrid[i][j]]:
-                            graph[targetGrid[i][j]].add(color) #new points to base color
+                            graph[targetGrid[i][j]].add(color) 
+                            #new depends on base color, degree counts, how many new colors are above it
                             degree[color] += 1
 
         q = deque()
@@ -36,4 +38,5 @@ class Solution:
                 degree[neighbor] -= 1
                 if not degree[neighbor]:
                     q.append(neighbor)
+
         return len(order) == len(colors)

@@ -6,7 +6,6 @@ class Solution:
         for prev, course in relations:
             graph[prev].append(course)
             degree[course] += 1
-        
         q = deque()
         cnt = 0
         courses_taken = []

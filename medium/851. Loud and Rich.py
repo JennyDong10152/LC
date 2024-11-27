@@ -7,18 +7,18 @@ class Solution:
         for more, less in richer:
             graph[more].append(less)
             degree[less] += 1
-
+        
         q = deque()
-        ans = [i for i in range(n)]
         for i in range(n):
             if not degree[i]:
                 q.append(i)
+        ans = [i for i in range(n)]
 
         while q:
             curr = q.popleft()
             for poorer in graph[curr]:
                 degree[poorer] -= 1
-                if quiet[ans[curr]] < quiet[ans[poorer]]:
+                if quiet[ans[poorer]] > quiet[ans[curr]]:
                     ans[poorer] = ans[curr]
                 if not degree[poorer]:
                     q.append(poorer)

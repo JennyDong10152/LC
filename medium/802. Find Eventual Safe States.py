@@ -10,11 +10,10 @@ class Solution:
                 degree[start] += 1
         
         q = deque()
-        ans = []
         for i in range(n):
             if not degree[i]:
                 q.append(i)
-        
+        ans = []
         while q:
             curr = q.popleft()
             ans.append(curr)
