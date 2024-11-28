@@ -6,7 +6,7 @@ class Solution:
 
         col_order = {x : i for i, x in enumerate(col_order)}
         ans = [[0]*k for _ in range(k)]
-        
+
         for i, x in enumerate(row_order):
             if x not in col_order:
                 break
@@ -17,11 +17,10 @@ class Solution:
             if not any(i):
                 return []
         return ans
-
+    
     def sort(self, relations):
         graph = defaultdict(list)
         degree = [0] * (self.k + 1)
-
         for prev, node in relations:
             graph[prev].append(node)
             degree[node] += 1
@@ -30,8 +29,8 @@ class Solution:
         for i in range(1, self.k+1):
             if not degree[i]:
                 q.append(i)
-        order = []
 
+        order = []
         while q:
             curr = q.popleft()
             order.append(curr)

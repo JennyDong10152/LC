@@ -1,33 +1,31 @@
 class Solution:
-    def containsCycle(self, grid: List[List[str]]) -> bool:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        m = len(grid)
+        n = len(grid[0])
+        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j] == "1"}
+        directions = [(-1, 0), (0, -1)]
+        disjoint = set()
 
-        self.m = len(grid)
-        self.n = len(grid[0])
-        self.visited = set()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1":
+                    for di, dj in directions:
+                        new_i = i + di
+                        new_j = j + dj
+                        if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j] == "1":
+                            self.union(parent, (i, j), (new_i, new_j))
 
-        for i in range(self.m):
-            for j in range(self.n):
-                if (i, j) not in self.visited:
-                    char = grid[i][j]
-                    if self.search(grid, char, i, j, -1, -1, 0):
-                        return True
-        return False
+        for x in parent:
+            disjoint.add(self.find(parent, x))
+        return len(disjoint)
     
-    def search(self, grid, char, i, j, prev_i, prev_j, path):
-        if i < 0 or i >= self.m or j < 0 or j >= self.n or char != grid[i][j]:
-            return False
-
-        if (i,j) in self.visited:
-            return path >= 4
+    def union(self, parent, x, y):
+        root_x = self.find(parent, x)
+        root_y = self.find(parent, y)
+        if root_x != root_y:
+            parent[root_x] = root_y
         
-        self.visited.add((i,j))
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-
-        for di, dj in directions:
-            new_i = i + di
-            new_j = j + dj
-            if new_i == prev_i and new_j == prev_j:
-                continue
-            if self.search(grid, char, new_i, new_j, i, j, path+1):
-                return True
-        return False
+    def find(self, parent, x):
+        if parent[x] != x:
+            parent[x] = self.find(parent, parent[x])
+        return parent[x]
