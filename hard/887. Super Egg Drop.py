@@ -6,13 +6,14 @@ class Solution:
     def search(self, egg, floor):
         if egg == 1 or floor <= 1:
             return floor
+        
         if (egg, floor) in self.dp:
             return self.dp[(egg, floor)]
-
-        left = 1
-        right = floor
+        
         cnt = floor + 1
         broken = notBroken = 0
+        left = 1
+        right = floor
 
         while left <= right:
             mid = left + (right-left)//2
@@ -24,6 +25,6 @@ class Solution:
                 right = mid - 1
             else:
                 left = mid + 1
-            cnt = min(cnt, temp_cnt)
+            cnt = min(temp_cnt, cnt)
         self.dp[(egg, floor)] = cnt
-        return cnt 
+        return cnt
