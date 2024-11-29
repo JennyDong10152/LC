@@ -18,7 +18,8 @@ class Solution:
                 new_i = i + di
                 new_j = j + dj
                 if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j]:
-                    if self.union(parent, (i, j), (new_i, new_j)):
+                    connected = self.union(parent, (new_i, new_j), (i, j))
+                    if connected:
                         num_islands -= 1
             ans.append(num_islands)
         return ans
@@ -32,6 +33,6 @@ class Solution:
         return False
     
     def find(self, parent, x):
-        if x != parent[x]:
+        if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
