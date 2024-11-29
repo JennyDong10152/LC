@@ -21,7 +21,6 @@ class Solution:
                     if root not in islands:
                         islands[root] = []
                     islands[root].append((i, j))
-        
         cnt = 0
         for root, cells in islands.items():
             is_sub_island = all(grid1[i][j] == 1 for i, j in cells)

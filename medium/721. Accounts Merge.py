@@ -30,4 +30,4 @@ class Solution:
     def find(self, parent, x):
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
-        return parent[x]
+        return parent[x] 

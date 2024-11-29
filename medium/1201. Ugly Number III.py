@@ -16,7 +16,6 @@ class Solution:
                 left = mid + 1
         return left
 
-    
     def leastCommonFactor(self, x, y):
         def greatestCommonDivisor(x, y):
             if not x:

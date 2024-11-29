@@ -1,10 +1,10 @@
 class Solution:
     def maxDepthAfterSplit(self, seq: str) -> List[int]:
         self.seq = seq
+        ans = [0] * n
         n = len(seq)
         left = 0
         right = n//2
-        ans = [0] * n
 
         while left <= right:
             mid = left + (right-left)//2

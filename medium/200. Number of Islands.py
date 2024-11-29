@@ -2,9 +2,8 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j] == "1"}
+        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j]=="1"}
         directions = [(-1, 0), (0, -1)]
-        disjoint = set()
 
         for i in range(m):
             for j in range(n):
@@ -14,7 +13,7 @@ class Solution:
                         new_j = j + dj
                         if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j] == "1":
                             self.union(parent, (i, j), (new_i, new_j))
-
+        disjoint = set()
         for x in parent:
             disjoint.add(self.find(parent, x))
         return len(disjoint)

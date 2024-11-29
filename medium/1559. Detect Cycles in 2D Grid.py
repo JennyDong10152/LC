@@ -14,7 +14,6 @@ class Solution:
                         new_j = j + dj
                         if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j] == "1":
                             self.union(parent, (i, j), (new_i, new_j))
-
         for x in parent:
             disjoint.add(self.find(parent, x))
         return len(disjoint)

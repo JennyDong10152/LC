@@ -1,14 +1,13 @@
 class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        degree = [0] * n
+        degree = [0]*n
         graph = defaultdict(list)
 
-        for start, end in edges:
-            if start == destination:
+        for u, v in edges:
+            if u == destination:
                 return False
-            graph[end].append(start)
-            degree[start] += 1
-        
+            graph[v].append(u)
+            degree[u] += 1
         q = deque([destination])
         while q:
             curr = q.popleft()
@@ -19,4 +18,3 @@ class Solution:
                 if not degree[neighbor]:
                     q.append(neighbor)
         return False
-        

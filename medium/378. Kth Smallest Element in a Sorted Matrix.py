@@ -13,7 +13,6 @@ class Solution:
                 left = mid + 1
         return left
 
-    
     def search(self, mat, target):
         cnt = 0
         for i in range(len(mat)):

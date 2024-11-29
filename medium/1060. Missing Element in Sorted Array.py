@@ -19,4 +19,4 @@ class Solution:
                 curr = mid
             else:
                 right = mid - 1
-        return nums[curr] + k #use curr
+        return nums[curr] + k

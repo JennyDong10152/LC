@@ -19,5 +19,4 @@ class Solution:
                 right = mid - 1
             else:
                 left = mid + 1
-        return -1
-    #reviewed
+        return -1 

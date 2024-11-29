@@ -9,6 +9,7 @@ class Solution:
                 return True
         return False
     
+    
     def search(self, row, target):
         left = 0
         right = len(row)-1

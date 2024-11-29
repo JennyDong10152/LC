@@ -9,13 +9,13 @@ class Solution:
                 if not curr in graph[prev]:
                     graph[prev].append(curr)
                     degree[curr] += 1
-        
         q = deque()
         for i in range(1, n+1):
             if not degree[i]:
                 q.append(i)
 
         order = []
+
         while q:
             size = len(q)
             if size >= 2:

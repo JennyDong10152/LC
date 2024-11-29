@@ -26,5 +26,3 @@ class Solution:
                     if degree[leaf] == 1:
                         q.append(leaf)
         return list(q)
-
-        

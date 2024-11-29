@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: bool
         """
         graph = defaultdict(list)
-        degree = [0] * numCourses
+        degree = [0]*numCourses
 
         for course, prev in prerequisites:
             graph[prev].append(course)
@@ -16,13 +16,13 @@ class Solution(object):
         for i in range(numCourses):
             if not degree[i]:
                 q.append(i)
-
         order = []
+
         while q:
             curr = q.popleft()
             order.append(curr)
-            for course in graph[curr]:
-                degree[course] -= 1
-                if not degree[course]:
-                    q.append(course)
+            for neighbor in graph[curr]:
+                degree[neighbor] -= 1
+                if not degree[neighbor]:
+                    q.append(neighbor)
         return len(order) == numCourses

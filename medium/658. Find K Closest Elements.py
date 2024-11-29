@@ -16,3 +16,4 @@ class Solution:
             else:
                 right = mid
         return arr[left:left+k]
+    

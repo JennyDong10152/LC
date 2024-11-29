@@ -22,3 +22,4 @@ class Solution:
                 if not degree[neighbor]:
                     q.append(neighbor)
         return sorted(ans)
+    #reviewed
