@@ -1,8 +1,8 @@
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
         graph = defaultdict(list)
-        for i in range(1, len(parent)):
-            graph[parent[i]].append(i)
+        for node in range(1, len(parent)):
+            graph[parent[i]].append(node)
         self.ans = 0
         self.search(graph, s, 0)
         return self.ans
