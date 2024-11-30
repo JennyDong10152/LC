@@ -9,6 +9,7 @@ class Solution:
         for i in range(N):
             for j in range(N):
                 if grid[i][j]:
+                    
                     for di, dj in two_directions:
                         new_i = di + i
                         new_j = dj + j
@@ -23,6 +24,7 @@ class Solution:
                 if not grid[i][j]:
                     has_zero = True
                     adjacent_islands = set()
+
                     for di, dj in four_directions:
                         new_i = di + i
                         new_j = dj + j
@@ -30,6 +32,7 @@ class Solution:
                             adjacent_islands.add(self.find(parent, (new_i, new_j)))
                         area = 1 + (sum(size[island] for island in adjacent_islands))
                         max_area = max(max_area, area)
+
         return max_area if has_zero else N*N
     
     def union(self, parent, size, x, y):

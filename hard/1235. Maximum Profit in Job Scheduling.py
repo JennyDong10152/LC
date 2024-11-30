@@ -4,8 +4,8 @@ class Solution:
         n = len(startTime)
         for i in range(n):
             jobs.append([endTime[i], startTime[i], profit[i]])
+        
         jobs.sort()
-
         dp = [0] * (n+1)
         for i, [cur_end, cur_start, cur_profit] in enumerate(jobs):
             idx = self.search(jobs, cur_start, i)
@@ -16,7 +16,7 @@ class Solution:
         left = 0
         right = i - 1
 
-        while left <= right:
+        while left<=right:
             mid = left + (right-left)//2
             midV = jobs[mid][0]
             if midV > target:

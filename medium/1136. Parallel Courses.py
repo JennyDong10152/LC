@@ -24,3 +24,4 @@ class Solution:
                     if not degree[course]:
                         q.append(course)
         return cnt if len(courses_taken) == n else -1
+    

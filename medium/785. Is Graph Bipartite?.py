@@ -22,3 +22,4 @@ class Solution:
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
+    #reviewed

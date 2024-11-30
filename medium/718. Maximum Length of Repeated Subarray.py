@@ -19,3 +19,4 @@ class Solution:
             if tuple(nums2[i-idx:i]) in nums1_set:
                 return True
         return False
+    

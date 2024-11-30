@@ -9,7 +9,7 @@ class Solution:
         for parent, child in queries:
             ans.append(self.check(parent, child, graph))
         return ans
-    
+
     def check(self, parent, child, graph):
         q = deque([parent])
         visited = set()

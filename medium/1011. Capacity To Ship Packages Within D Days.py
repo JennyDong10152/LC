@@ -22,3 +22,4 @@ class Solution:
             else:
                 curr += n
         return cnt
+    #reviewed

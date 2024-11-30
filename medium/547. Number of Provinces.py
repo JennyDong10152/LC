@@ -2,6 +2,7 @@ class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
         parent = [i for i in range(n)]
+        
         disjoint = n
 
         for i in range(n):

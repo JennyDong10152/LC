@@ -3,7 +3,6 @@ class Solution:
         n = len(quiet)
         graph = defaultdict(list)
         degree = [0] * n
-
         for more, less in richer:
             graph[more].append(less)
             degree[less] += 1

@@ -3,12 +3,12 @@ class Solution:
         if sum(nums) < target:
             return 0
         n = len(nums)
-        left = 0
-        right = n-1
-
         prefix = [0] * (n+1)
         for i, n in enumerate(nums):
-            prefix[i+1] = prefix[i] + n 
+            prefix[i+1] = prefix[i] + n
+            
+        left = 0
+        right = len(nums)-1
 
         while left <= right:
             mid = left + (right-left)//2

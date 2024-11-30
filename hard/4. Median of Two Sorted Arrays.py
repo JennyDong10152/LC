@@ -5,7 +5,8 @@ class Solution:
         total = len_a + len_b
         self.A = nums1
         self.B = nums2
-        if total % 2:
+
+        if total%2:
             return self.search(total//2, 0, len_a-1, 0, len_b-1)
         else:
             return (self.search(total//2-1, 0, len_a-1, 0, len_b-1) + self.search(total//2, 0, len_a-1, 0, len_b-1))/2
@@ -16,8 +17,8 @@ class Solution:
         if left_b > right_b:
             return self.A[k-left_b]
         
-        mid_a = left_a + (right_a-left_a) // 2
-        mid_b = left_b + (right_b-left_b) // 2
+        mid_a = left_a + (right_a-left_a)//2
+        mid_b = left_b + (right_b-left_b)//2
         midV_a = self.A[mid_a]
         midV_b = self.B[mid_b]
 

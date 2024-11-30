@@ -2,8 +2,8 @@ class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         envelopes.sort(key = lambda x : (x[0], -x[1]))
         heights = [envelope[1] for envelope in envelopes]
-
         ans = []
+
         for height in heights:
             idx = self.search(ans, height)
             if idx == len(ans):
@@ -11,6 +11,7 @@ class Solution:
             else:
                 ans[idx] = height
         return len(ans)
+
     
     def search(self, nums, target):
         left = 0

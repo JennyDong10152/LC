@@ -12,6 +12,7 @@ class Solution:
             for j in range(n):
                 prefix[i+1][j+1] = mat[i][j] + prefix[i+1][j] + prefix[i][j+1] - prefix[i][j]
 
+
         while left <= right:
             mid = left + (right-left)//2
             if self.isValid(prefix, mid, threshold):

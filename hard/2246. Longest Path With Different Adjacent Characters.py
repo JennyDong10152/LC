@@ -8,16 +8,16 @@ class Solution:
         return self.ans
     
     def search(self, graph, s, node):
-        node_char = s[node]
+        root_char = s[node]
         longest = secondLongest = 0
 
         for child in graph[node]:
             child_path = self.search(graph, s, child)
-            if s[child] != node_char:
+            if s[child] != root_char:
                 if child_path >= longest:
                     secondLongest = longest
                     longest = child_path
-                elif child_path > secondLongest:
+                elif child_path >= secondLongest:
                     secondLongest = child_path
-        self.ans = max(self.ans, 1+longest+secondLongest)
+        self.ans = max(self.ans, 1 + longest + secondLongest)
         return 1 + longest

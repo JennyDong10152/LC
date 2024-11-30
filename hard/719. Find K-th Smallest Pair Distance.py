@@ -4,14 +4,14 @@ class Solution:
         left = 0
         right = nums[-1] - nums[0]
 
-        while left < right:
+        while left <= right:
             mid = left + (right-left)//2
             cnt = self.count(nums, mid)
             if cnt >= k:
-                right = mid
+                right = mid-1
             else:
                 left = mid + 1
-        return right
+        return left
     
     def count(self, nums, target):
         cnt = 0
