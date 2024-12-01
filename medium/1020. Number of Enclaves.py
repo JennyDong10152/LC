@@ -2,42 +2,39 @@ class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        parent = {(i, j): (i, j) for i in range(m) for j in range(n) if grid[i][j]}
-        border_roots = set()
-        directions = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j]}
+        directions = [(-1, 0), (0, -1)]
 
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 1:
+                if grid[i][j]:
                     for di, dj in directions:
-                        ni, nj = i + di, j + dj
-                        if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
-                            self.union(parent, (i, j), (ni, nj))
-
+                        new_i = i + di
+                        new_j = j + dj
+                        if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j]:
+                            self.union(parent, (i, j), (new_i, new_j))
+        roots = []
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 1 and (i == 0 or j == 0 or i == m - 1 or j == n - 1):
-                    border_roots.add(self.find(parent, (i, j)))
-
+                if grid[i][j] and (not i or not j or i == m-1 or j == n-1):
+                    roots.append(self.find(parent, (i, j)))
+        
         cnt = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 1:
+                if grid[i][j]:
                     root = self.find(parent, (i, j))
-                    if root not in border_roots:
+                    if root not in roots:
                         cnt += 1
-
         return cnt
-
+    
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
         if root_x != root_y:
             parent[root_x] = root_y
-
+    
     def find(self, parent, x):
-        if x not in parent:
-            return x
-        if parent[x] != x:
+        if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
         return parent[x]

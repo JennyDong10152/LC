@@ -2,8 +2,8 @@ class Solution:
     def minimumCost(self, n: int, connections: List[List[int]]) -> int:
         connections = sorted(connections, key = lambda x : x[2])
         minCost = 0
-        parent = [i for i in range(n+1)]
         disjointed = n
+        parent = [i for i in range(n+1)]
 
         for u, v, cost in connections:
             if self.union(parent, u, v):
