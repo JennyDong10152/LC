@@ -9,26 +9,26 @@ class Solution:
                 root_j = self.find(parent, j)
                 if root_i != root_j and self.areSimilar(strs[i], strs[j]):
                     self.union(parent, i, j)
-        
+
         disjoint = set()
         for i in parent:
             disjoint.add(self.find(parent, i))
         return len(disjoint)
-
-    def areSimilar(self, x, y):
-        diff = 0
-        for c, d in zip(x, y):
-            if c != d:
-                diff += 1
-        return diff <= 2
-
-    def find(self, parent, x):
-        if parent[x] != x:
-            parent[x] = self.find(parent, parent[x])
-        return parent[x]
 
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
         if root_x != root_y:
             parent[root_x] = root_y
+    
+    def find(self, parent, x):
+        if parent[x] != x:
+            parent[x] = self.find(parent, parent[x])
+        return parent[x]
+    
+    def areSimilar(self, x, y):
+        dif = 0
+        for c, d in zip(x, y):
+            if c != d:
+                dif += 1
+        return dif <= 2

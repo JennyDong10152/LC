@@ -3,15 +3,14 @@ class Solution:
         self.k = k
         row_order = self.sort(rowConditions)
         col_order = self.sort(colConditions)
-
         col_order = {x : i for i, x in enumerate(col_order)}
         grid = [[0 for i in range(k)] for i in range(k)]
 
-        for i, num in enumerate(row_order):
-            if not num in col_order:
+        for i, x in enumerate(row_order):
+            if not x in col_order:
                 break
-            j = col_order[num]
-            grid[i][j] = num
+            j = col_order[x]
+            grid[i][j] = x
         
         for i in grid:
             if not any(i):
@@ -27,11 +26,11 @@ class Solution:
             degree[num] += 1
         
         q = deque()
+        order = []
+
         for i in range(1, self.k+1):
             if not degree[i]:
                 q.append(i)
-        
-        order = []
         while q:
             curr = q.popleft()
             order.append(curr)
@@ -39,4 +38,5 @@ class Solution:
                 degree[neighbor] -= 1
                 if not degree[neighbor]:
                     q.append(neighbor)
+
         return order if not any(degree) else []

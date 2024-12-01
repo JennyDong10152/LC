@@ -1,12 +1,12 @@
 class Solution:
     def isPrintable(self, targetGrid: List[List[int]]) -> bool:
+        m = len(targetGrid)
+        n = len(targetGrid[0])
+        bounds = defaultdict(lambda: [n, -1, m, -1])
         colors = set()
         graph = defaultdict(set)
         degree = defaultdict(int)
 
-        m = len(targetGrid)
-        n = len(targetGrid[0])
-        bounds = defaultdict(lambda: [n, -1, m, -1])
         for i in range(m):
             for j in range(n):
                 color = targetGrid[i][j]
@@ -35,4 +35,5 @@ class Solution:
                 degree[neighbor] -= 1
                 if not degree[neighbor]:
                     q.append(neighbor)
+                    
         return len(order) == len(colors)
