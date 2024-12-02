@@ -2,24 +2,24 @@ class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         n = len(accounts)
         parent = [i for i in range(n)]
+        ownership = dict() #email : idx
 
-        ownership = dict() #dict of emails : idx
-        for i, emails in enumerate(accounts):
-            for email in emails[1:]:
+        for i, account in enumerate(accounts):
+            for email in account[1:]:
                 if email in ownership:
                     self.union(parent, i, ownership[email])
                 ownership[email] = i
         
-        ans = defaultdict(list)
+        merged = defaultdict(list)
         for email, owner in ownership.items():
-            root = self.find(parent, owner)
-            ans[root].append(email)
-        
-        result = []
-        for name, emails in ans.items():
-            account = accounts[name][0]
-            result.append([account] + sorted(emails))
-        return result
+            idx = self.find(parent, owner)
+            merged[idx].append(email)
+
+        ans = []
+        for idx, emails in merged.items():
+            name = accounts[idx][0]
+            ans.append([name] + sorted(emails))
+        return ans
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
@@ -30,4 +30,4 @@ class Solution:
     def find(self, parent, x):
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
-        return parent[x] 
+        return parent[x]

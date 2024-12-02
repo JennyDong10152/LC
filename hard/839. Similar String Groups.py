@@ -4,17 +4,15 @@ class Solution:
         parent = [i for i in range(n)]
         
         for i in range(n):
-            for j in range(i+1, n):
-                root_i = self.find(parent, i)
-                root_j = self.find(parent, j)
-                if root_i != root_j and self.areSimilar(strs[i], strs[j]):
+            for j in range(i+1, n):        
+                if self.areSimilar(strs[i], strs[j]):
                     self.union(parent, i, j)
 
         disjoint = set()
-        for i in parent:
+        for i in range(n):
             disjoint.add(self.find(parent, i))
         return len(disjoint)
-
+    
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
@@ -22,13 +20,13 @@ class Solution:
             parent[root_x] = root_y
     
     def find(self, parent, x):
-        if parent[x] != x:
+        if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
     
     def areSimilar(self, x, y):
         dif = 0
         for c, d in zip(x, y):
-            if c != d:
+            if c!= d:
                 dif += 1
         return dif <= 2

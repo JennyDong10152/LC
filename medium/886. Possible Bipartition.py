@@ -15,7 +15,7 @@ class Solution:
                     return False
                 self.union(parent, graph[i][0], j)
         return True
-    
+
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
