@@ -1,11 +1,10 @@
 class Solution:
     def generateSentences(self, synonyms: List[List[str]], text: str) -> List[str]:
         parent = {}
-        
         for x, y in synonyms:
-            if x not in parent:
+            if not x in parent:
                 parent[x] = x
-            if y not in parent:
+            if not y in parent:
                 parent[y] = y
             self.union(parent, x, y)
         
@@ -17,9 +16,8 @@ class Solution:
             syn_map[key] = sorted(syn_map[key])
         
         words = text.split()
-        n = len(words)
         ans = []
-        self.makeSentence(parent, syn_map, words, 0, [], n, ans)
+        self.makeSentence(parent, syn_map, words, 0, [], len(words), ans)
         
         return sorted(ans)
 
@@ -45,4 +43,4 @@ class Solution:
             for synonym in syn_map[root_word]:
                 self.makeSentence(parent, syn_map, words, idx + 1, curr_sentence + [synonym], n, ans)
         else:
-            self.makeSentence(parent, syn_map, words, idx + 1, curr_sentence + [word], n, ans)
+            self.makeSentence(parent, syn_map, words, idx + 1, curr_sentence + [word], n, ans) 
