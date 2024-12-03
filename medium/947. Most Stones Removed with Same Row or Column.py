@@ -2,23 +2,20 @@ class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         xDict = {}
         yDict = {}
-        n = len(stones)
         edges = []
+        parent = [i for i in range(len(stones))]
+        ans = 0
 
-        for i, stone in enumerate(stones):
-            stoneX, stoneY = stone
+        for i, [stoneX, stoneY] in enumerate(stones):
             if stoneX in xDict:
-                edges.append([i, xDict[stoneX]])
+                edges.append([xDict[stoneX], i])
             else:
                 xDict[stoneX] = i
-            
             if stoneY in yDict:
-                edges.append([i, yDict[stoneY]])
+                edges.append([yDict[stoneY], i])
             else:
                 yDict[stoneY] = i
         
-        parent = [i for i in range(n)]
-        ans = 0
         for x, y in edges:
             ans += self.union(parent, x, y)
         return ans
@@ -30,7 +27,7 @@ class Solution:
             parent[root_x] = root_y
             return 1
         return 0
-
+    
     def find(self, parent, x):
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
