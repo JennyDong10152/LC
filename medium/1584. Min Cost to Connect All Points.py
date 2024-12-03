@@ -1,18 +1,15 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        cost = sorted(self.distance(points))
+        cost = self.distance(points)
+        cost.sort()
         n = len(points)
         parent = [i for i in range(n)]
         minCost = 0
-        disjoint = n
 
         for c, x, y in cost:
             if self.union(parent, x, y):
                 minCost += c
-                disjoint -= 1
-                if disjoint == 1:
-                    return minCost
-        return 0
+        return minCost
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
@@ -23,7 +20,7 @@ class Solution:
         return False
     
     def find(self, parent, x):
-        if parent[x] != x:
+        if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
 
