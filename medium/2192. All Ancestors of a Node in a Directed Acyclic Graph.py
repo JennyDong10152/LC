@@ -1,8 +1,8 @@
 class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         graph = defaultdict(list)
-        ans = [set() for _ in range(n)]
         degree = [0] * n
+        ans = [set() for i in range(n)]
 
         for prev, node in edges:
             graph[prev].append(node)
@@ -12,14 +12,13 @@ class Solution:
         for i in range(n):
             if not degree[i]:
                 q.append(i)
-
+        
         while q:
             curr = q.popleft()
-            for neighbor in graph[curr]:
-                degree[neighbor] -= 1
-                ans[neighbor].add(curr)
-                ans[neighbor].update(ans[curr])
-                if not degree[neighbor]:
-                    q.append(neighbor)
-        return [sorted(i) for i in ans]
-        
+            for node in graph[curr]:
+                degree[node] -= 1
+                ans[node].add(curr)
+                ans[node].update(ans[curr])
+                if not degree[node]:
+                    q.append(node)
+        return [sorted(list(i)) for i in ans]

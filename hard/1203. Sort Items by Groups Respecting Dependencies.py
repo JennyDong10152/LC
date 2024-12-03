@@ -35,13 +35,14 @@ class Solution:
             ans.extend(grouped_items[g])
         return ans
 
+
     def sort(self, graph, degree, n):
         q = deque()
         for i in range(n):
             if not degree[i]:
                 q.append(i)
-
         order = []
+
         while q:
             curr = q.popleft()
             order.append(curr)
@@ -49,4 +50,4 @@ class Solution:
                 degree[neighbor] -= 1
                 if not degree[neighbor]:
                     q.append(neighbor)
-        return order if len(order)==n else None
+        return order if len(order) == n else None
