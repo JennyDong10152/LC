@@ -18,7 +18,6 @@ class Solution:
         for i, j in parent:
             root_i, root_j = self.find(parent, (i, j))
             islands[(root_i, root_j)].append((i-root_i, j-root_j))
-        
         return len(set(tuple(isl) for isl in islands.values()))
     
     def union(self, parent, x, y):
