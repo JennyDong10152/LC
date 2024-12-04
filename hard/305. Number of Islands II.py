@@ -7,18 +7,17 @@ class Solution:
         num_islands = 0
 
         for i, j in positions:
-            if grid[i][j] == 1:
+            if grid[i][j]:
                 ans.append(num_islands)
                 continue
             grid[i][j] = 1
             parent[(i, j)] = (i, j)
             num_islands += 1
-
             for di, dj in directions:
                 new_i = i + di
                 new_j = j + dj
                 if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j]:
-                    connected = self.union(parent, (new_i, new_j), (i, j))
+                    connected = self.union(parent, (i, j), (new_i, new_j))
                     if connected:
                         num_islands -= 1
             ans.append(num_islands)
@@ -28,7 +27,7 @@ class Solution:
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
         if root_x != root_y:
-            parent[root_x] = root_y
+            parent[root_y] = root_x
             return True
         return False
     
