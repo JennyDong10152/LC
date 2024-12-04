@@ -9,10 +9,10 @@ class Solution:
                 degree[recipes[i]] += 1
         
         q = deque()
-        ans = []
         for supply in supplies:
             q.append(supply)
-        
+
+        ans = []
         while q:
             curr = q.popleft()
             for food in graph[curr]:

@@ -1,28 +1,27 @@
 class Solution:
     def regionsBySlashes(self, grid: List[str]) -> int:
         n = len(grid)
-        total = 4 * n * n
+        total = 4 * n * n #top, right, bot, left
         parent = [i for i in range(total)]
 
-        for i in range(n):
-            for j in range(n):
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                idx = 4 * (i * n + j)
                 cell = grid[i][j]
-                idx = 4 * (i*n + j)
-
                 if cell == " ":
-                    self.union(parent, idx, idx+1)
-                    self.union(parent, idx+1, idx+2)
-                    self.union(parent, idx+2, idx+3)
+                    self.union(parent, idx, idx + 1)
+                    self.union(parent, idx, idx + 2)
+                    self.union(parent, idx, idx + 3)
                 if cell == "/":
-                    self.union(parent, idx, idx+3)
-                    self.union(parent, idx+1, idx+2)
+                    self.union(parent, idx, idx + 3)
+                    self.union(parent, idx + 1, idx + 2)
                 if cell == "\\":
-                    self.union(parent, idx+2, idx+3)
-                    self.union(parent, idx, idx+1)
-                if i < n - 1:
-                    self.union(parent, idx+2, (idx+4*n))
-                if j < n - 1:
-                    self.union(parent, idx+1, (idx+4)+3)
+                    self.union(parent, idx, idx + 1)
+                    self.union(parent, idx + 2, idx + 3)
+                if i < n-1:
+                    self.union(parent, idx+2, idx+(4*n))
+                if j < n-1:
+                    self.union(parent, idx+1, idx+4+3)
         ans = 0
         for i in range(total):
             if i == self.find(parent, i):

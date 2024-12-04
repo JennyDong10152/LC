@@ -1,13 +1,14 @@
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
-        parent = {c:c for c in s1}
-        parent.update({c: c for c in s2})
+        parent = {c : c for c in s1}
+        parent.update({c : c for c in s2})
 
         for c, d in zip(s1, s2):
             self.union(parent, c, d)
+        
         ans = ""
         for c in baseStr:
-            ans += self.find(parent, c)
+            ans += (self.find(parent, c))
         return ans
     
     def union(self, parent, x, y):
