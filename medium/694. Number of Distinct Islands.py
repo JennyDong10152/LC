@@ -2,8 +2,8 @@ class Solution:
     def numDistinctIslands(self, grid: List[List[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j]}
-        direction = [(-1, 0), (0, -1)]
+        parent = {(i, j): (i, j) for i in range(m) for j in range(n) if grid[i][j]}
+        direction = [(0, -1), (-1, 0)]
 
         for i in range(m):
             for j in range(n):
@@ -17,9 +17,9 @@ class Solution:
         islands = defaultdict(list)
         for i, j in parent:
             root_i, root_j = self.find(parent, (i, j))
-            islands[(root_i, root_j)].append((i-root_i, j-root_j))
+            islands[(root_i, root_j)].append((root_i-i, root_j-j))
         return len(set(tuple(isl) for isl in islands.values()))
-    
+
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
@@ -27,6 +27,6 @@ class Solution:
             parent[root_x] = root_y
     
     def find(self, parent, x):
-        if x != parent[x]:
+        if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
