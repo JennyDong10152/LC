@@ -2,9 +2,9 @@ class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
         if len(connections) < n-1:
             return -1
-        
         parent = [i for i in range(n)]
         components = n
+        
         for u, v in connections:
             connected = self.union(parent, u, v)
             if connected:

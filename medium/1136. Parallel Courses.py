@@ -6,22 +6,20 @@ class Solution:
         for prev, course in relations:
             graph[prev].append(course)
             degree[course] += 1
-        q = deque()
-        cnt = 0
-        courses_taken = []
+        order= deque()
+        semester = 0
+
         for i in range(1, n+1):
             if not degree[i]:
-                q.append(i)
+                order.append(i)
         
-        while q:
-            size = len(q)
-            cnt += 1
+        while order:
+            size = len(order)
+            semester += 1
             for _ in range(size):
-                curr = q.popleft()
-                courses_taken.append(curr)
+                curr = order.popleft()
                 for course in graph[curr]:
                     degree[course] -= 1
                     if not degree[course]:
-                        q.append(course)
-        return cnt if len(courses_taken) == n else -1
-    
+                        order.append(course)
+        return semester if not any(degree) else -1

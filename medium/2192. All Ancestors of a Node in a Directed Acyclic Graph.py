@@ -2,7 +2,7 @@ class Solution:
     def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         graph = defaultdict(list)
         degree = [0] * n
-        ans = [set() for i in range(n)]
+        ans = [set() for _ in range(n)]
 
         for prev, node in edges:
             graph[prev].append(node)
@@ -21,4 +21,5 @@ class Solution:
                 ans[node].update(ans[curr])
                 if not degree[node]:
                     q.append(node)
+                    
         return [sorted(list(i)) for i in ans]

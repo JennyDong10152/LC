@@ -13,6 +13,7 @@ class Solution:
                 root_y = self.find(parent, equation[3])
                 if root_x == root_y:
                     return False
+                
         return True
     
     def union(self, parent, x, y):

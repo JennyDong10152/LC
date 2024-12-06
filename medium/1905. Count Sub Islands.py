@@ -2,10 +2,10 @@ class Solution:
     def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
         m = len(grid2)
         n = len(grid2[0])
-        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid2[i][j]}
         direction = [(0, -1), (-1, 0)]
         islands = defaultdict(list)
         cnt = 0
+        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid2[i][j]}
 
         for i in range(m):
             for j in range(n):
@@ -19,7 +19,6 @@ class Solution:
         for x in parent:
             root = self.find(parent, x)
             islands[root].append(x)
-
         for root, cells in islands.items():
             if all(grid1[i][j] for i, j in cells):
                 cnt += 1

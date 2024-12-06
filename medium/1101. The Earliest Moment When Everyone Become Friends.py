@@ -3,7 +3,6 @@ class Solution:
         logs.sort(key = lambda x : x[0])
         parent = [i for i in range(n)]
         disjoint = n
-
         for time, x, y in logs:
             connected = self.union(parent, x, y)
             if connected:
@@ -23,4 +22,4 @@ class Solution:
     def find(self, parent, x):
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
-        return parent[x]
+        return parent[x]         

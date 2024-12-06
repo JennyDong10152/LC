@@ -2,8 +2,9 @@ class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         xDict = {}
         yDict = {}
-        edges = []
         parent = [i for i in range(len(stones))]
+
+        edges = []
         ans = 0
 
         for i, [stoneX, stoneY] in enumerate(stones):

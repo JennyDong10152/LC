@@ -17,6 +17,7 @@ class Solution:
             print(sorted_chars)
             for i, char in zip(sorted(swap), sorted_chars):
                 char_lst[i] = char
+                
         return "".join(char_lst)
 
     def union(self, parent, x, y):

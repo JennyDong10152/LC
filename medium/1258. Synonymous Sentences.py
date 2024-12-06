@@ -18,7 +18,6 @@ class Solution:
         words = text.split()
         ans = []
         self.makeSentence(parent, syn_map, words, 0, [], len(words), ans)
-        
         return sorted(ans)
 
     def find(self, parent, x):
