@@ -3,14 +3,14 @@ class Solution:
         for i, n in enumerate(numbers):
             left = i + 1
             right = len(numbers)-1
+
             while left <= right:
                 mid = left + (right-left)//2
-                midV = numbers[mid]
-                if midV + n == target:
+                midV = numbers[mid] + n
+                if midV == target:
                     return [i+1, mid+1]
-                elif midV + n > target:
+                elif midV > target:
                     right = mid - 1
                 else:
                     left = mid + 1
         return [-1, -1]
-    #reviewed

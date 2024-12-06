@@ -9,24 +9,23 @@ class Solution:
         if not root:
             return 0
         
-        leftHeight = self.getLeftHeight(root)
-        rightHeight = self.getRightHeight(root)
-
+        leftHeight = self.countLeft(root)
+        rightHeight = self.countRight(root)
         if leftHeight == rightHeight:
-            return 2 ** leftHeight - 1
-        return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+            return 2**leftHeight - 1
+        else:
+            return 1 + self.countNodes(root.left) + self.countNodes(root.right)
     
-    def getLeftHeight(self, root):
+    def countLeft(self, root):
         cnt = 0
         while root:
             cnt += 1
             root = root.left
         return cnt
-
-    def getRightHeight(self, root):
+        
+    def countRight(self, root):
         cnt = 0
         while root:
             cnt += 1
             root = root.right
         return cnt
-    #reviewed

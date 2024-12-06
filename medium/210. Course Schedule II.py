@@ -7,18 +7,17 @@ class Solution:
             graph[prev].append(course)
             degree[course] += 1
         
-        q = deque()
+        queue = deque()
+        order = []
         for i in range(numCourses):
             if not degree[i]:
-                q.append(i)
-
-        order = []
-        while q:
-            curr = q.popleft()
+                queue.append(i)
+        
+        while queue:
+            curr = queue.popleft()
             order.append(curr)
             for course in graph[curr]:
                 degree[course] -= 1
                 if not degree[course]:
-                    q.append(course)
-        return order if len(order)==numCourses else []
-    #reviewed
+                    queue.append(course)
+        return order if not any(degree) else []

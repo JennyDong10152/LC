@@ -1,15 +1,13 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
         for a in range(int(math.sqrt(c)+1)):
-            b = c - a * a
-            if self.isSquare(b):
+            if self.isSquare(b-a*a):
                 return True
         return False
     
     def isSquare(self, target):
         left = 0
         right = target
-
         while left <= right:
             mid = left + (right-left)//2
             midV = mid * mid

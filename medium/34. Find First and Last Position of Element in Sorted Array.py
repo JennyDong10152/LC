@@ -13,7 +13,7 @@ class Solution:
             mid = left + (right-left)//2
             midV = nums[mid]
             if midV == target:
-                ans = mid
+                ans= mid
                 if isFirst:
                     right = mid - 1
                 else:
@@ -23,4 +23,3 @@ class Solution:
             else:
                 left = mid + 1
         return ans
-    #reviewed

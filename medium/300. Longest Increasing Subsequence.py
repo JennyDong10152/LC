@@ -1,7 +1,6 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         ans = []
-        
         for n in nums:
             idx = self.search(ans, n)
             if idx < len(ans):
