@@ -2,7 +2,6 @@ class Solution:
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
         parent = [i for i in range(n+1)]
         graph = defaultdict(list)
-        
         for a, b in dislikes:
             graph[a].append(b)
             graph[b].append(a)

@@ -1,7 +1,7 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         cost = self.distance(points)
-        cost.sort()
+        cost.sort(key = lambda x : x[0])
         n = len(points)
         parent = [i for i in range(n)]
         minCost = 0
@@ -27,9 +27,10 @@ class Solution:
     def distance(self, points):
         cost = []
         n = len(points)
+
         for i in range(n):
+            x1, y1 = points[i]
             for j in range(i+1, n):
-                x1, y1 = points[i]
                 x2, y2 = points[j]
                 dis = abs(x2-x1) + abs(y2-y1)
                 cost.append([dis, i, j])

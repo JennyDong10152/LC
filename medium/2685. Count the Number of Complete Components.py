@@ -1,12 +1,12 @@
 class Solution:
     def countCompleteComponents(self, n: int, edges: List[List[int]]) -> int:
         parent = [i for i in range(n)]
-        rank = [1 for i in range(n)]
-        edge = [0 for i in range(n)]
+        rank = [1 for _ in range(n)]
+        edge = [0 for _ in range(n)]
         ans = 0
+
         for u,v in edges:
             self.union(parent, rank, edge, u, v)
-        
         for i in range(n):
             if i == self.find(parent, i):
                 if edge[i] == rank[i]*(rank[i]-1) // 2:

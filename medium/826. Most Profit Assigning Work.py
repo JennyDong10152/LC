@@ -1,25 +1,29 @@
 class Solution:
     def maxProfitAssignment(self, difficulty: List[int], profit: List[int], worker: List[int]) -> int:
-        jobs = [] #difficulty, profit
-        for dif, pro in zip(difficulty, profit):
-            jobs.append([dif, pro])
+        jobs = []
+        for diff, pro in zip(difficulty, profit):
+            jobs.append([diff, pro])
         jobs.sort()
-        ans = 0
-        max_profit = [0] * len(jobs)
-        curr_max = 0
-        for i in range(len(jobs)):
-            curr_max = max(curr_max, jobs[i][1])
-            max_profit[i] = curr_max
+        cur_max = 0
+        for i, [_, pro] in enumerate(jobs):
+            cur_max = max(cur_max, pro)
+            jobs[i][1] = cur_max
         
-        for w in worker:
-            left = 0
-            right = len(jobs)-1
-            while left <= right:
-                mid = left + (right - left)//2
-                if jobs[mid][0] > w:
-                    right = mid - 1
-                else:
-                    left = mid + 1
-            if left > 0:
-                ans += max_profit[left-1]
-        return ans
+        max_profit = 0
+        for work in worker:
+            cur_profit = self.search(jobs, work)
+            max_profit += cur_profit
+        return max_profit
+    
+    def search(self, jobs, target):
+        left = 0
+        right = len(jobs)-1
+
+        while left <= right:
+            mid = left + (right-left)//2
+            midV = jobs[mid][0]
+            if midV > target:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return jobs[left-1][1] if left > 0 else 0

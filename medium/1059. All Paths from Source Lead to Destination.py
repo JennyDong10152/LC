@@ -2,11 +2,11 @@ class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         graph = defaultdict(list)
         degree = [0] * n
-        for u, v in edges:
-            if u == destination:
+        for start, end in edges:
+            if start == destination:
                 return False
-            graph[v].append(u)
-            degree[u] += 1
+            graph[end].append(start)
+            degree[start] += 1
         
         q = deque([destination])
         while q:

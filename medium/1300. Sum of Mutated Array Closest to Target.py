@@ -11,6 +11,7 @@ class Solution:
             temp_diff = abs(target-temp_sum)
             if not temp_diff:
                 return mid
+            
             if temp_diff == min_diff:
                 ans = min(ans, mid)
             if temp_diff < min_diff:

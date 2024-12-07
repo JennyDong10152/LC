@@ -22,7 +22,6 @@ class Solution:
                     self.union(parent, idx+2, (idx+4*n))
                 if j < n-1:
                     self.union(parent, idx+1, (idx+4+3))
-
         regions = 0
         for i in range(total):
             root_i = self.find(parent, i)

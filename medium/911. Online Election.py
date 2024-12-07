@@ -30,4 +30,3 @@ class TopVotedCandidate:
             else:
                 left = mid + 1
         return right
-    #reviewed

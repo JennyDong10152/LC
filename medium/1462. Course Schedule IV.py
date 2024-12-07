@@ -4,7 +4,6 @@ class Solution:
 
         for parent, child in prerequisites:
             graph[parent].append(child)
-
         ans = []
         for parent, child in queries:
             ans.append(self.check(parent, child, graph))

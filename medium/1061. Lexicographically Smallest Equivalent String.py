@@ -3,18 +3,18 @@ class Solution:
         parent = {c : c for c in s1}
         parent.update({c : c for c in s2})
 
-        for c, d in zip(s1, s2):
-            self.union(parent, c, d)
+        for char1, char2 in zip(s1, s2):
+            self.union(parent, char1, char2)
         
         ans = ""
-        for c in baseStr:
-            ans += (self.find(parent, c))
+        for char in baseStr:
+            ans += (self.find(parent, char))
         return ans
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
         root_y = self.find(parent, y)
-        if root_x < root_y:
+        if root_x <= root_y:
             parent[root_y] = root_x
         else:
             parent[root_x] = root_y

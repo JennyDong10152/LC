@@ -30,4 +30,3 @@ class Solution:
             else:
                 left = mid + 1
         return min_diff
-        #reviewed

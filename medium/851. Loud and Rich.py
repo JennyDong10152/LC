@@ -3,22 +3,23 @@ class Solution:
         n = len(quiet)
         graph = defaultdict(list)
         degree = [0] * n
+
         for more, less in richer:
             graph[more].append(less)
             degree[less] += 1
         
-        q = deque()
+        order = deque()
+        ans = [i for i in range(n)]
         for i in range(n):
             if not degree[i]:
-                q.append(i)
-        ans = [i for i in range(n)]
+                order.append(i)
 
-        while q:
-            curr = q.popleft()
-            for poorer in graph[curr]:
-                degree[poorer] -= 1
-                if quiet[ans[poorer]] > quiet[ans[curr]]:
-                    ans[poorer] = ans[curr]
-                if not degree[poorer]:
-                    q.append(poorer)
+        while order:
+            curr = order.popleft()
+            for less in graph[curr]:
+                if quiet[ans[curr]] < quiet[ans[less]]:
+                    ans[less] = ans[curr]
+                degree[less] -= 1
+                if not degree[less]:
+                    order.append(less)
         return ans

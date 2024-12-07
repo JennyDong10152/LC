@@ -15,12 +15,9 @@ class Solution:
                 self.union(parent, size, (col_servers[0], j) , (col_servers[k], j))
 
         group_count = defaultdict(int)
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j] == 1:
-                    root = self.find(parent, (i, j))
-                    group_count[root] += 1
-
+        for i, j in parent:
+            root = self.find(parent, (i, j))
+            group_count[root] += 1
         return sum(count for count in group_count.values() if count > 1)
 
     def find(self, parent, x):

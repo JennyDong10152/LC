@@ -3,7 +3,7 @@ class Solution:
         graph = defaultdict(list)
         degree = defaultdict(int)
 
-        for i, ingredient in enumerate(ingredients):
+        for i, ingredient in enumerate(ingredients): 
             for ing in ingredient:
                 graph[ing].append(recipes[i])
                 degree[recipes[i]] += 1
@@ -20,4 +20,4 @@ class Solution:
                 if not degree[food]:
                     ans.append(food)
                     q.append(food)
-        return ans
+        return ans     

@@ -5,7 +5,6 @@ class Solution:
 
         if k > missing:
             return nums[-1] + k-missing
-        
         left = 0
         right = n-1
         curr = 0

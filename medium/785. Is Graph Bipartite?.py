@@ -2,7 +2,7 @@ class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         n = len(graph)
         parent = [i for i in range(n)]
-
+        
         for i in range(n):
             root_i = self.find(parent, i)
             for j in range(len(graph[i])):
@@ -22,4 +22,3 @@ class Solution:
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
-            

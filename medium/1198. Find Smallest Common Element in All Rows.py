@@ -9,7 +9,6 @@ class Solution:
                     return i
         return -1
     
-    
     def search(self, target, nums):
         left = 0
         right = len(nums)-1

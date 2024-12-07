@@ -1,16 +1,15 @@
 class TimeMap:
 
     def __init__(self):
-        self.maps = {}
+        self.maps = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if not key in self.maps:
-            self.maps[key] = []
         self.maps[key].append([timestamp, value])
         
     def get(self, key: str, timestamp: int) -> str:
         if not key in self.maps:
             return ""
+        
         return self.search(self.maps[key], timestamp)
 
     def search(self, nums, target):

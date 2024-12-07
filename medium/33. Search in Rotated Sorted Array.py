@@ -8,7 +8,7 @@ class Solution:
             midV = nums[mid]
             if midV == target:
                 return mid
-            if midV >= nums[left]:
+            elif nums[left] <= midV:
                 if nums[left] <= target < midV:
                     right = mid - 1
                 else:
@@ -19,4 +19,3 @@ class Solution:
                 else:
                     right = mid - 1
         return -1
-    #reviewed
