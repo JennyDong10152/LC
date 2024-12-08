@@ -4,16 +4,17 @@ class Solution:
         for diff, pro in zip(difficulty, profit):
             jobs.append([diff, pro])
         jobs.sort()
-        cur_max = 0
-        for i, [_, pro] in enumerate(jobs):
-            cur_max = max(cur_max, pro)
-            jobs[i][1] = cur_max
+        maxTotal = 0
         
         max_profit = 0
-        for work in worker:
-            cur_profit = self.search(jobs, work)
-            max_profit += cur_profit
-        return max_profit
+        for i in range(len(jobs)):
+            max_profit = max(max_profit, jobs[i][1])
+            jobs[i] = (jobs[i][0], max_profit) 
+        
+        for w in worker:
+            cur_profit = self.search(jobs, w)
+            maxTotal += cur_profit
+        return maxTotal
     
     def search(self, jobs, target):
         left = 0
@@ -26,4 +27,4 @@ class Solution:
                 right = mid - 1
             else:
                 left = mid + 1
-        return jobs[left-1][1] if left > 0 else 0
+        return jobs[right][1] if right >= 0 else 0
