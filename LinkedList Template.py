@@ -1,4 +1,10 @@
-#Detecting Cycles
+# Reverse-related: 
+# 24, 25, 92
+
+# Circle/break-circle related: 
+# 142
+
+# Detecting Cycles
 def hasCycle(head):
     slow = fast = head
     while fast and fast.next:
