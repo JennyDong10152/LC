@@ -15,18 +15,15 @@ class Solution:
         while head:
             array.append(head.val)
             head = head.next
-
         n = len(array)
         root = self.sort(array, 0, n-1)
         return root
     
-    def sort(self, array, left, right) -> Optional[TreeNode]:
+    def sort(self, array, left, right):
         if left > right:
             return None
-
         mid = left + (right-left)//2
         root = TreeNode(array[mid])
-
         root.left = self.sort(array, left, mid - 1)
         root.right = self.sort(array, mid + 1, right)
         return root
