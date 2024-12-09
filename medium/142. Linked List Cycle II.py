@@ -17,7 +17,7 @@ class Solution:
                 break
         if fast != slow:
             return None
-
+        
         while slow != head:
             slow = slow.next
             head = head.next
