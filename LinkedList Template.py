@@ -1,5 +1,5 @@
 # Reverse-related: 
-# 24, 25, 92
+# 24, 25, 92, 143
 
 # Circle/break-circle related: 
 # 142
@@ -32,3 +32,14 @@ def reverseLinkedList(head):
     head.next.next = head
     head.next = None
     return new_head
+
+#find midPoint
+def findMidPoint(head):
+        slow = head
+        fast = head.next
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        mid = slow.next
+        slow.next = None
