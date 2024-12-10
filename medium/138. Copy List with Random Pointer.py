@@ -1,28 +1,23 @@
 """
 # Definition for a Node.
 class Node:
-    def __init__(self, x, next=None, random=None):
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
         self.val = int(x)
         self.next = next
         self.random = random
 """
 
-class Solution(object):
-    def copyRandomList(self, head):
-        """
-        :type head: Node
-        :rtype: Node
-        """
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         node = head
-        memory = {None: None}
+        maps = {None : None}
 
         while node:
-            memory[node] = Node(node.val)
+            maps[node] = Node(node.val)
             node = node.next
-
         node = head
         while node:
-            memory[node].random = memory[node.random]
-            memory[node].next = memory[node.next]
+            maps[node].random = maps[node.random]
+            maps[node].next = maps[node.next]
             node = node.next
-        return memory[head]
+        return maps[head]

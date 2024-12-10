@@ -19,7 +19,11 @@ class Solution:
         if root.left:
             root.left.next = root.right
         self.traverse(root.left)
-        if root.right and root.next and root.next.left:
-            root.right.next = root.next.left
+        
+        if root.right and root.next:
+            if root.next.left:
+                root.right.next = root.next.left
+            elif root.next.right:
+                root.right.next = root.next.right
         self.traverse(root.right)
         return root
