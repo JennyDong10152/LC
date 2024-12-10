@@ -9,15 +9,14 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         if not head or not head.next:
-            return 
-        slow = fast = prev = head
-
+            return head
+        slow = prev = fast = head
         while fast and fast.next:
             prev = slow
             slow = slow.next
             fast = fast.next.next
-        prev.next = None
         
+        prev.next = None
         list1 = head
         list2 = self.reverse(slow)
         self.merge(list1, list2)
@@ -40,3 +39,5 @@ class Solution:
             list1.next = list2
             list1 = list2
             list2 = nextNode
+
+        
