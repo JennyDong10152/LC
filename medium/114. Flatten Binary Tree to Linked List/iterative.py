@@ -19,3 +19,4 @@ class Solution:
                 curr.right = curr.left
                 curr.left = None
             curr = curr.right
+            

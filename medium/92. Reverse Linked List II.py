@@ -9,7 +9,6 @@ class Solution:
             return head
         
         dummy = prev = ListNode(0, head)
-
         for _ in range(left-1):
             prev = prev.next
         curr = prev.next

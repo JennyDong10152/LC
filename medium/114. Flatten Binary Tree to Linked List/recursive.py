@@ -7,7 +7,7 @@
 class Solution:
     def __init__(self):
         self.prev = None
-        
+
     def flatten(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
@@ -16,7 +16,6 @@ class Solution:
             return None
         self.flatten(root.right)
         self.flatten(root.left)
-
         root.right = self.prev
         root.left = None
         self.prev = root

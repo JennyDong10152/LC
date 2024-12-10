@@ -10,14 +10,14 @@ class Solution:
             return None
         if n == 1:
             return lists[0]
-        mid = n//2
+        mid = n // 2
         left = self.mergeKLists(lists[:mid])
         right = self.mergeKLists(lists[mid:])
         return self.merge(left, right)
     
     def merge(self, left, right):
         dummy = node = ListNode(0)
-        while left is not None and right is not None:
+        while left and right:
             if left.val < right.val:
                 node.next = left
                 left = left.next
@@ -25,8 +25,8 @@ class Solution:
                 node.next = right
                 right = right.next
             node = node.next
-
-        if left is not None:
+            
+        if left:
             node.next = left
         else:
             node.next = right
