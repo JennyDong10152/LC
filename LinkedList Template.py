@@ -1,5 +1,5 @@
 # Reverse-related: 
-# 24, 25, 92, 143
+# 24, 25, 61, 92, 143
 
 # Circle/break-circle related: 
 # 142
@@ -25,18 +25,23 @@ def reverseLinkedList(head):
         current = next_node
     return prev  
 
-def reverseLinkedList(head):
-    if not head or not head.next:
-        return head  
-    new_head = reverseLinkedList(head.next)
-    head.next.next = head
-    head.next = None
-    return new_head
+def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    first = None
+    second = head
+    return self.recurse(first, second)
+
+def recurse(self, first, second):
+    if not second:
+        return first
+    third = second.next
+    second.next = first
+    return self.recurse(second, third)
 
 #find midPoint
 def findMidPoint(head):
         slow = head
-        fast = head.next
+        fast = head.next 
+        #fast = head => picks the second is len(list) is even; fast = head.next => picks the first
         
         while fast and fast.next:
             slow = slow.next
