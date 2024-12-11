@@ -25,17 +25,58 @@ def reverseLinkedList(head):
         current = next_node
     return prev  
 
-def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-    first = None
-    second = head
-    return self.recurse(first, second)
-
-def recurse(self, first, second):
+def reverseLinkedList(self, first = None, second = head):
     if not second:
         return first
     third = second.next
     second.next = first
     return self.recurse(second, third)
+
+#Reverse first K nodes
+def reverseFirstK(self, head: ListNode, k: int) -> ListNode:
+    if k == 1 or not head:
+        self.successor = head.next
+        return head
+    
+    reversed_head = self.reverseFirstN(head.next, k - 1)
+    head.next.next = head
+    head.next = self.successor
+    return reversed_head
+
+def reverseFirstK(head: ListNode, k: int) -> ListNode:
+    prev = None
+    current = head
+    while k > 0 and current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+        k -= 1
+    
+    if head:
+        head.next = current  
+    return prev
+
+#reverse between m and m
+def reverseBetween(head: ListNode, m: int, n: int) -> ListNode:
+    dummy = ListNode(0)
+    dummy.next = head
+    prev = dummy
+
+    for _ in range(m - 1):
+        prev = prev.next
+
+    current = prev.next
+    next_node = None
+    for _ in range(n - m + 1):
+        temp = current.next
+        current.next = next_node
+        next_node = current
+        current = temp
+
+    prev.next.next = current
+    prev.next = next_node
+    return dummy.next
 
 #find midPoint
 def findMidPoint(head):
