@@ -8,14 +8,18 @@ class Solution:
         if not head or left == right:
             return head
         
-        dummy = prev = ListNode(0, head)
+        dummy = reverseTail = ListNode(0, head)
         for _ in range(left-1):
-            prev = prev.next
-        curr = prev.next
+            reverseTail = reverseTail.next
 
-        for _ in range(right-left):
-            nextNode = curr.next
-            curr.next = nextNode.next
-            nextNode.next = prev.next
-            prev.next = nextNode
+        current = reverseTail.next
+        prev = None
+        for _ in range(right-left+1):
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
+        
+        reverseTail.next.next = current
+        reverseTail.next = prev
         return dummy.next
