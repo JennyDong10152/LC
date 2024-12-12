@@ -12,4 +12,3 @@ class Solution:
         second.next = head
         head.next = self.swapPairs(third)
         return second
-    

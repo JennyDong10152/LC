@@ -8,18 +8,17 @@ class Solution:
         if not head or not head.next:
             return head
         
-        prev = head
-        dummy = curr = head.next
-        nextNode = None
+        first = head
+        dummy = second = head.next
 
-        while curr:
-            nextNode = curr.next
-            curr.next = prev
-            if not nextNode or not nextNode.next:
-                prev.next = nextNode
-                curr = None
+        while second:
+            third = second.next
+            second.next = first
+            if not third or not third.next:
+                first.next = third
+                second = None
             else:
-                curr = nextNode.next
-                prev.next = curr
-                prev = nextNode
+                second = third.next
+                first.next = second
+                first = third
         return dummy

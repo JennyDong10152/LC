@@ -6,6 +6,7 @@
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         firstHead = firstTail = secondHead = secondTail = None
+        
         while head:
             if head.val < x:
                 if not firstHead:

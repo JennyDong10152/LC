@@ -1,0 +1,23 @@
+Topic: ListNode
+
+#1: node 定位不准确
+#19， 2095
+
+Find Middle Element
+initialize fast = slow = head 
+    => slow points to the second of the two middle nodes if length is even
+    => slow points to the middle node if length is odd
+
+initialize fast = head.next 
+    => slow points to the first of the two middle nodes if length is even
+    => slow points to the middle node if length is odd
+
+logistic: fast 在initialize的时候往后一位，iteration少一次，slow移动少一次
+在原有template上稍作修改，少循环/多循环一个就能定位到prev/next node
+#2095： if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
+        before the second middle node if length is even
+
+
+#2: sanity check: handle every prev/next between modified nodes 
+set node.next = None to make lists independent/avoid cycle
+ex. 92
