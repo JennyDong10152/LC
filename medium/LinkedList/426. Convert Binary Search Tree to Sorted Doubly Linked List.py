@@ -14,8 +14,8 @@ class Solution:
         
         self.first = self.prev = None
         self.convert(root)
-        self.prev.right = self.first
         self.first.left = self.prev
+        self.prev.right = self.first
         return self.first
     
     def convert(self, node):
@@ -23,10 +23,12 @@ class Solution:
             return 
         
         self.convert(node.left)
+
         if not self.prev:
             self.first = node
         else:
             node.left = self.prev
             self.prev.right = node
         self.prev = node
+
         self.convert(node.right)

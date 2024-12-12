@@ -9,12 +9,12 @@ class Solution:
             return head
         
         odd = head
-        even = even_head = head.next
+        even = evenHead = head.next
+
         while even and even.next:
             odd.next = even.next
             odd = odd.next
             even.next = odd.next
             even = even.next
-        odd.next = even_head
+        odd.next = evenHead
         return head
-        
