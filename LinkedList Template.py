@@ -57,26 +57,27 @@ def reverseFirstK(head: ListNode, k: int) -> ListNode:
         head.next = current  
     return prev
 
-#reverse between m and m
-def reverseBetween(head: ListNode, m: int, n: int) -> ListNode:
-    dummy = ListNode(0)
-    dummy.next = head
-    prev = dummy
+#reverse between left and right (#92)
+def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    if not head or left == right:
+        return head
+    
+    dummy = reverseTail = ListNode(0, head)
+    for _ in range(left-1):
+        reverseTail = reverseTail.next
 
-    for _ in range(m - 1):
-        prev = prev.next
-
-    current = prev.next
-    next_node = None
-    for _ in range(n - m + 1):
-        temp = current.next
-        current.next = next_node
-        next_node = current
-        current = temp
-
-    prev.next.next = current
-    prev.next = next_node
+    current = reverseTail.next
+    prev = None
+    for _ in range(right-left+1):
+        nextNode = current.next
+        current.next = prev
+        prev = current
+        current = nextNode
+    
+    reverseTail.next.next = current
+    reverseTail.next = prev
     return dummy.next
+
 
 #find midPoint
 def findMidPoint(head):
