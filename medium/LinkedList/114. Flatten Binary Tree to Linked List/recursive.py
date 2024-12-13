@@ -14,6 +14,7 @@ class Solution:
         """
         if not root:
             return None
+        
         self.flatten(root.right)
         self.flatten(root.left)
         root.right = self.prev

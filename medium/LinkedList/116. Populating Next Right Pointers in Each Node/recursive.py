@@ -9,17 +9,18 @@ class Node:
 """
 
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         node = self.traverse(root)
         return node
     
-    def traverse(self, root):
-        if not root:
-            return None
-        if root.left:
-            root.left.next = root.right
-        self.traverse(root.left)
-        if root.right and root.next and root.next.left:
-            root.right.next = root.next.left
-        self.traverse(root.right)
-        return root
+    def traverse(self, node):
+        if not node:
+            return 
+        
+        if node.left:
+            node.left.next = node.right
+            self.traverse(node.left)
+        if node.right and node.next and node.next.left:
+            node.right.next = node.next.left
+        self.traverse(node.right)
+        return node

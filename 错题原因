@@ -1,23 +1,37 @@
 Topic: ListNode
 
 #1: node 定位不准确
-#19， 2095
+    ex. 19:
+        Find Middle Element
+        initialize fast = slow = head 
+            => slow points to the second of the two middle nodes if length is even
+            => slow points to the middle node if length is odd
 
-Find Middle Element
-initialize fast = slow = head 
-    => slow points to the second of the two middle nodes if length is even
-    => slow points to the middle node if length is odd
+        initialize fast = head.next 
+            => slow points to the first of the two middle nodes if length is even
+            => slow points to the middle node if length is odd
 
-initialize fast = head.next 
-    => slow points to the first of the two middle nodes if length is even
-    => slow points to the middle node if length is odd
-
-logistic: fast 在initialize的时候往后一位，iteration少一次，slow移动少一次
-在原有template上稍作修改，少循环/多循环一个就能定位到prev/next node
-#2095： if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
+        logistic: fast 在initialize的时候往后一位，iteration少一次，slow移动少一次
+        在原有template上稍作修改，少循环/多循环一个就能定位到prev/next node
+    ex. 2095: if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
         before the second middle node if length is even
+    ex. 92: point to the node BEFORE reversal and make current = reverseTail.next (instead of current = reverseTail)
+        for proper link adjustment among reverseTail/prev/current
 
+#2: sanity check
+    1. handle every prev/next between modified nodes 
+        good practice: 146, 622, 641, 707
 
-#2: sanity check: handle every prev/next between modified nodes 
-set node.next = None to make lists independent/avoid cycle
-ex. 92
+    2. set node.next = None to make lists independent/avoid circular references
+        ex. 86: set secondTail.next (last node) = None to ensure proper termination
+        ex. 142: set prev.next = None after finding mid so that the two lists are independent
+    
+    3. if the order is modified, 注意新order的node/tail变成了哪个node
+        swapping: prev is the new head, current is the first node after swapping
+        ex. 25: 没写错，但good example
+        ex. 92: reverseTail.next.next = current, reverseTail.next = prev 
+                reverseTail.next == reverse后的tail; 此tail.next = first node after the swap = current
+                reverseTail.next = prev = new head
+                这里需要更熟悉，写的时候卡了
+
+Similar: 315 - 2487 - 1019

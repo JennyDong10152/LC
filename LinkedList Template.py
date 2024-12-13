@@ -1,8 +1,9 @@
 # Reverse-related: 
-# 24, 25, 61, 92, 143
+# 24, 25, 61, 92, 142, 143, 328, 2074
 
 # Circle/break-circle related: 
 # 142
+
 
 # Detecting Cycles
 def hasCycle(head):

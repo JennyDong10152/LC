@@ -21,9 +21,10 @@ class Solution:
     
     def sort(self, array, left, right):
         if left > right:
-            return None
+            return 
+            
         mid = left + (right-left)//2
-        root = TreeNode(array[mid])
-        root.left = self.sort(array, left, mid - 1)
-        root.right = self.sort(array, mid + 1, right)
-        return root
+        node = TreeNode(array[mid])
+        node.left = self.sort(array, left, mid-1)
+        node.right = self.sort(array, mid + 1, right)
+        return node

@@ -12,22 +12,22 @@ class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return None
-        head = root
-        queue = deque([head])
-
+        dummy = root
+        queue = deque([root])
+        
         while queue:
             size = len(queue)
             prev = None
             for _ in range(size):
-                curr = queue.popleft()
-                if prev is None:
-                    prev = curr
+                current = queue.popleft()
+                if not prev:
+                    prev = current
                 else:
-                    prev.next = curr
-                    prev = curr
+                    prev.next = current
+                    prev = current
                     prev.next = None
                 if prev.left:
                     queue.append(prev.left)
                 if prev.right:
                     queue.append(prev.right)
-        return root
+        return dummy

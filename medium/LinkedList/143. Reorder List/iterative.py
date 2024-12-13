@@ -10,27 +10,21 @@ class Solution:
         """
         if not head or not head.next:
             return head
-        slow = prev = fast = head
-        while fast and fast.next:
-            prev = slow
-            slow = slow.next
-            fast = fast.next.next
         
+        prev, secondHead = self.findMid(head)
         prev.next = None
         list1 = head
-        list2 = self.reverse(slow)
+        list2 = self.reverse(secondHead)
         self.merge(list1, list2)
     
-    def reverse(self, head):
-        if not head:
-            return None
+    def reverse(self, node):
+        current = node
         prev = None
-        curr = head
-        while curr:
-            nextNode = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nextNode
+        while current:
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
         return prev
     
     def merge(self, list1, list2):
@@ -39,5 +33,14 @@ class Solution:
             list1.next = list2
             list1 = list2
             list2 = nextNode
+    
+    def findMid(self, head):
+        fast = slow = head
+        prev = None
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        return prev, slow
 
         

@@ -30,4 +30,4 @@ class Solution:
                     queue.append(prev.left)
                 if prev.right:
                     queue.append(prev.right)
-        return root
+        return head
