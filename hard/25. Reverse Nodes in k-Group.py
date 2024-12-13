@@ -9,24 +9,24 @@ class Solution:
         return node
     
     def reverse(self, head, k):
-        canReverse = self.getSize(head, k)
+        canReverse = self.count(head, k)
         if not canReverse:
             return head
         
         prev = None
-        curr = head
+        current = head
         for _ in range(k):
-            nextNode = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nextNode
-            
-        head.next = self.reverse(curr, k)
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
+
+        head.next = self.reverse(current, k)
         return prev
     
-    def getSize(self, head, k):
+    def count(self, head, k):
         cnt = 0
         while head and cnt < k:
-            head = head.next
             cnt += 1
+            head = head.next
         return cnt == k

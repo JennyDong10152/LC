@@ -1,4 +1,4 @@
-class ListNode:
+class Node:
 
     def __init__(self, val=0, prev=None, next=None):
         self.val = val
@@ -8,59 +8,61 @@ class ListNode:
 class MyCircularDeque:
 
     def __init__(self, k: int):
-        self.origin = ListNode(-1)
-        self.origin.next = self.origin
-        self.origin.prev = self.origin
+        self.head = Node(-1)
+        self.head.next = self.head
+        self.head.prev = self.head
         self.k = k
         self.size = 0
-        
+
     def insertFront(self, value: int) -> bool:
         if self.size < self.k:
-            newNode = ListNode(val=value)
-            self.origin.next.prev = newNode
-            newNode.next = self.origin.next
-            newNode.prev = self.origin
-            self.origin.next = newNode
+            newNode = Node(value)
+            first = self.head.next
+            first.prev = newNode
+            newNode.next = first
+            self.head.next = newNode
+            newNode.prev = self.head
             self.size += 1
             return True
         return False
 
     def insertLast(self, value: int) -> bool:
         if self.size < self.k:
-            newNode = ListNode(val=value)
-            self.origin.prev.next = newNode
-            newNode.prev = self.origin.prev
-            newNode.next = self.origin
-            self.origin.prev = newNode
+            newNode = Node(value)
+            last = self.head.prev
+            last.next = newNode
+            newNode.prev = last
+            newNode.next = self.head
+            self.head.prev = newNode
             self.size += 1
             return True
         return False
 
     def deleteFront(self) -> bool:
         if self.size >= 1:
-            self.origin.next = self.origin.next.next
-            self.origin.next.prev = self.origin
+            self.head.next = self.head.next.next
+            self.head.next.prev = self.head
             self.size -= 1
             return True
         return False
-        
+
     def deleteLast(self) -> bool:
         if self.size >= 1:
-            self.origin.prev = self.origin.prev.prev
-            self.origin.prev.next = self.origin
+            self.head.prev = self.head.prev.prev
+            self.head.prev.next = self.head
             self.size -= 1
             return True
         return False
         
     def getFront(self) -> int:
-        return self.origin.next.val
-
+        return self.head.next.val
+        
     def getRear(self) -> int:
-        return self.origin.prev.val
+        return self.head.prev.val
 
     def isEmpty(self) -> bool:
         return not self.size
-        
+
     def isFull(self) -> bool:
         return self.size == self.k
 
