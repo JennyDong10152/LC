@@ -13,17 +13,17 @@ class Solution:
         node = self.traverse(root)
         return node
     
-    def traverse(self, root):
-        if not root:
+    def traverse(self, node):
+        if not node:
             return None
-        if root.left:
-            root.left.next = root.right
-        self.traverse(root.left)
-        
-        if root.right and root.next:
-            if root.next.left:
-                root.right.next = root.next.left
-            elif root.next.right:
-                root.right.next = root.next.right
-        self.traverse(root.right)
-        return root
+        if node.left:
+            node.left.next = node.right
+        self.traverse(node.left)
+
+        if node.right and node.next:
+            if node.next.left:
+                node.right.next = node.next.left
+            elif node.next.right:
+                node.right.next = node.next.right
+        self.traverse(node.right)
+        return node

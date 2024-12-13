@@ -9,14 +9,15 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        curr = root
-        while curr:
-            if curr.left:
-                prev = curr.left
+        
+        dummy = current = root
+        while current:
+            if current.left:
+                prev = current.left
                 while prev.right:
                     prev = prev.right
-                prev.right = curr.right
-                curr.right = curr.left
-                curr.left = None
-            curr = curr.right
-            
+                prev.right = current.right
+                current.right = current.left
+                current.left = None
+            current = current.right
+        return dummy

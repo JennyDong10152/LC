@@ -14,10 +14,12 @@ initialize fast = head.next
 
 logistic: fast 在initialize的时候往后一位，iteration少一次，slow移动少一次
 在原有template上稍作修改，少循环/多循环一个就能定位到prev/next node
-#2095： if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
+    ex. 2095: if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
         before the second middle node if length is even
-
+    ex. 92: point to the node BEFORE reversal and make current = reverseTail.next (instead of current = reverseTail)
+        for proper link adjustment among reverseTail/prev/current
 
 #2: sanity check: handle every prev/next between modified nodes 
-set node.next = None to make lists independent/avoid cycle
+set node.next = None to make lists independent/avoid circular references
     ex. 86: set secondTail.next (last node) = None
+    ensures proper termination
