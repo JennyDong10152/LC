@@ -27,7 +27,7 @@ Topic: ListNode
         ex. 142: set prev.next = None after finding mid so that the two lists are independent
     
     3. if the order is modified, 注意新order的node/tail变成了哪个node
-        swapping: prev is the new head, current is the first node after swapping
+        reverse: prev is the new head, current is the first node after swapping
         ex. 25: 没写错，但good example
         ex. 92: reverseTail.next.next = current, reverseTail.next = prev 
                 reverseTail.next == reverse后的tail; 此tail.next = first node after the swap = current
