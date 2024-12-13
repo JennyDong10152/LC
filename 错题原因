@@ -20,4 +20,4 @@ logistic: fast 在initialize的时候往后一位，iteration少一次，slow移
 
 #2: sanity check: handle every prev/next between modified nodes 
 set node.next = None to make lists independent/avoid cycle
-ex. 92
+    ex. 86: set secondTail.next (last node) = None
