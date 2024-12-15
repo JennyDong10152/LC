@@ -28,4 +28,5 @@ class Solution:
         if firstHead:
             firstTail.next = secondHead
             return firstHead
+        
         return secondHead

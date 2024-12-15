@@ -16,6 +16,7 @@ class Solution:
         node1 = current
 
         slow = fast = dummy
+        
         for _ in range(k):
             fast = fast.next
         while fast.next:
@@ -31,3 +32,4 @@ class Solution:
         node1.next, node2.next = node2.next, node1.next
 
         return dummy.next
+    

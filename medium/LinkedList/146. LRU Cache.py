@@ -9,16 +9,17 @@ class ListNode:
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.dict = {}
         self.head = ListNode(-1, -1)
         self.tail = ListNode(-1, -1)
         self.head.next = self.tail
         self.tail.prev = self.head
+        self.capacity = capacity
+        self.dict = defaultdict()
         
     def get(self, key: int) -> int:
         if not key in self.dict:
             return -1
+            
         node = self.dict[key]
         self.remove(node)
         self.add(node)

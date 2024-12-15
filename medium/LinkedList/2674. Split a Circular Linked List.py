@@ -19,4 +19,5 @@ class Solution:
         secondHead = slow.next
         slow.next = head
         fast.next = secondHead
+        
         return [head, secondHead]

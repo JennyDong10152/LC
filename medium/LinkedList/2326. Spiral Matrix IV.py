@@ -40,4 +40,5 @@ class Solution:
                     matrix[i][left] = head.val
                     head = head.next
                 left += 1
+                
         return matrix

@@ -22,5 +22,4 @@ class Solution:
                 j = stack.pop()
                 result[j] = values[i]
             stack.append(i)
-
         return result

@@ -22,6 +22,7 @@ class MyLinkedList:
         self.dummy.next = node
         self.size += 1        
 
+
     def addAtTail(self, val: int) -> None:
         current = self.dummy
         while current.next:
