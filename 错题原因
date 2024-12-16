@@ -17,10 +17,11 @@ Topic: ListNode
         before the second middle node if length is even
     ex. 92: point to the node BEFORE reversal and make current = reverseTail.next (instead of current = reverseTail)
         for proper link adjustment among reverseTail/prev/current
+    ex. 143
 
 #2: sanity check
     1. handle every prev/next between modified nodes 
-        good practice: 146, 622, 641, 707
+        good practice: 146, 622, 641, 707, 1472, 1670
 
     2. set node.next = None to make lists independent/avoid circular references
         ex. 86: set secondTail.next (last node) = None to ensure proper termination

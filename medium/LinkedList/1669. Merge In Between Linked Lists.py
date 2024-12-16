@@ -10,6 +10,7 @@ class Solution:
         node = list1
 
         for i in range(b+1):
+
             if i == a-1:
                 list1Tail = node
             node = node.next
@@ -20,4 +21,5 @@ class Solution:
         while list2.next:
             list2 = list2.next
         list2.next = list1Head2
+        
         return dummy.next
