@@ -7,7 +7,6 @@ class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head.next:
             return None
-        
         newHead = head.next
         while newHead.next.val != 0:
             newHead.val += newHead.next.val

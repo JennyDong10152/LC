@@ -9,21 +9,18 @@ class Solution:
             return head
         slow = head
         fast = head.next
-        
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        mid = slow.next
+        midNode = slow.next
         slow.next = None
-
-        left = self.sortList(head)
-        right = self.sortList(mid)
-        return self.merge(left, right)
+        list1 = self.sortList(head)
+        list2 = self.sortList(midNode)
+        return self.sort(list1, list2)
     
-    def merge(self, list1, list2):
-        dummy = ListNode(0)
-        node = dummy
-
+    def sort(self, list1, list2):
+        dummy = node = ListNode(0)
         while list1 and list2:
             if list1.val < list2.val:
                 node.next = list1

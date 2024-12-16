@@ -7,27 +7,23 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         n = len(lists)
         if not n:
-            return
+            return None
         if n == 1:
             return lists[0]
-        mid = n//2
+        mid = n // 2
         list1 = self.mergeKLists(lists[:mid])
         list2 = self.mergeKLists(lists[mid:])
         return self.merge(list1, list2)
     
     def merge(self, list1, list2):
-        dummy = node = ListNode(0)
-        while list1 and list2:
-            if list1.val < list2.val:
-                node.next = list1
-                list1 = list1.next
-            else:
-                node.next = list2
-                list2 = list2.next
-            node = node.next
-
-        if list1:
-            node.next = list1
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+        
+        if list1.val < list2.val:
+            list1.next = self.merge(list1.next, list2)
+            return list1
         else:
-            node.next = list2
-        return dummy.next
+            list2.next = self.merge(list1, list2.next)
+            return list2
