@@ -8,14 +8,19 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head or not head.next:
-            return head
-        
-        prev, secondHead = self.findMid(head)
-        prev.next = None
-        list1 = head
-        list2 = self.reverse(None, secondHead)
-        self.merge(list1, list2, True)
+        midNode = self.findMid(head)
+        secondHead = self.reverse(None, midNode)
+        self.merge(head, secondHead, True)
+    
+    def findMid(self, head):
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        midNode = slow.next
+        slow.next = None
+        return midNode
     
     def reverse(self, first, second):
         if not second:
@@ -23,27 +28,15 @@ class Solution:
         third = second.next
         second.next = first
         return self.reverse(second, third)
-        
     
     def merge(self, list1, list2, isFirst):
         if not list1:
             return list2
         if not list2:
             return list1
-
         if isFirst:
             list1.next = self.merge(list1.next, list2, False)
             return list1
         else:
             list2.next = self.merge(list1, list2.next, True)
             return list2
-
-    
-    def findMid(self, head):
-        fast = slow = head
-        prev = None
-        while fast and fast.next:
-            prev = slow
-            slow = slow.next
-            fast = fast.next.next
-        return prev, slow

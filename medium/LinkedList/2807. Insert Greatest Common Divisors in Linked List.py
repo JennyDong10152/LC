@@ -7,8 +7,8 @@ class Solution:
     def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
-        current = head
 
+        current = head
         while current and current.next:
             greatestDivisor = self.greatestCommonDivisor(current.val, current.next.val)
             current.next = ListNode(val=greatestDivisor, next=current.next)
@@ -18,4 +18,4 @@ class Solution:
     def greatestCommonDivisor(self, num1, num2):
         if not num1:
             return num2
-        return self.greatestCommonDivisor(num2%num1, num1)
+        return self.greatestCommonDivisor(num2 % num1, num1)

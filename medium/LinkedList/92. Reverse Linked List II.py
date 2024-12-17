@@ -19,7 +19,6 @@ class Solution:
             current.next = prev
             prev = current
             current = nextNode
-        
         reverseTail.next.next = current
         reverseTail.next = prev
         return dummy.next

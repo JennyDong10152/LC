@@ -11,6 +11,7 @@ class Solution:
         while node:
             length += 1
             node = node.next
+
         quotient, remainder = divmod(length, k)
         result = []
         prev = None
@@ -18,7 +19,7 @@ class Solution:
 
         for _ in range(k):
             tempHead = node
-            for _ in range(quotient + (remainder > 0) - 1):
+            for i in range(quotient + (remainder > 0) - 1):
                 if node:
                     node = node.next
             if node:
