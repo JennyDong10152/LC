@@ -5,19 +5,17 @@
 #         self.next = next
 class Solution:
     def splitCircularLinkedList(self, list: Optional[ListNode]) -> List[Optional[ListNode]]:
-
-        slow = head = list
+        first = list
+        slow = list
         fast = list.next
-
-        while fast.next != head:
+        while fast.next != first:
             slow = slow.next
-            if fast.next.next != head:
+            if fast.next.next != first:
                 fast = fast.next.next
             else:
                 fast = fast.next
-        
+
         secondHead = slow.next
-        slow.next = head
+        slow.next = first
         fast.next = secondHead
-        
-        return [head, secondHead]
+        return [first, secondHead]

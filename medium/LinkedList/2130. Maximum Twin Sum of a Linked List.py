@@ -15,6 +15,6 @@ class Solution:
             fast = fast.next.next
         
         while slow:
-            maxSum = max(maxSum, stack.pop()+slow.val)
+            maxSum = max(maxSum, slow.val+stack.pop())
             slow = slow.next
         return maxSum

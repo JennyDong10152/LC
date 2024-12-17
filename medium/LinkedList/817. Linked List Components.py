@@ -5,15 +5,16 @@
 #         self.next = next
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
+        values = set(nums)
+        node = head
         count = 0
-        connecting = False
-
-        while head:
-            if head.val in nums:
-                if not connecting:
+        isConnected = False
+        while node:
+            if node.val in values:
+                if not isConnected:
                     count += 1
-                connecting = True
+                isConnected = True
             else:
-                connecting = False
-            head = head.next
+                isConnected = False
+            node = node.next
         return count
