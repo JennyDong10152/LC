@@ -20,7 +20,6 @@ class Solution:
             current.next = prev
             prev = current
             current = nextNode
-
         head.next = self.reverse(current, k)
         return prev
     

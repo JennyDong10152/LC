@@ -13,12 +13,22 @@ Topic: ListNode
 
         logistic: fast 在initialize的时候往后一位，iteration少一次，slow移动少一次
         在原有template上稍作修改，少循环/多循环一个就能定位到prev/next node
+
     ex. 2095: if fast=fast.next.next at initialization, slow points to the node before middle if length is odd, 
         before the second middle node if length is even
+
+        Or we can initialize a dummy = ListNode(0, head) and do a normal middle element search. The dummy will offset
+        an extra loop and point to the node before the middle (or second middle) node
+
     ex. 92: point to the node BEFORE reversal and make current = reverseTail.next (instead of current = reverseTail)
         for proper link adjustment among reverseTail/prev/current
+
     ex. 143
+<<<<<<< Updated upstream
     ex. 61: Node after loops
+=======
+    ex. 61: Finding the nth node
+>>>>>>> Stashed changes
             in general, if we want to find the nth node, we need:
             node = ListNode(0, head)
             then for _ in range(n): ... -> this will give the nth node
@@ -46,9 +56,12 @@ Topic: ListNode
                 reverseTail.next = prev = new head
                 这里需要更熟悉，写的时候卡了
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 #3: for recursions, think about what is being returned 
     ex. 430 
-    ex. 369
+    ex. 369: returns 0/1 for each window, we need the dummy node to indicate if we have 1 digit more
 
 Similar: 315 - 2487 - 1019
