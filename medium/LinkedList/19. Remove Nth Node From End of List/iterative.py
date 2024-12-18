@@ -1,3 +1,4 @@
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -9,10 +10,9 @@ class Solution:
 
         for _ in range(n):
             fast = fast.next
-
-        while fast.next:
-            fast = fast.next
-            slow = slow.next
         
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
         slow.next = slow.next.next
         return dummy.next

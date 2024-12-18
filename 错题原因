@@ -18,6 +18,17 @@ Topic: ListNode
     ex. 92: point to the node BEFORE reversal and make current = reverseTail.next (instead of current = reverseTail)
         for proper link adjustment among reverseTail/prev/current
     ex. 143
+    ex. 61: Node after loops
+            in general, if we want to find the nth node, we need:
+            node = ListNode(0, head)
+            then for _ in range(n): ... -> this will give the nth node
+            note this is because linked list is generally 1-indexed, for loops are 0-indexed, 
+                so we need a dummy to count for the extra loop
+            if we start with node = head, we need one less iteration
+            after the fast pointer is adjusted properly, we can have the while loop of "while fast.next"
+                to iterate one less loop, so that at the end slow will point 1 node prior to the desired node
+        BUT check how the questions defines the index of the nodes!!!
+            ex. 1669: the linked list nodes are 0-indexed
 
 #2: sanity check
     1. handle every prev/next between modified nodes 
@@ -35,11 +46,9 @@ Topic: ListNode
                 reverseTail.next = prev = new head
                 这里需要更熟悉，写的时候卡了
 
-<<<<<<< Updated upstream
-=======
+
 #3: for recursions, think about what is being returned 
     ex. 430 
     ex. 369
 
->>>>>>> Stashed changes
 Similar: 315 - 2487 - 1019

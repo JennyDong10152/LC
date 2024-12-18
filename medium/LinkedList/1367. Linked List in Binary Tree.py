@@ -13,14 +13,13 @@ class Solution:
     def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
         if not root:
             return False
-        if self.search(head, root):
+        if self.isPath(head, root):
             return True
         return self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
-
-    def search(self, head, root):
-        if not head:
+    
+    def isPath(self, head, root):
+        if head is None:
             return True
-        if not root or head.val != root.val:
+        if root is None or root.val != head.val:
             return False
-        
-        return self.search(head.next, root.left) or self.search(head.next, root.right)
+        return self.isPath(head.next, root.left) or self.isPath(head.next, root.right)

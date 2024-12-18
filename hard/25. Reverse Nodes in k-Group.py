@@ -12,9 +12,9 @@ class Solution:
         canReverse = self.count(head, k)
         if not canReverse:
             return head
-        
-        prev = None
+
         current = head
+        prev = None
         for _ in range(k):
             nextNode = current.next
             current.next = prev

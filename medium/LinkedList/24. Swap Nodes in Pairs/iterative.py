@@ -9,7 +9,7 @@ class Solution:
             return head
         
         first = head
-        dummy = second = head.next
+        dummy = second = first.next
 
         while second:
             third = second.next

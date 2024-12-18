@@ -6,6 +6,7 @@
 class Solution:
     def spiralMatrix(self, m: int, n: int, head: Optional[ListNode]) -> List[List[int]]:
         matrix = [[-1 for _ in range(n)] for _ in range(m)]
+        
         left = top = 0
         right = n - 1
         bottom = m - 1
@@ -40,5 +41,4 @@ class Solution:
                     matrix[i][left] = head.val
                     head = head.next
                 left += 1
-                
         return matrix

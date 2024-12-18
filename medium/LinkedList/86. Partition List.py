@@ -6,27 +6,24 @@
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         firstHead = secondHead = firstTail = secondTail = None
-        node = head
-        
-        while node:
-            if node.val < x:
+        current = head
+        while current:
+            if current.val < x:
                 if not firstHead:
-                    firstHead = firstTail = node
+                    firstHead = firstTail = current
                 else:
-                    firstTail.next = node
+                    firstTail.next = current
                     firstTail = firstTail.next
             else:
                 if not secondHead:
-                    secondHead = secondTail = node
+                    secondHead = secondTail = current
                 else:
-                    secondTail.next = node
+                    secondTail.next = current
                     secondTail = secondTail.next
-            node = node.next
-
+            current = current.next
         if secondTail:
             secondTail.next = None
         if firstHead:
             firstTail.next = secondHead
             return firstHead
-        
         return secondHead

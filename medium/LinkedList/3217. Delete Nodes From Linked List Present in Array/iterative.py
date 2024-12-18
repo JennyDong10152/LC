@@ -6,10 +6,9 @@
 class Solution:
     def modifiedList(self, nums: List[int], head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = node = ListNode(0, head)
-        values_to_remove = set(nums)
-
+        values = set(nums)
         while node and node.next:
-            if node.next.val in values_to_remove:
+            if node.next.val in values:
                 node.next = node.next.next
             else:
                 node = node.next

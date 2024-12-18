@@ -11,24 +11,21 @@ class Solution:
     def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return None
-        
         self.first = self.prev = None
         self.convert(root)
         self.first.left = self.prev
         self.prev.right = self.first
         return self.first
-    
-    def convert(self, node):
-        if not node:
-            return 
+
+    def convert(self, root):
+        if not root:
+            return None
         
-        self.convert(node.left)
-
+        self.convert(root.left)
         if not self.prev:
-            self.first = node
+            self.first = root
         else:
-            node.left = self.prev
-            self.prev.right = node
-        self.prev = node
-
-        self.convert(node.right)
+            root.left = self.prev
+            self.prev.right = root
+        self.prev = root
+        self.convert(root.right)
