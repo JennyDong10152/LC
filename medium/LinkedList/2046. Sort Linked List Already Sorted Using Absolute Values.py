@@ -8,16 +8,15 @@ class Solution:
         if not head or not head.next:
             return head
 
-        first = dummy = ListNode(0, head)
-        current = head
-
-        while current and current.next:
-            if current.next.val < 0:
-                negative = current.next
-                current.next = current.next.next 
+        dummy = first = ListNode(0, head)
+        node = head
+        
+        while node and node.next:
+            if node.next.val < 0:
+                negative = node.next
+                node.next = node.next.next
                 negative.next = first.next
                 first.next = negative
             else:
-                current = current.next
-
+                node = node.next
         return dummy.next

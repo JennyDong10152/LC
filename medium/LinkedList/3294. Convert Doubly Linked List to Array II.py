@@ -9,7 +9,6 @@ class Node:
 class Solution:
     def toArray(self, node: 'Optional[Node]') -> List[int]:
         array = []
-        
         while node.prev:
             node = node.prev
 

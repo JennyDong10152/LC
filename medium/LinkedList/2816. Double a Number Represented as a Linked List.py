@@ -4,15 +4,14 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def plusOne(self, head: ListNode) -> ListNode:
+    def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0, head)
-        self.plus(dummy)
+        self.double(dummy)
         return dummy if dummy.val else dummy.next
-
-    def plus(self, node):
-        if not node.next:
-            num = node.val + 1
-        else:
-            num = node.val + self.plus(node.next)
+    
+    def double(self, node):
+        if not node:
+            return 0
+        num = node.val * 2 + self.double(node.next)
         node.val = num % 10
         return num // 10

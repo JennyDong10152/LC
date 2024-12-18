@@ -46,7 +46,9 @@ Topic: ListNode
                 reverseTail.next = prev = new head
                 这里需要更熟悉，写的时候卡了
 
+
 #3: for recursions, think about what is being returned 
-    ex. 430
+    ex. 430 
+    ex. 369
 
 Similar: 315 - 2487 - 1019

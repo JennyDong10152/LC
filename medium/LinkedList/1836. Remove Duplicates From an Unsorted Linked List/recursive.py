@@ -10,14 +10,13 @@ class Solution:
         self.delete(dummy, frequency)
         return dummy.next
     
-    def delete(self, head, frequency):
-        if not head:
-            return head
-        
-        if frequency[head.val] > 1:
-            return self.delete(head.next, frequency)
-        head.next = self.delete(head.next, frequency)
-        return head
+    def delete(self, node, frequency):
+        if not node:
+            return node
+        if frequency[node.val] > 1:
+            return self.delete(node.next, frequency)
+        node.next = self.delete(node.next, frequency)
+        return node
     
     def count(self, head):
         frequency = defaultdict(int)
