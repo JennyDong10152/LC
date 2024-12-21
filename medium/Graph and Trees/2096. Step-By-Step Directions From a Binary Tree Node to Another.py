@@ -9,43 +9,42 @@ class Solution:
         lowestCommonAncestor = self.findLowestCommonAncestor(root, startValue, destValue)
 
         start_to_ancestor = []
-        self.findPath(lowestCommonAncestor, startValue, start_to_ancestor)
         ancestor_to_des = []
+        self.findPath(lowestCommonAncestor, startValue, start_to_ancestor)
         self.findPath(lowestCommonAncestor, destValue, ancestor_to_des)
-        print(ancestor_to_des)
-
         directions = ["U"]*len(start_to_ancestor) + ancestor_to_des
+
         return "".join(directions)
 
-    def findPath(self, node, target, path):
-        if node is None:
+    def findPath(self, root, child, path):
+        if not root:
             return False
-        if node.val == target:
+
+        if root.val == child:
             return True
 
         path.append("L")
-        if self.findPath(node.left, target, path):
+        if self.findPath(root.left, child, path):
             return True
         path.pop()
 
         path.append("R")
-        if self.findPath(node.right, target, path):
+        if self.findPath(root.right, child, path):
             return True
         path.pop()
         return False
-    
-    def findLowestCommonAncestor(self, node, startValue, destValue):
-        if not node:
+
+    def findLowestCommonAncestor(self, root, startValue, destValue):
+        if not root:
             return None
+        if root.val == startValue or root.val == destValue:
+            return root
         
-        if node.val == startValue or node.val == destValue:
-            return node
-        
-        left = self.findLowestCommonAncestor(node.left, startValue, destValue)
-        right = self.findLowestCommonAncestor(node.right, startValue, destValue)
+        left = self.findLowestCommonAncestor(root.left, startValue, destValue)
+        right = self.findLowestCommonAncestor(root.right, startValue, destValue)
 
         if not left:
             return right
-        elif not right:
+        if not right:
             return left
-        return node
+        return root

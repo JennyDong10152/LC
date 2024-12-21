@@ -17,6 +17,7 @@ class Solution:
             p = p.parent
         for _ in range(q_depth - p_depth):
             q = q.parent
+        #now p and q in same depth
         while p != q:
             p = p.parent
             q = q.parent
@@ -28,3 +29,4 @@ class Solution:
             node = node.parent
             depth += 1
         return depth
+    
