@@ -2,27 +2,27 @@ class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
         if n == 1:
             return [0]
-        graph = defaultdict(list)
         degree = [0] * n
+        graph = defaultdict(list)
+        for node1, node2 in edges:
+            degree[node1] += 1
+            degree[node2] += 1
+            graph[node1].append(node2)
+            graph[node2].append(node1)
+        
+        queue = deque()
+        
+        for node in range(n):
+            if degree[node] == 1:
+                queue.append(node)
 
-        for edge1, edge2 in edges:
-            graph[edge1].append(edge2)
-            graph[edge2].append(edge1)
-            degree[edge1] += 1
-            degree[edge2] += 1
-        
-        leaves = deque()
-        for i in range(n):
-            if degree[i] == 1:
-                leaves.append(i)
-        
         while n > 2:
-            size = len(leaves)
+            size = len(queue)
             n -= size
             for _ in range(size):
-                curr = leaves.popleft()
-                for leaf in graph[curr]:
-                    degree[leaf] -= 1
-                    if degree[leaf] == 1:
-                        leaves.append(leaf)
-        return list(leaves)
+                leaf = queue.popleft()
+                for parent in graph[leaf]:
+                    degree[parent] -= 1
+                    if degree[parent] == 1:
+                        queue.append(parent)
+        return list(queue)
