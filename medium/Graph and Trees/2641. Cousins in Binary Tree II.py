@@ -29,6 +29,7 @@ class Solution:
 
     def calculate(self, node, level_sums):
         queue = deque([node])
+        
         while queue:
             level_sum = 0
             size = len(queue)

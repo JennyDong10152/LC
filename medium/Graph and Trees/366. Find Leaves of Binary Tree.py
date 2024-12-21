@@ -8,16 +8,13 @@ class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
         self.leaves = defaultdict(list)
         self.find(root)
-        answer = []
-        for i in self.leaves:
-            answer.append(self.leaves[i])
-        return answer
+        return list(self.leaves.values())
     
-    def find(self, node):
-        if not node:
+    def find(self, root):
+        if not root:
             return 0
-        left = self.find(node.left)
-        right = self.find(node.right)
-        level = max(left, right)+1
-        self.leaves[level].append(node.val)
+        left = self.find(root.left)
+        right = self.find(root.right)
+        level = 1 + max(left, right)
+        self.leaves[level].append(root.val)
         return level

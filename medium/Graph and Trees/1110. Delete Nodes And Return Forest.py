@@ -7,9 +7,9 @@
 class Solution:
     def delNodes(self, root: Optional[TreeNode], to_delete: List[int]) -> List[TreeNode]:
         self.trees = []
-        node = self.delete(root, set(to_delete))
-        if node:
-            self.trees.append(node)
+        root = self.delete(root, set(to_delete))
+        if root:
+            self.trees.append(root)
         return self.trees
     
     def delete(self, root, to_delete):

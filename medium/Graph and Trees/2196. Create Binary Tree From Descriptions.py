@@ -15,13 +15,11 @@ class Solution:
             all_nodes.add(parent)
             all_nodes.add(child)
             children.add(child)
-
         root = (all_nodes - children).pop()
         return self.build(root, relation)
 
     def build(self, value, relation):
         node = TreeNode(value)
-
         if value in relation:
             for child, isLeft in relation[value]:
                 if isLeft:

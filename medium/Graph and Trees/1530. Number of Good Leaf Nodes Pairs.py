@@ -23,4 +23,5 @@ class Solution:
             for right_distance in right_distances:
                 if left_distance + right_distance <= distance:
                     self.result += 1
+                    
         return [d+1 for d in left_distances+right_distances]
