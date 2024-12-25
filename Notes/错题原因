@@ -24,11 +24,7 @@ Topic: ListNode
         for proper link adjustment among reverseTail/prev/current
 
     ex. 143
-<<<<<<< Updated upstream
-    ex. 61: Node after loops
-=======
     ex. 61: Finding the nth node
->>>>>>> Stashed changes
             in general, if we want to find the nth node, we need:
             node = ListNode(0, head)
             then for _ in range(n): ... -> this will give the nth node
@@ -56,10 +52,6 @@ Topic: ListNode
                 reverseTail.next = prev = new head
                 这里需要更熟悉，写的时候卡了
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 #3: for recursions, think about what is being returned 
     ex. 430 
     ex. 369: returns 0/1 for each window, we need the dummy node to indicate if we have 1 digit more
