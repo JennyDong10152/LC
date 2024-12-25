@@ -7,9 +7,9 @@
 class Solution:
     def upsideDownBinaryTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return 
+            return None
         return self.recurse(root)
-
+    
     def recurse(self, node):
         if not node.left:
             return node

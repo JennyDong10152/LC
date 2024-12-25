@@ -13,9 +13,9 @@ class Solution:
         return -1
     
     def isCelebrity(self, celebrity, n):
-        for j in range(n):
-            if celebrity == j:
+        for i in range(n):
+            if celebrity == i:
                 continue
-            if knows(celebrity, j) or not knows(j, celebrity):
+            if knows(celebrity, i) or not knows(i, celebrity):
                 return False
         return True

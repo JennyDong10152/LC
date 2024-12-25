@@ -3,8 +3,8 @@ class Solution:
         degree = [0] * n
         for win, lose in edges:
             degree[lose] += 1
-        winners = []
+        winner = []
         for i in range(n):
             if not degree[i]:
-                winners.append(i)
-        return -1 if len(winners) != 1 else winners[0]
+                winner.append(i)
+        return winner[0] if len(winner) == 1 else -1
