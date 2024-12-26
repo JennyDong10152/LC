@@ -10,7 +10,7 @@ class Solution:
         self.duplicates = []
         self.traverse(root)
         return self.duplicates
-
+    
     def traverse(self, node):
         if not node:
             return None
@@ -19,3 +19,4 @@ class Solution:
             self.duplicates.append(node)
         self.visited[sequence] += 1
         return sequence
+        

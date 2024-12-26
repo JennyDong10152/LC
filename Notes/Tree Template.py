@@ -1,6 +1,13 @@
 # Questions regarding finding minPath ->  Dijkastra
-# ex. 3243. Shortest Distance After Road Addition Queries I; 505. The Maze II; 2577. Minimum Time to Visit a Cell In a Grid.py
+# 3243. Shortest Distance After Road Addition Queries I
+# 505. The Maze II
+# 863. All Nodes Distance K in Binary Tree
+# 2577. Minimum Time to Visit a Cell In a Grid.py
+# 1514. Path with Maximum Probability
+# 1976. Number of Ways to Arrive at Destination
 
+# BackTrack Questions
+# 797. All Paths From Source to Target
 #Iterative Traversals 
 def preorderTraversal(root):
     if not root:
@@ -95,7 +102,6 @@ def dijkstra(graph, start):
 
     return distances
 
-import heapq
 
 #Prim's minimum spanning tree
 def prim(graph, start):

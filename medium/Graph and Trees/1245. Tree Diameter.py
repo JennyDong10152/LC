@@ -7,22 +7,22 @@ class Solution:
         for node1, node2 in edges:
             self.graph[node1].append(node2)
             self.graph[node2].append(node1)
-        self.maxDiameter = 0
-        self.search(0, -1)
-        return self.maxDiameter
-    
-    def search(self, current, parent):
-        deepest = 0
-        secondDeepest = 0
 
-        for neighbor in self.graph[current]:
+        self.diameter = 0
+        self.search(0, -1)
+        return self.diameter
+    
+    def search(self, node, parent):
+        deepest = secondDeepest = 0
+
+        for neighbor in self.graph[node]:
             if neighbor == parent:
                 continue
-            depth = self.search(neighbor, current)
+            depth = self.search(neighbor, node)
             if depth >= deepest:
                 secondDeepest = deepest
                 deepest = depth
             elif depth > secondDeepest:
                 secondDeepest = depth
-        self.maxDiameter = max(self.maxDiameter, deepest+secondDeepest)
+        self.diameter = max(self.diameter, deepest + secondDeepest)
         return 1 + deepest
