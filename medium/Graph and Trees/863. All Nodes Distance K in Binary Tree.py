@@ -7,27 +7,29 @@
 
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
-        graph = defaultdict(list)
-        self.build_graph(graph, root, None)
+        self.graph = defaultdict(list)
+        self.build_graph(root, None)
         k_distance = []
+        heap = [(0, target.val)]
         visited = set([target.val])
-        queue = deque([(target.val, 0)])
-        while queue:
-            current, distance = queue.popleft()
+
+        while heap:
+            distance, node = heappop(heap)
             if distance == k:
-                k_distance.append(current)
-                continue
-            for neighbor in graph[current]:
-                if neighbor not in visited:
+                k_distance.append(node)
+            if distance > k:
+                break
+            for neighbor in self.graph[node]:
+                if not neighbor in visited:
                     visited.add(neighbor)
-                    queue.append((neighbor, distance+1))
+                    heappush(heap, (distance+1, neighbor))
         return k_distance
 
-    def build_graph(self, graph, current, parent):
-        if current and parent:
-            graph[current.val].append(parent.val)
-            graph[parent.val].append(current.val)
-        if current.left:
-            self.build_graph(graph, current.left, current)
-        if current.right:
-            self.build_graph(graph, current.right, current)
+    def build_graph(self, node, parent):
+        if node and parent:
+            self.graph[node.val].append(parent.val)
+            self.graph[parent.val].append(node.val)
+        if node.left:
+            self.build_graph(node.left, node)
+        if node.right:
+            self.build_graph(node.right, node)

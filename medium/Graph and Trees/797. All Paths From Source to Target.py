@@ -1,16 +1,16 @@
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        n = len(graph) - 1
+        self.n = len(graph)-1
+        self.graph = graph
         self.paths = []
-        self.search(0, [0], n, graph)
+        self.search(0, [0])
         return self.paths
-        
-    def search(self, current, path, n, graph):
-        if current == n:
+    
+    def search(self, current, path):
+        if current == self.n:
             self.paths.append(list(path))
             return
-        
-        for nextNode in graph[current]:
-            path.append(nextNode)
-            self.search(nextNode, path, n, graph)
+        for neighbor in self.graph[current]:
+            path.append(neighbor)
+            self.search(neighbor, path)
             path.pop()

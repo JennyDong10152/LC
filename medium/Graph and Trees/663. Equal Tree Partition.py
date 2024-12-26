@@ -6,10 +6,9 @@
 #         self.right = right
 class Solution:
     def checkEqualTree(self, root: Optional[TreeNode]) -> bool:
-        self.total = 0
         self.subtree = []
-        self.total = self.sumTrees(root)
-        return self.total/2 in self.subtree
+        total = self.sumTrees(root)
+        return total/2 in self.subtree
     
     def sumTrees(self, node):
         value = node.val
