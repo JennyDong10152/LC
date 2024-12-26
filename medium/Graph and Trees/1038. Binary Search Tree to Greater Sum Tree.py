@@ -13,6 +13,7 @@ class Solution:
     def calculate(self, root):
         if not root:
             return 0
+        
         self.calculate(root.right)
         self.value += root.val
         root.val = self.value

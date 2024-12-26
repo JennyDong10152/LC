@@ -6,10 +6,10 @@ class Solution:
                 graph[node1].append(node2)
             if vals[node1] > 0:
                 graph[node2].append(node1)
-        
-        stars = []
+                
+        maxSum = -float("inf")
         for node, val in enumerate(vals):
             values = [vals[neighbor] for neighbor in graph[node]]
             values.sort(reverse = True)
-            stars.append(val + sum(values[:k]))
-        return max(stars)
+            maxSum = max(maxSum, val + sum(values[:k]))
+        return maxSum

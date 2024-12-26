@@ -12,8 +12,7 @@ class Solution:
         if not node1 and not node2:
             return True
         if (not node1 or not node2) or node1.val != node2.val:
-            return False
-        
+            return False 
         flipped = self.check(node1.left, node2.right) and self.check(node1.right, node2.left)
         notFlipped = self.check(node1.left, node2.left) and self.check(node1.right, node2.right)
         return flipped or notFlipped
