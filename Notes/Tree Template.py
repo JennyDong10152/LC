@@ -1,5 +1,9 @@
 # Questions regarding finding minPath ->  Dijkastra
-# ex. 3243. Shortest Distance After Road Addition Queries I; 505. The Maze II; 2577. Minimum Time to Visit a Cell In a Grid.py
+# 3243. Shortest Distance After Road Addition Queries I
+# 505. The Maze II
+# 2577. Minimum Time to Visit a Cell In a Grid.py
+# 1514. Path with Maximum Probability
+# 1976. Number of Ways to Arrive at Destination
 
 #Iterative Traversals 
 def preorderTraversal(root):
