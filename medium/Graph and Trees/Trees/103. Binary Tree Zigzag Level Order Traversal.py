@@ -11,6 +11,7 @@ class Solution:
         queue = deque([root])
         order = []
         reverse = False
+
         while queue:
             size = len(queue)
             level_order = []
