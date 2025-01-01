@@ -8,6 +8,7 @@ class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
+            
         queue = deque([root])
         order = []
         reverse = False

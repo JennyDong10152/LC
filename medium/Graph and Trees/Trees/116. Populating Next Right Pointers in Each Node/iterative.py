@@ -12,8 +12,8 @@ class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return None
+        
         queue = deque([root])
-
         while queue:
             size = len(queue)
             prev = None
