@@ -17,16 +17,15 @@ class Solution:
             p = p.parent
         for _ in range(q_depth - p_depth):
             q = q.parent
-        #now p and q in same depth
+        
         while p != q:
             p = p.parent
             q = q.parent
         return p
-
+    
     def getDepth(self, node):
         depth = 0
         while node:
-            node = node.parent
             depth += 1
+            node = node.parent
         return depth
-    

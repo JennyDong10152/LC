@@ -20,6 +20,6 @@ class Solution:
     def isPath(self, head, root):
         if head is None:
             return True
-        if root is None or root.val != head.val:
+        if not root or root.val != head.val:
             return False
         return self.isPath(head.next, root.left) or self.isPath(head.next, root.right)

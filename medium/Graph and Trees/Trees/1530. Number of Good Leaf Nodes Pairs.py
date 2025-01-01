@@ -18,10 +18,9 @@ class Solution:
 
         left_distances = self.count(node.left, distance)
         right_distances = self.count(node.right, distance)
-        
+
         for left_distance in left_distances:
             for right_distance in right_distances:
                 if left_distance + right_distance <= distance:
                     self.result += 1
-                    
-        return [d+1 for d in left_distances+right_distances]
+        return [distances+1 for distances in left_distances + right_distances]
