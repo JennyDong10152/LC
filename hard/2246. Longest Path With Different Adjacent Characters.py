@@ -1,23 +1,23 @@
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
-        graph = defaultdict(list)
+        self.graph = defaultdict(list)
         for node in range(1, len(parent)):
-            graph[parent[i]].append(node)
-        self.ans = 0
-        self.search(graph, s, 0)
-        return self.ans
+            self.graph[parent[node]].append(node)
+        self.answer = 0
+        self.search(s, 0)
+        return self.answer
     
-    def search(self, graph, s, node):
+    def search(self, s, node):
         root_char = s[node]
         longest = secondLongest = 0
 
-        for child in graph[node]:
-            child_path = self.search(graph, s, child)
+        for child in self.graph[node]:
+            childPath = self.search(s, child)
             if s[child] != root_char:
-                if child_path >= longest:
+                if childPath >= longest:
                     secondLongest = longest
-                    longest = child_path
-                elif child_path >= secondLongest:
-                    secondLongest = child_path
-        self.ans = max(self.ans, 1 + longest + secondLongest)
+                    longest = childPath
+                elif childPath >= secondLongest:
+                    secondLongest = childPath
+        self.answer = max(self.answer, 1 + longest + secondLongest)
         return 1 + longest

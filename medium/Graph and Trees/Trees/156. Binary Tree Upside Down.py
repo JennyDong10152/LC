@@ -13,6 +13,7 @@ class Solution:
     def recurse(self, node):
         if not node.left:
             return node
+
         root = self.recurse(node.left)
         node.left.left = node.right
         node.left.right = node

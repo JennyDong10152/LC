@@ -10,11 +10,11 @@ class Solution:
         self.find(root)
         return list(self.leaves.values())
     
-    def find(self, root):
-        if not root:
+    def find(self, node):
+        if not node:
             return 0
-        left = self.find(root.left)
-        right = self.find(root.right)
+        left = self.find(node.left)
+        right = self.find(node.right)
         level = 1 + max(left, right)
-        self.leaves[level].append(root.val)
+        self.leaves[level].append(node.val)
         return level

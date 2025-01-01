@@ -16,16 +16,18 @@ class Solution:
         self.first.left = self.prev
         self.prev.right = self.first
         return self.first
-
-    def convert(self, root):
-        if not root:
+    
+    def convert(self, node):
+        if not node:
             return None
-        
-        self.convert(root.left)
+
+        self.convert(node.left)
+
         if not self.prev:
-            self.first = root
+            self.first = node
         else:
-            root.left = self.prev
-            self.prev.right = root
-        self.prev = root
-        self.convert(root.right)
+            self.prev.right = node
+            node.left = self.prev
+
+        self.prev = node
+        self.convert(node.right)

@@ -20,6 +20,6 @@ class Solution:
                 if current.right:
                     queue.append(current.right)
             level_sums.append(temp_sum)
-        level_sums.sort(reverse = True)
 
+        level_sums.sort(reverse = True)
         return level_sums[k-1] if k <= len(level_sums) else -1

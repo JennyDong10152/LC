@@ -9,13 +9,12 @@ class Solution:
         if not root:
             return []
         order = defaultdict(list)
-        queue = deque([(root, 0)])
-        
+        queue = deque([(0, root)])
         while queue:
-            current, idx = queue.popleft()
-            order[idx].append(current.val)
-            if current.left:
-                queue.append((current.left, idx-1))
-            if current.right:
-                queue.append((current.right, idx+1))
-        return [order[x] for x in sorted(order.keys())]
+            column, node = queue.popleft()
+            order[column].append(node.val)
+            if node.left:
+                queue.append((column-1, node.left))
+            if node.right:
+                queue.append((column+1, node.right))
+        return [order[key] for key in sorted(order.keys())]

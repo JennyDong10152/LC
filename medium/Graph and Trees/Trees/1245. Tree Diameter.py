@@ -2,7 +2,6 @@ class Solution:
     def treeDiameter(self, edges: List[List[int]]) -> int:
         if not edges:
             return 0
-        
         self.graph = defaultdict(list)
         for node1, node2 in edges:
             self.graph[node1].append(node2)
@@ -14,11 +13,10 @@ class Solution:
     
     def search(self, node, parent):
         deepest = secondDeepest = 0
-
-        for neighbor in self.graph[node]:
-            if neighbor == parent:
+        for child in self.graph[node]:
+            if child == parent:
                 continue
-            depth = self.search(neighbor, node)
+            depth = self.search(child, node)
             if depth >= deepest:
                 secondDeepest = deepest
                 deepest = depth

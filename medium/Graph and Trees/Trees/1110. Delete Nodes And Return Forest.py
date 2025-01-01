@@ -11,11 +11,11 @@ class Solution:
         if root:
             self.trees.append(root)
         return self.trees
-    
+        
     def delete(self, root, to_delete):
         if not root:
             return None
-        
+
         root.left = self.delete(root.left, to_delete)
         root.right = self.delete(root.right, to_delete)
 

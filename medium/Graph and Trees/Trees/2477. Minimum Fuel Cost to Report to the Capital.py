@@ -6,14 +6,14 @@ class Solution:
         for node1, node2 in roads:
             self.graph[node1].append(node2)
             self.graph[node2].append(node1)
-        self.search(0, 0)
+        self.search(0,0)
         return self.fuel
     
-    def search(self, node, parent, people = 1):
-        for neighbor in self.graph[node]:
+    def search(self, child, parent, people = 1):
+        for neighbor in self.graph[child]:
             if neighbor == parent:
                 continue
-            people += self.search(neighbor, node)
-        if node:
+            people += self.search(neighbor, child)
+        if child:
             self.fuel += int(ceil(people/self.seats))
         return people
