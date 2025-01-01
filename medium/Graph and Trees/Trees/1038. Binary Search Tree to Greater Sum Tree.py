@@ -10,11 +10,10 @@ class Solution:
         self.calculate(root)
         return root
     
-    def calculate(self, root):
-        if not root:
+    def calculate(self, node):
+        if not node:
             return 0
-        
-        self.calculate(root.right)
-        self.value += root.val
-        root.val = self.value
-        self.calculate(root.left)
+        self.calculate(node.right)
+        self.value += node.val
+        node.val = self.value
+        self.calculate(node.left)

@@ -9,11 +9,12 @@ class Solution:
         money = self.robbing(root)
         return max(money)
     
-    def robbing(self, root):
-        if not root:
-            return [0,0]
-        left = self.robbing(root.left)
-        right = self.robbing(root.right)
-        rob = root.val + left[1] + right[1]
+    def robbing(self, node):
+        if not node:
+            return 0,0
+        left = self.robbing(node.left)
+        right = self.robbing(node.right)
+
+        rob = node.val + left[1] + right[1]
         notRob = max(left) + max(right)
-        return [rob, notRob]
+        return rob, notRob
