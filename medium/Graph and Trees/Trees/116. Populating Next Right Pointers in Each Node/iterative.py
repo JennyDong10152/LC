@@ -17,6 +17,7 @@ class Solution:
         while queue:
             size = len(queue)
             prev = None
+            
             for _ in range(size):
                 current = queue.popleft()
                 if prev:

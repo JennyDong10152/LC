@@ -10,11 +10,12 @@ class Solution:
         self.maxPath(root)
         return self.maxSum
     
-    def maxPath(self, root):
-        if not root:
+    def maxPath(self, node):
+        if not node:
             return 0
-        left = max(0, self.maxPath(root.left))
-        right = max(0, self.maxPath(root.right))
-        current = root.val + left + right
+
+        left = max(0, self.maxPath(node.left))
+        right = max(0, self.maxPath(node.right))
+        current = node.val + left + right
         self.maxSum = max(self.maxSum, current)
-        return max(left, right) + root.val
+        return max(left, right) + node.val
