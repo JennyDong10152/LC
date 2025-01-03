@@ -15,6 +15,6 @@ class Solution:
             return 0
         left = self.find(node.left)
         right = self.find(node.right)
-        level = 1 + max(left, right)
+        level = max(left, right) + 1
         self.leaves[level].append(node.val)
         return level

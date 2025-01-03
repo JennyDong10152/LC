@@ -16,10 +16,13 @@ class Solution:
                 queue.append((node.left, row+1, col-1))
             if node.right:
                 queue.append((node.right, row+1, col+1))
-        order = [order[x] for x in sorted(order.keys())]
+
+        order = [order[key] for key in sorted(order.keys())]
 
         for i in range(len(order)):
             temp_list = order[i]
             temp_list.sort()
-            order[i] = [x[1] for x in temp_list]
+            order[i] = [pair[1] for pair in temp_list]
+
         return order
+        

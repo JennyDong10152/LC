@@ -8,6 +8,16 @@
 
 # BackTrack Questions
 # 797. All Paths From Source to Target
+
+# PreOrder, inOrder, and postOrder
+# 144. Binary Tree Preorder Traversal
+# 105. Construct Binary Tree from Preorder and Inorder Traversal
+# 1008. Construct Binary Search Tree from Preorder Traversal
+# 889. Construct Binary Tree from Preorder and Postorder Traversal
+# 106. Construct Binary Tree from Inorder and Postorder Traversal
+
+# ** Note that the inorder traversal for binary tree is sorted
+
 #Iterative Traversals 
 def preorderTraversal(root):
     if not root:

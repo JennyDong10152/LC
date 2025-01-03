@@ -11,11 +11,11 @@ class Solution:
         self.find(root)
         return self.duplicates
     
-    def find(self, root):
-        if not root:
+    def find(self, node):
+        if not node:
             return None
-        sequence = tuple([self.find(root.left), root.val, self.find(root.right)])
+        sequence = tuple([self.find(node.left), node.val, self.find(node.right)])
         if sequence in self.visited and self.visited[sequence] == 1:
-            self.duplicates.append(root)
+            self.duplicates.append(node)
         self.visited[sequence] += 1
         return sequence

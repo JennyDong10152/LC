@@ -20,12 +20,14 @@ class Solution:
             for _ in range(size):
                 current = queue.popleft()
                 sibling = (current.left.val if current.left else 0) + (current.right.val if current.right else 0)
+                
                 if current.left:
                     current.left.val = level_sums[idx] - sibling
                     queue.append(current.left)
                 if current.right:
                     current.right.val = level_sums[idx] - sibling
                     queue.append(current.right)
+
             idx += 1
 
     def calculate(self, root):
@@ -43,4 +45,5 @@ class Solution:
                 if current.right:
                     queue.append(current.right)
             level_sums.append(level)
+            
         return level_sums

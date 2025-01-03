@@ -18,14 +18,14 @@ class Solution:
         for _ in range(q_depth - p_depth):
             q = q.parent
         
-        while p != q:
+        while q != p:
             p = p.parent
             q = q.parent
-        return p
+        return q
     
     def getDepth(self, node):
         depth = 0
         while node:
-            depth += 1
             node = node.parent
+            depth += 1
         return depth

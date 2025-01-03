@@ -7,10 +7,10 @@
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         self.total = 0
-        self.summing(root, 0)
+        self.sum(root, 0)
         return self.total
     
-    def summing(self, node, number):
+    def sum(self, node, number):
         if not node:
             return
         
@@ -18,6 +18,6 @@ class Solution:
         if not node.left and not node.right:
             self.total += number
             return 
-        
-        self.summing(node.left, number)
-        self.summing(node.right, number)
+
+        self.sum(node.left, number)
+        self.sum(node.right, number)
