@@ -23,9 +23,14 @@ class Solution:
         return node
 
     def inorder(self, root):
-        if not root:
-            return
+        current = root
+        stack = []
 
-        self.inorder(root.left)
-        self.order.append(root.val)
-        self.inorder(root.right)
+        while stack or current:
+            while current:
+                stack.append(current)
+                current = current.left
+                
+            current = stack.pop()
+            self.order.append(current.val)
+            current = current.right 

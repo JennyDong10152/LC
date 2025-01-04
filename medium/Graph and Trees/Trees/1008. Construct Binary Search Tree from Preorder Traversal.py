@@ -8,12 +8,12 @@ class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
         inorder = sorted(preorder)
         preorder = deque(preorder)
-        return self.build(preorder, inorder)
+        return self.build(inorder, preorder)
     
-    def build(self, preorder, inorder):
+    def build(self, inorder, preorder):
         if inorder:
             idx = inorder.index(preorder.popleft())
-            node = TreeNode(inorder[idx])
-            node.left = self.build(preorder, inorder[:idx])
-            node.right = self.build(preorder, inorder[idx+1:])
-            return node
+            root = TreeNode(inorder[idx])
+            root.left = self.build(inorder[:idx], preorder)
+            root.right = self.build(inorder[idx+1:], preorder)
+            return root

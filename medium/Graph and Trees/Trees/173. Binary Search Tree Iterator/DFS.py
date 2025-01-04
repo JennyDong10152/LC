@@ -11,20 +11,22 @@ class BSTIterator:
         self.idx = 0
         self.inorder(root)
         
-    def inorder(self, root):
-        if not root:
+    def inorder(self, node):
+        if not node:
             return 
-        self.inorder(root.left)
-        self.array.append(root.val)
-        self.inorder(root.right)
+        self.inorder(node.left)
+        self.array.append(node.val)
+        self.inorder(node.right)
 
     def next(self) -> int:
         value = self.array[self.idx]
         self.idx += 1
         return value
-
+        
     def hasNext(self) -> bool:
-        return self.idx <= len(self.array)-1
+        return self.idx < len(self.array)
+        
+
 
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
