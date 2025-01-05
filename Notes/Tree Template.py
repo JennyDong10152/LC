@@ -11,11 +11,14 @@
 
 # PreOrder, inOrder, and postOrder
 # 144. Binary Tree Preorder Traversal
+# 255. Verify Preorder Sequence in Binary Search Tree
 # 105. Construct Binary Tree from Preorder and Inorder Traversal
 # 1008. Construct Binary Search Tree from Preorder Traversal
 # 889. Construct Binary Tree from Preorder and Postorder Traversal
 # 106. Construct Binary Tree from Inorder and Postorder Traversal
-
+# 173. Binary Search Tree Iterator
+# 437. Path Sum III
+# 1382. Balance a Binary Search Tree
 # ** Note that the inorder traversal for binary tree is sorted
 
 #Iterative Traversals 

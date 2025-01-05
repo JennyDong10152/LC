@@ -7,17 +7,19 @@
 class Solution:
     def checkEqualTree(self, root: Optional[TreeNode]) -> bool:
         self.subtree = []
-        total = self.sumTrees(root)
-        return total/2 in self.subtree
+        total = self.calculate(root)
+        return total / 2 in self.subtree
     
-    def sumTrees(self, node):
+    def calculate(self, node):
+        if not node:
+            return 0
         value = node.val
         if node.left:
-            leftSum = self.sumTrees(node.left)
+            leftSum = self.calculate(node.left)
             value += leftSum
             self.subtree.append(leftSum)
         if node.right:
-            rightSum = self.sumTrees(node.right)
+            rightSum = self.calculate(node.right)
             value += rightSum
             self.subtree.append(rightSum)
         return value

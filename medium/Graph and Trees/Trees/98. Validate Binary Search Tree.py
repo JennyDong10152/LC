@@ -8,9 +8,9 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return self.isValid(root, -float("inf"), float("inf"))
     
-    def isValid(self, root, left, right):
-        if not root:
+    def isValid(self, node, minLimit, maxLimit):
+        if not node:
             return True
-        if root.val <= left or root.val >= right:
+        if not minLimit < node.val < maxLimit:
             return False
-        return self.isValid(root.left, left, root.val) and self.isValid(root.right, root.val, right)
+        return self.isValid(node.left, minLimit, node.val) and self.isValid(node.right, node.val, maxLimit)

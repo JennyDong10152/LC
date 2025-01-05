@@ -1,7 +1,5 @@
 class Solution:
     def treeDiameter(self, edges: List[List[int]]) -> int:
-        if not edges:
-            return 0
         self.graph = defaultdict(list)
         for node1, node2 in edges:
             self.graph[node1].append(node2)
@@ -20,7 +18,7 @@ class Solution:
             if depth >= deepest:
                 secondDeepest = deepest
                 deepest = depth
-            elif depth > secondDeepest:
+            elif depth >= secondDeepest:
                 secondDeepest = depth
-        self.diameter = max(self.diameter, deepest + secondDeepest)
+        self.diameter = max(self.diameter, deepest+secondDeepest)
         return 1 + deepest
