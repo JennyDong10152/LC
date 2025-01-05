@@ -1,29 +1,30 @@
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
-        relation = defaultdict(list)#prequisite : list()
+        relation = defaultdict(list)
         degree = {c : 0 for word in words for c in word}
 
         for word1, word2 in zip(words, words[1:]):
-            for c, d in zip(word1, word2):
-                if c != d:
-                    if d not in relation[c]:
-                        relation[c].append(d)
-                        degree[d] += 1
+            for char1, char2 in zip(word1, word2):
+                if char1 != char2:
+                    if char2 not in relation[char1]:
+                        relation[char1].append(char2)
+                        degree[char2] += 1
                     break
             else:
                 if len(word1) > len(word2):
                     return ""
         
-        q = deque()
-        for i in degree:
-            if not degree[i]:
-                q.append(i)
-        ans = ""
-        while q:
-            curr = q.popleft()
-            ans += curr
-            for neighbor in relation[curr]:
-                degree[neighbor] -= 1
-                if not degree[neighbor]:
-                    q.append(neighbor)
-        return ans if len(ans) == len(degree) else ""
+        queue = deque()
+        order = ""
+        for char in degree:
+            if not degree[char]:
+                queue.append(char)
+            
+        while queue:
+            char = queue.popleft()
+            order += char
+            for nextChar in relation[char]:
+                degree[nextChar] -= 1
+                if not degree[nextChar]:
+                    queue.append(nextChar)
+        return order if len(order) == len(degree) else ""
