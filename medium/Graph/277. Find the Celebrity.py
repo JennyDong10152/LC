@@ -5,17 +5,18 @@
 class Solution:
     def findCelebrity(self, n: int) -> int:
         celebrity = 0
-        for i in range(1, n):
-            if knows(celebrity, i):
-                celebrity = i
+        for person in range(1, n):
+            if knows(celebrity, person):
+                celebrity = person
+
         if self.isCelebrity(celebrity, n):
             return celebrity
         return -1
     
     def isCelebrity(self, celebrity, n):
-        for i in range(n):
-            if celebrity == i:
+        for person in range(n):
+            if person == celebrity:
                 continue
-            if knows(celebrity, i) or not knows(i, celebrity):
+            if knows(celebrity, person) or not knows(person, celebrity):
                 return False
         return True

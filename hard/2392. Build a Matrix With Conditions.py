@@ -1,46 +1,45 @@
 class Solution:
     def buildMatrix(self, k: int, rowConditions: List[List[int]], colConditions: List[List[int]]) -> List[List[int]]:
         self.k = k
-        row_order = self.sort(rowConditions)
-        col_order = self.sort(colConditions)
+        rowRelation = self.build(rowConditions)
+        colRelation = self.build(colConditions)
 
-        if not row_order or not col_order:
+        if not rowRelation or not colRelation:
             return []
-
-        col_order = {x : i for i, x in enumerate(col_order)}
+        colRelation = {num : idx for idx, num in enumerate(colRelation)}
         grid = [[0 for _ in range(k)] for _ in range(k)]
-        
-        for i, x in enumerate(row_order):
-            if not x in col_order:
+
+        for row, num in enumerate(rowRelation):
+            if not num in colRelation:
                 break
-            j = col_order[x]
-            grid[i][j] = x
+            col = colRelation[num]
+            grid[row][col] = num
         
         for row in grid:
             if not any(row):
                 return []
         return grid
-    
-    def sort(self, relations):
-        graph = defaultdict(list)
+
+    def build(self, condition):
         degree = [0] * (self.k+1)
+        relation = defaultdict(list)
 
-        for prev, x in relations:
-            if not x in graph[prev]:
-                graph[prev].append(x)
-                degree[x] += 1
+        for prev, second in condition:
+            if not second in relation[prev]:
+                relation[prev].append(second)
+                degree[second] += 1
         
-        q = deque()
-        for i in range(1, self.k+1):
-            if not degree[i]:
-                q.append(i)
-
+        queue = deque()
         order = []
-        while q:
-            curr = q.popleft()
-            order.append(curr)
-            for neighbor in graph[curr]:
-                degree[neighbor] -= 1
-                if not degree[neighbor]:
-                    q.append(neighbor)
+        for num in range(1, self.k+1):
+            if not degree[num]:
+                queue.append(num)
+        
+        while queue:
+            current = queue.popleft()
+            order.append(current)
+            for nextVal in relation[current]:
+                degree[nextVal] -= 1
+                if not degree[nextVal]:
+                    queue.append(nextVal)
         return order if not any(degree) else []
