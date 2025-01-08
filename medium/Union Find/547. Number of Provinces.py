@@ -1,26 +1,24 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
-        parent = [i for i in range(n+1)]
+        parent = [i for i in range(n)]
         disjoint = n
 
         for i in range(n):
             for j in range(i+1, n):
-                if isConnected[i][j]:
-                    connect = self.union(parent, i, j)
-                    if connect:
-                        disjoint -= 1
+                if isConnected[i][j] and self.union(parent, i, j):
+                    disjoint -= 1
         return disjoint
     
-    def union(self, parent, i, j):
-        root_i = self.find(parent, i)
-        root_j = self.find(parent, j)
-        if root_i != root_j:
-            parent[root_j] = root_i
+    def union(self, parent, x, y):
+        root_x = self.find(parent, x)
+        root_y = self.find(parent, y)
+        if root_x != root_y:
+            parent[root_y] = root_x
             return True
         return False
     
-    def find(self, parent, i):
-        if i != parent[i]:
-            parent[i] = self.find(parent, parent[i])
-        return parent[i]
+    def find(self, parent, x):
+        if parent[x] != x:
+            parent[x] = self.find(parent, parent[x])
+        return parent[x] 

@@ -2,18 +2,18 @@ class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
         self.graph = defaultdict(list)
         for node1, node2, weight in edges:
-            self.graph[node1].append((node2, weight))
-            self.graph[node2].append((node1, weight))
+            self.graph[node1].append((weight, node2))
+            self.graph[node2].append((weight, node1))
 
-        minNeighbor = [n + 1, n]  # numNeighbors, node
+        minNeighbor = [n + 1, n]
         for city in range(n):
             neighbors = self.search(city, distanceThreshold)
             if neighbors <= minNeighbor[0]:
                 minNeighbor = [neighbors, city]
         return minNeighbor[1]
 
-    def search(self, city: int, distanceThreshold: int) -> int:
-        heap = [(0, city)] 
+    def search(self, city, distanceThreshold):
+        heap = [(0, city)]
         visited = set()
 
         while heap:
@@ -21,9 +21,8 @@ class Solution:
             if current in visited:
                 continue
             visited.add(current)
-
-            for neighbor, weight in self.graph[current]:
-                new_distance = distance + weight
-                if new_distance <= distanceThreshold and neighbor not in visited:
-                    heappush(heap, (new_distance, neighbor))        
-        return len(visited) - 1
+            for weight, neighbor in self.graph[current]:
+                newDistance = weight + distance
+                if newDistance <= distanceThreshold and neighbor not in visited:
+                    heappush(heap, (newDistance, neighbor))
+        return len(visited)
