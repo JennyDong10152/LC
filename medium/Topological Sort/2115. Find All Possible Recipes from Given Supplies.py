@@ -3,21 +3,21 @@ class Solution:
         graph = defaultdict(list)
         degree = defaultdict(int)
 
-        for i, ingredient in enumerate(ingredients): 
-            for ing in ingredient:
-                graph[ing].append(recipes[i])
-                degree[recipes[i]] += 1
+        for recipe, ingredient in zip(recipes, ingredients):
+            for food in ingredient:
+                graph[food].append(recipe)
+                degree[recipe] += 1
         
-        q = deque()
+        queue = deque()
+        output = []
         for supply in supplies:
-            q.append(supply)
-
-        ans = []
-        while q:
-            curr = q.popleft()
-            for food in graph[curr]:
-                degree[food] -= 1
-                if not degree[food]:
-                    ans.append(food)
-                    q.append(food)
-        return ans     
+            queue.append(supply)
+        
+        while queue:
+            food = queue.popleft()
+            for recipe in graph[food]:
+                degree[recipe] -= 1
+                if not degree[recipe]:
+                    output.append(recipe)
+                    queue.append(recipe)
+        return output

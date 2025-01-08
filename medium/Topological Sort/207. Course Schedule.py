@@ -6,16 +6,16 @@ class Solution:
         for course, prev in prerequisites:
             graph[prev].append(course)
             degree[course] += 1
-        order = deque()
-
+        
+        queue = deque()
         for course in range(numCourses):
             if not degree[course]:
-                order.append(course)
+                queue.append(course)
         
-        while order:
-            curr = order.popleft()
-            for course in graph[curr]:
-                degree[course] -= 1
-                if not degree[course]:
-                    order.append(course)
+        while queue:
+            course = queue.popleft()
+            for nextCourse in graph[course]:
+                degree[nextCourse] -= 1
+                if not degree[nextCourse]:
+                    queue.append(nextCourse)
         return not any(degree)

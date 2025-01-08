@@ -9,15 +9,16 @@ class Solution:
         
         queue = deque()
         order = []
-        for i in range(numCourses):
-            if not degree[i]:
-                queue.append(i)
+
+        for course in range(numCourses):
+            if not degree[course]:
+                queue.append(course)
         
         while queue:
-            curr = queue.popleft()
-            order.append(curr)
-            for course in graph[curr]:
-                degree[course] -= 1
-                if not degree[course]:
-                    queue.append(course)
+            course = queue.popleft()
+            order.append(course)
+            for nextCourse in graph[course]:
+                degree[nextCourse] -= 1
+                if not degree[nextCourse]:
+                    queue.append(nextCourse)
         return order if not any(degree) else []

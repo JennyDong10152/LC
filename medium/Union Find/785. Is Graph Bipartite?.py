@@ -5,8 +5,8 @@ class Solution:
 
         for i in range(n):
             root_i = self.find(parent, i)
-            for j in range(len(graph[i])):
-                root_j = self.find(parent, graph[i][j])
+            for neighbor in graph[i]:
+                root_j = self.find(parent, neighbor)
                 if root_i == root_j:
                     return False
                 parent[root_j] = self.find(parent, graph[i][0])
