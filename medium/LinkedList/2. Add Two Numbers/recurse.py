@@ -5,18 +5,17 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        answer = self.add(l1, l2, 0)
-        return answer
+        node = self.add(l1, l2, 0)
+        return node
     
-    def add(self, list1, list2, carry):
-        if list1 is None and list2 is None and not carry:
-            return None
-
-        list1_val = list1.val if list1 else 0
-        list2_val = list2.val if list2 else 0
-        value = list1_val + list2_val + carry
-
-        carry = value//10
-        node = ListNode(value%10)
-        node.next = self.add(list1.next if list1 else None, list2.next if list2 else None, carry)
+    def add(self, l1, l2, carry):
+        if not l1 and not l2 and not carry:
+            return 
+        
+        l1_val = l1.val if l1 else 0
+        l2_val = l2.val if l2 else 0
+        num = l1_val + l2_val + carry
+        carry = num // 10
+        node = ListNode(num % 10)
+        node.next = self.add(l1.next if l1 else None, l2.next if l2 else None, carry)
         return node
