@@ -1,14 +1,14 @@
 class Solution:
     def earliestAcq(self, logs: List[List[int]], n: int) -> int:
-        logs.sort(key = lambda x : x[0])
+        logs.sort()
+        stranger = n
         parent = [i for i in range(n)]
-        disjoint = n
-        for time, x, y in logs:
-            connected = self.union(parent, x, y)
-            if connected:
-                disjoint -= 1
-                if disjoint == 1:
-                    return time
+
+        for time, friend1, friend2 in logs:
+            if self.union(parent, friend1, friend2):
+                stranger -= 1
+            if stranger == 1:
+                return time
         return -1
     
     def union(self, parent, x, y):
@@ -20,6 +20,6 @@ class Solution:
         return False
     
     def find(self, parent, x):
-        if parent[x] != x:
+        if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
-        return parent[x]         
+        return parent[x]
