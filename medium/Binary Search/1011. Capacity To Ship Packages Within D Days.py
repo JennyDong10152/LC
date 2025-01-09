@@ -5,20 +5,20 @@ class Solution:
 
         while left <= right:
             mid = left + (right-left)//2
-            days_needed = self.search(weights, mid)
+            days_needed = self.count(weights, mid)
             if days_needed > days:
                 left = mid + 1
             else:
                 right = mid - 1
         return left
     
-    def search(self, nums, target):
-        cnt = 1
-        curr = 0
-        for n in nums:
-            if n + curr > target:
-                cnt += 1
-                curr = n
+    def count(self, weights, target):
+        day = 1
+        capacity = 0
+        for weight in weights:
+            if capacity + weight > target:
+                day += 1
+                capacity = weight
             else:
-                curr += n
-        return cnt
+                capacity += weight
+        return day 
