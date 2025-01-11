@@ -4,11 +4,12 @@ class Solution:
 
         for start, finish in zip(rounds, rounds[1:]):
             idx = start
-            while True:
-                frequency[idx] += 1
-                if idx == finish:
-                    break
-                idx = (idx % n) + 1
+            while start != finish:
+                if start > n:
+                    start = 1
+                else:
+                    frequency[start] += 1
+                    start += 1
         frequency[rounds[-1]] += 1
 
         max_frequency = max(frequency.values())
