@@ -1,11 +1,11 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
         window = sum(nums)
-        minLength = count = nums[:window].count(0)
         n = len(nums)
+        swap = minSwap = nums[:window].count(0)
 
-        for i in range(window, n + window):
-            count += not nums[i % n]
-            count -= not nums[(i - window + n) % n]
-            minLength = min(minLength, count)
-        return minLength
+        for idx in range(window, window + n):
+            swap += not nums[idx % n]
+            swap -= not nums[(idx - window + n) % n]
+            minSwap = min(minSwap, swap)
+        return minSwap

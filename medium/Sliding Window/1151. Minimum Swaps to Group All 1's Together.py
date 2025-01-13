@@ -1,9 +1,10 @@
 class Solution:
     def minSwaps(self, data: List[int]) -> int:
         window = sum(data)
-        minimum = current = data[:window].count(0)
+        swap = minSwap = data[:window].count(0)
+
         for idx in range(window, len(data)):
-            current -= not data[idx-window]
-            current += not data[idx]
-            minimum = min(minimum, current)
-        return minimum
+            swap -= not data[idx - window]
+            swap += not data[idx]
+            minSwap = min(minSwap, swap)
+        return minSwap
