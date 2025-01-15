@@ -3,8 +3,8 @@ class Solution:
         window = sum(data)
         swap = minSwap = data[:window].count(0)
 
-        for idx in range(window, len(data)):
-            swap -= not data[idx - window]
-            swap += not data[idx]
+        for i in range(window, len(data)):
+            swap -= not data[i - window]
+            swap += not data[i]
             minSwap = min(minSwap, swap)
         return minSwap
