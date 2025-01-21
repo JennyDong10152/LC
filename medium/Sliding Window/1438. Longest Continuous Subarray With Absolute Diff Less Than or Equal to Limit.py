@@ -1,11 +1,11 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
-        maxLength = left = 0
         window = SortedList()
-        n = len(nums)
+        left = 0
+        maxLength = 0
 
-        for right in range(n):
-            window.add(nums[right])
+        for right, num in enumerate(nums):
+            window.add(num)
             while window[-1] - window[0] > limit:
                 window.remove(nums[left])
                 left += 1

@@ -5,7 +5,7 @@ class Solution:
         maxLength = 0
 
         for right, char in enumerate(s):
-            if char in visited and visited[char] >= left:
+            if char in visited and left <= visited[char]:
                 left = visited[char] + 1
             maxLength = max(maxLength, right - left + 1)
             visited[char] = right
