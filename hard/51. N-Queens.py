@@ -1,32 +1,30 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        self.board = [['.' for _ in range(n)] for _ in range(n)]
+        diagnols, antidiagnols, columns = set(), set(), set()
         self.n = n
-        answer = []
-        visited_cols = set()
-        visited_diagnols = set()
-        visited_antidiagnols = set()
-        self.backtrack(0, visited_cols, visited_diagnols, visited_antidiagnols, answer)
-        return answer
+        self.answers = []
+        board = [['.' for _ in range(n)] for _ in range(n)]
+        self.solve(0, diagnols, antidiagnols, columns, board)
+        return self.answers
     
-    def backtrack(self, row, visited_cols, visited_diagnols, visited_antidiagnols, answer):
+    def solve(self, row, diagnols, antidiagnols, columns, board):
         if row == self.n:
-            answer.append(["".join(row) for row in self.board])
+            self.answers.append([''.join(row) for row in board])
             return 
         
         for col in range(self.n):
-            diagnolDiff = row - col
-            diagnolSum = row + col
-            if (col in visited_cols) or (diagnolDiff in visited_diagnols) or (diagnolSum in visited_antidiagnols):
+            diagnol = row - col
+            antidiagnol = row + col
+            if (col in columns) or (diagnol in diagnols) or (antidiagnol in antidiagnols):
                 continue
-            visited_cols.add(col)
-            visited_diagnols.add(diagnolDiff)
-            visited_antidiagnols.add(diagnolSum)
-            self.board[row][col] = 'Q'
+            diagnols.add(diagnol)
+            antidiagnols.add(antidiagnol)
+            columns.add(col)
+            board[row][col] = 'Q'
 
-            self.backtrack(row+1, visited_cols, visited_diagnols, visited_antidiagnols, answer)
+            self.solve(row+1, diagnols, antidiagnols, columns, board)
 
-            visited_cols.remove(col)
-            visited_diagnols.remove(diagnolDiff)
-            visited_antidiagnols.remove(diagnolSum)
-            self.board[row][col] = '.'
+            diagnols.remove(diagnol)
+            antidiagnols.remove(antidiagnol)
+            columns.remove(col)
+            board[row][col] = '.'

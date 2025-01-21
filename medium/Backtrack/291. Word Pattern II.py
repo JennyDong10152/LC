@@ -1,23 +1,22 @@
 class Solution:
     def wordPatternMatch(self, pattern: str, s: str) -> bool:
         self.answer = False
-        self.backtrack(s, 0, pattern, {})
+        self.backtrack(pattern, s, 0, {})
         return self.answer
     
-    def backtrack(self, string, idx, pattern, pattern_dict):
+    def backtrack(self, pattern, s, idx, pattern_dict):
         if idx == len(pattern):
-            if not string:
+            if not s:
                 self.answer = True
             return
-        
+
         current = pattern[idx]
-        for i in range(len(string)):
-            substring = string[:i+1]
-            leftover = string[i+1:]
-            if current not in pattern_dict and substring not in pattern_dict.values():
+        for i in range(len(s)):
+            substring = s[:i+1]
+            leftover = s[i+1:]
+            if not current in pattern_dict and not substring in pattern_dict.values():
                 pattern_dict[current] = substring
-                self.backtrack(leftover, idx+1, pattern, pattern_dict)
+                self.backtrack(pattern, leftover, idx+1, pattern_dict)
                 del pattern_dict[current]
             elif current in pattern_dict and pattern_dict[current] == substring:
-                self.backtrack(leftover, idx+1, pattern, pattern_dict)
-        
+                self.backtrack(pattern, leftover, idx+1, pattern_dict)
