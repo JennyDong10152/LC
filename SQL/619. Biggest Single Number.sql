@@ -4,5 +4,5 @@ FROM (
     SELECT num
     FROM MyNumbers
     GROUP BY num
-    HAVING COUNT(num) = 1
-) AS helper
+    HAVING COUNT(*) = 1
+) helper
