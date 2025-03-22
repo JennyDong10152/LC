@@ -10,3 +10,5 @@ WHERE (product_id, year) IN (
     FROM Sales 
     GROUP BY product_id
 )
+
+
