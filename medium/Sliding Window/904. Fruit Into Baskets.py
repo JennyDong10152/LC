@@ -12,4 +12,4 @@ class Solution:
                     del basket[fruits[left]]
                 left += 1
             maxPicked = max(maxPicked, right - left + 1)
-        return maxPicked
+        return maxPicked 

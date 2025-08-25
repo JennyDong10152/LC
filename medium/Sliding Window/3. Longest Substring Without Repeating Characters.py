@@ -1,8 +1,8 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         visited = dict()
-        left = 0
         maxLength = 0
+        left = 0
 
         for right, char in enumerate(s):
             if char in visited and left <= visited[char]:

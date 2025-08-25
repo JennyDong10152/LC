@@ -5,8 +5,7 @@ class Solution:
         zeroes = 0
 
         for right, num in enumerate(nums):
-            if not num:
-                zeroes += 1
+            zeroes += not num
             while zeroes > 1:
                 zeroes -= not nums[left]
                 left += 1

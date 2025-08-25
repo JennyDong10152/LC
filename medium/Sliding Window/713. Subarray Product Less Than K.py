@@ -8,7 +8,7 @@ class Solution:
 
         for right, num in enumerate(nums):
             product *= num
-            while product >= k:
+            while product >= k :
                 product //= nums[left]
                 left += 1
             count += right - left + 1

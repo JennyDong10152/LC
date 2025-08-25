@@ -1,11 +1,11 @@
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
-        n = len(s)
         maxLength = left = 0
+        n = len(s)
         unique = defaultdict(int)
 
-        for right in range(n):
-            unique[s[right]] += 1
+        for right, char in enumerate(s):
+            unique[char] += 1
             while len(unique) > k:
                 unique[s[left]] -= 1
                 if not unique[s[left]]:

@@ -10,4 +10,4 @@ class Solution:
                 maxZero -= not nums[left]
                 left += 1
             maxLength = max(maxLength, right - left + 1)
-        return maxLength
+        return maxLength 
