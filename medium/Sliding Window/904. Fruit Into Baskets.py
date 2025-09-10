@@ -1,15 +1,20 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        maxPicked = 0
         left = 0
-        basket = defaultdict(int)
+        maxLength = 0
+        frequency = defaultdict(int)
 
         for right, fruit in enumerate(fruits):
-            basket[fruit] += 1
-            while len(basket) > 2:
-                basket[fruits[left]] -= 1
-                if not basket[fruits[left]]:
-                    del basket[fruits[left]]
+            frequency[fruit] += 1
+            if len(frequency) > 2:
+                frequency[fruits[left]] -= 1
+                if not frequency[fruits[left]]:
+                    del frequency[fruits[left]]
                 left += 1
+<<<<<<< Updated upstream
             maxPicked = max(maxPicked, right - left + 1)
         return maxPicked
+=======
+            maxLength = max(maxLength, right - left + 1)
+        return maxLength
+>>>>>>> Stashed changes
