@@ -10,4 +10,4 @@ class Solution:
                 frequency[s[left]] -= 1
                 left += 1
             count += right - left + 1
-        return count
+        return count 

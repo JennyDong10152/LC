@@ -4,7 +4,7 @@ class Solution:
         n = len(nums)
         swap = minSwap = nums[:window].count(0)
 
-        for idx in range(window, n + window):
+        for idx in range(window, window + n):
             swap -= not nums[(idx - window + n) % n]
             swap += not nums[idx % n]
             minSwap = min(minSwap, swap)

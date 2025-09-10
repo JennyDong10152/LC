@@ -9,4 +9,4 @@ class Solution:
             prefixSum += num
             count += prefix[prefixSum - goal]
             prefix[prefixSum] += 1
-        return count
+        return count 
