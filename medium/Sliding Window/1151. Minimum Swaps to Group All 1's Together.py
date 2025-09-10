@@ -3,6 +3,7 @@ class Solution:
         window = sum(data)
 <<<<<<< Updated upstream
         swap = minSwap = data[:window].count(0)
+
         for right in range(window, len(data)):
             swap -= not data[right - window]
             swap += not data[right]

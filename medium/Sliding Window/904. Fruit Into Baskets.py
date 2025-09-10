@@ -11,10 +11,6 @@ class Solution:
                 if not frequency[fruits[left]]:
                     del frequency[fruits[left]]
                 left += 1
-<<<<<<< Updated upstream
-            maxPicked = max(maxPicked, right - left + 1)
-        return maxPicked
-=======
+
             maxLength = max(maxLength, right - left + 1)
         return maxLength
->>>>>>> Stashed changes

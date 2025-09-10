@@ -10,9 +10,4 @@ class Solution:
                 count -= not nums[left]
                 left += 1
             maxLength = max(maxLength, right - left + 1)
-<<<<<<< Updated upstream
         return maxLength
-=======
-        return maxLength
-                
->>>>>>> Stashed changes

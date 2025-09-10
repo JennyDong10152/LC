@@ -1,11 +1,13 @@
 class Solution:
     def numberOfSubstrings(self, s: str, k: int) -> int:
-        answer = left = 0
-        record = defaultdict(int)
+        count = 0
+        frequency = defaultdict(int)
+        left = 0
+
         for char in s:
-            record[char] += 1
-            while record[char] == k:
-                record[s[left]] -= 1
+            frequency[char] += 1
+            while frequency[char] == k:
+                frequency[s[left]] -= 1
                 left += 1
-            answer += left
-        return answer
+            count += left
+        return count

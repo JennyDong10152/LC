@@ -5,7 +5,7 @@ class Solution:
 
         for right, num in enumerate(nums):
             subsum += num
-            while (nums[right] * (right-left+1)) - subsum > k:
+            while (nums[right] * (right - left + 1) - subsum > k):
                 subsum -= nums[left]
                 left += 1
             maxLength = max(maxLength, right - left + 1)
