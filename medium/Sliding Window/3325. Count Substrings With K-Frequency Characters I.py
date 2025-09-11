@@ -1,10 +1,10 @@
 class Solution:
     def numberOfSubstrings(self, s: str, k: int) -> int:
         count = 0
-        frequency = defaultdict(int)
         left = 0
+        frequency = defaultdict(int)
 
-        for char in s:
+        for right, char in enumerate(s):
             frequency[char] += 1
             while frequency[char] == k:
                 frequency[s[left]] -= 1
