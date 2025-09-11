@@ -9,5 +9,5 @@ class Solution:
             while window[-1] - window[0] > limit:
                 window.remove(nums[left])
                 left += 1
-            maxLength = max(maxLength, right - left + 1)
-        return maxLength 
+            maxLength = max(maxLength, right-left+1)
+        return maxLength
