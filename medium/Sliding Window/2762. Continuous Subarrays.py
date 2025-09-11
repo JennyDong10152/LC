@@ -3,7 +3,7 @@ class Solution:
         window = SortedList()
         left = 0
         count = 0
-        
+
         for right, num in enumerate(nums):
             window.add(num)
             while window[-1] - window[0] > 2:

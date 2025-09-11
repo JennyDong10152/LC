@@ -1,12 +1,12 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        maxLength = 0
         left = 0
-        frequency = dict()
+        maxLength = 0
+        frequency = defaultdict(int)
 
-        for idx, char in enumerate(s):
+        for right, char in enumerate(s):
             if char in frequency and left <= frequency[char]:
                 left = frequency[char] + 1
-            maxLength = max(maxLength, idx-left+1)
-            frequency[char] = idx
+            frequency[char] = right
+            maxLength = max(maxLength, right - left + 1)
         return maxLength
