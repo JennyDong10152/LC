@@ -10,14 +10,14 @@ class Solution:
         ans = -1
 
         while left <= right:
-            mid = left + (right-left)//2
+            mid = left + (right-left) // 2
             midV = nums[mid]
             if midV == target:
-                ans= mid
+                ans = mid
                 if isFirst:
-                    right = mid - 1
+                    right = mid-1
                 else:
-                    left = mid + 1
+                    left = mid+1
             elif midV > target:
                 right = mid - 1
             else:
