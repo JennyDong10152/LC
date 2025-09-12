@@ -10,3 +10,4 @@ class Solution:
             frequency[char] = right
             count += right - left + 1
         return count
+    
