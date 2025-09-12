@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        left = 0
         maxLength = 0
+        left = 0
         frequency = defaultdict(int)
 
         for right, char in enumerate(s):
