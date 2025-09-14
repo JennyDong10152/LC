@@ -18,10 +18,10 @@ class Solution:
                 if isFirst:
                     right = mid - 1
                 else:
-                    left = mid + 1
+                    left = mid+1
             
             elif midV > target:
-                right = mid - 1
+                right = mid-1
             else:
                 left = mid + 1
         return ans
