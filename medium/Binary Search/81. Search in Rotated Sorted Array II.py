@@ -8,10 +8,10 @@ class Solution:
             midV = nums[mid]
             if midV == target:
                 return True
-            elif nums[left] == midV == nums[right]:
-                left += 1
+            if nums[left] == midV == nums[right]:
                 right -= 1
-                continue
+                left += 1
+            
             elif nums[left] <= midV:
                 if nums[left] <= target < midV:
                     right = mid - 1
