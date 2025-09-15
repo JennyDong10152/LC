@@ -1,18 +1,17 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        array = []
+        ans = []
         for num in nums:
-            idx = self.search(array, num)
-            if idx < len(array):
-                array[idx] = num
+            idx = self.search(ans, num)
+            if idx < len(ans):
+                ans[idx] = num
             else:
-                array.append(num)
-        return len(array)
+                ans.append(num)
+        return len(ans)
     
     def search(self, array, target):
         left = 0
-        right = len(array) - 1
-
+        right = len(nums) - 1
         while left <= right:
             mid = left + (right - left) // 2
             midV = array[mid]

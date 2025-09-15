@@ -3,7 +3,7 @@ class Solution:
         for row in matrix:
             if row[-1] < target:
                 continue
-            elif row[0] > target:
+            if row[0] > target:
                 return False
             elif self.search(row, target):
                 return True

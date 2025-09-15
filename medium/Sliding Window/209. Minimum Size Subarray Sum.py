@@ -5,11 +5,11 @@ class Solution:
         minLength = len(nums)
         subsum = 0
         left = 0
-
+        
         for right, num in enumerate(nums):
             subsum += num
             while subsum >= target:
+                minLength = min(minLength, right-left+1)
                 subsum -= nums[left]
-                minLength = min(minLength, right - left + 1)
                 left += 1
         return minLength
