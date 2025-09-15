@@ -1,9 +1,9 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         for row in matrix:
-            if target > row[-1]:
+            if row[-1] < target:
                 continue
-            if target < row[0]:
+            if row[0] > target:
                 return False
             else:
                 founded = self.search(row, target)
@@ -13,7 +13,7 @@ class Solution:
     
     def search(self, nums, target):
         left = 0
-        right = len(nums)-1
+        right = len(nums) - 1
 
         while left <= right:
             mid = left + (right-left)//2
