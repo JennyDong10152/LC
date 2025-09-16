@@ -4,10 +4,10 @@ class Solution:
         right = len(nums) - 1
 
         while left < right:
-            mid = left + (right-left) // 2
+            mid = left + (right-left)//2
             midV = nums[mid]
             if midV > nums[mid+1]:
                 right = mid
             else:
                 left = mid + 1
-        return right
+        return left
