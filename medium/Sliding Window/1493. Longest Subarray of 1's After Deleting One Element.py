@@ -1,5 +1,4 @@
 class Solution:
-class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
         zeroes = 0
         left = 0
