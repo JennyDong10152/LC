@@ -6,13 +6,13 @@ class Solution:
         while left <= right:
             mid = left + (right-left)//2
             midV = nums[mid]
-            if midV == target:
+            if target == midV:
                 return True
-            elif nums[left] == midV == nums[right]:
+            if nums[left] == midV == nums[right]:
                 left += 1
                 right -= 1
                 continue
-            elif nums[left] <= midV:
+            if nums[left] <= midV:
                 if nums[left] <= target < midV:
                     right = mid - 1
                 else:
