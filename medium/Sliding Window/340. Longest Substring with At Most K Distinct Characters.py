@@ -1,8 +1,8 @@
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
-        left = 0
         frequency = defaultdict(int)
         maxLength = 0
+        left = 0
 
         for right, char in enumerate(s):
             frequency[char] += 1
