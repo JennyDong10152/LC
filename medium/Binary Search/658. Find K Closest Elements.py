@@ -7,11 +7,12 @@ class Solution:
         
         left = 0
         right = len(arr)-k
+
         while left < right:
-            mid = left + (right - left) // 2
+            mid = left + (right - left)//2
             midV = arr[mid]
             if arr[mid+k] - x >= x - midV:
                 right = mid
             else:
                 left = mid + 1
-        return arr[left: left + k]
+        return arr[left : left + k]

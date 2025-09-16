@@ -3,10 +3,11 @@ class Solution:
         n = len(intervals)
         ans = [-1] * n
         interval = []
+
         for idx, [start, end] in enumerate(intervals):
             interval.append([start, end, idx])
         interval.sort()
-        
+
         for [start, end, idx_o] in interval:
             idx_right = self.search(interval, end)
             if 0 <= idx_right < n:
@@ -18,7 +19,7 @@ class Solution:
         right = len(interval)
 
         while left < right:
-            mid = left + (right-left)//2
+            mid = left + (right - left)//2
             midV = interval[mid][0]
             if midV >= target:
                 right = mid
