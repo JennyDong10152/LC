@@ -13,6 +13,7 @@ class Solution:
     
     def check(self, nums1, nums2, idx):
         nums1_set = set()
+        
         for i in range(idx, len(nums1)+1):
             nums1_set.add(tuple(nums1[i-idx:i]))
         

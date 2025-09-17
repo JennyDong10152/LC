@@ -10,10 +10,9 @@ class Solution:
         for i in range(len(jobs)):
             max_profit = max(max_profit, jobs[i][1])
             jobs[i] = (jobs[i][0], max_profit) 
-        
+
         for w in worker:
-            cur_profit = self.search(jobs, w)
-            maxTotal += cur_profit
+            maxTotal += self.search(jobs, w)
         return maxTotal
     
     def search(self, jobs, target):

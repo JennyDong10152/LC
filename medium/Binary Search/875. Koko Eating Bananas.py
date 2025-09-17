@@ -3,19 +3,19 @@ class Solution:
         left = 1
         right = sum(piles)
 
-        while left <= right:
+        while left < right:
             mid = left + (right-left)//2
-            hours = self.search(piles, mid)
+            hours = self.count(piles, mid)
             if hours > h:
                 left = mid + 1
             else:
-                right = mid - 1
+                right = mid
         return left
     
-    def search(self, piles, target):
+    def count(self, piles, target):
         cnt = 0
         for p in piles:
             if p % target != 0:
                 cnt += 1
-            cnt += p // target
+            cnt += (p // target)
         return cnt
