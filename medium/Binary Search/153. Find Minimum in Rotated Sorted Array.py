@@ -6,9 +6,8 @@ class Solution:
         while left < right:
             mid = left + (right - left) // 2
             midV = nums[mid]
-
-            if nums[right] >= midV:
+            if midV < nums[right]:
                 right = mid
             else:
-                left = mid+1
+                left = mid + 1
         return nums[left]
