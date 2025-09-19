@@ -6,21 +6,21 @@ class Solution:
         jobs.sort()
         maxTotal = 0
         
-        max_profit = 0
+        maxProfit = 0
         for i in range(len(jobs)):
-            max_profit = max(max_profit, jobs[i][1])
-            jobs[i] = (jobs[i][0], max_profit) 
-
+            maxProfit = max(maxProfit, jobs[i][1])
+            jobs[i][1] = maxProfit
+        
         for w in worker:
             maxTotal += self.search(jobs, w)
         return maxTotal
     
     def search(self, jobs, target):
         left = 0
-        right = len(jobs)-1
+        right = len(jobs) - 1
 
         while left <= right:
-            mid = left + (right-left)//2
+            mid = left + (right - left) // 2
             midV = jobs[mid][0]
             if midV > target:
                 right = mid - 1
