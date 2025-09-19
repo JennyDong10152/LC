@@ -19,7 +19,7 @@ class Solution:
         right = len(interval)
 
         while left < right:
-            mid = left + (right - left)//2
+            mid = left + (right-left) // 2
             midV = interval[mid][0]
             if midV >= target:
                 right = mid
