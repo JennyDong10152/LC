@@ -10,7 +10,7 @@ class Solution:
             rank = len(citations) - mid
             if midV >= rank:
                 h_idx = rank
-                right = mid - 1
+                right = mid-1
             else:
-                left = mid + 1
+                left = mid+1
         return h_idx
