@@ -2,13 +2,13 @@ class Solution:
     def findBestValue(self, arr: List[int], target: int) -> int:
         left = 0
         right = max(arr)
-        ans = float('inf')
+        ans = max(arr) + 1
         min_diff = float('inf')
-        
+
         while left <= right:
-            mid = left + (right-left)//2
-            temp_sum = sum(min(mid, i) for i in arr)
-            temp_diff = abs(target-temp_sum)
+            mid = left + (right - left) // 2
+            temp_sum = sum(min(mid, num) for num in arr)
+            temp_diff = abs(temp_sum - target)
             if not temp_diff:
                 return mid
             
@@ -17,7 +17,7 @@ class Solution:
             if temp_diff < min_diff:
                 ans = mid
                 min_diff = temp_diff
-
+            
             if temp_sum > target:
                 right = mid - 1
             else:

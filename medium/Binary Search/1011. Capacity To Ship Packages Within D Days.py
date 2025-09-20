@@ -4,9 +4,9 @@ class Solution:
         right = sum(weights)
 
         while left <= right:
-            mid = left + (right-left)//2
-            days_needed = self.count(weights, mid)
-            if days_needed > days:
+            mid = left + (right - left) // 2
+            day = self.count(weights, mid)
+            if day > days:
                 left = mid + 1
             else:
                 right = mid - 1
@@ -14,11 +14,10 @@ class Solution:
     
     def count(self, weights, target):
         day = 1
-        capacity = 0
+        currentSum = 0
         for weight in weights:
-            if capacity + weight > target:
+            if currentSum + weight > target:
                 day += 1
-                capacity = weight
-            else:
-                capacity += weight
-        return day 
+                currentSum = 0
+            currentSum += weight
+        return day
