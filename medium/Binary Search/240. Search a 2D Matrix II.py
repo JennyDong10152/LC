@@ -5,14 +5,13 @@ class Solution:
                 return False
             elif row[-1] < target:
                 continue
-            if self.search(row, target):
+            elif self.search(row, target):
                 return True
         return False
     
     def search(self, row, target):
         left = 0
         right = len(row) - 1
-
         while left <= right:
             mid = left + (right - left) // 2
             midV = row[mid]

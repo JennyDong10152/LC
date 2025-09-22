@@ -7,7 +7,6 @@ class Solution:
             while left <= right:
                 mid = left + (right - left) // 2
                 midV = numbers[mid] + num
-
                 if midV == target:
                     return [idx+1, mid+1]
                 elif midV > target:
