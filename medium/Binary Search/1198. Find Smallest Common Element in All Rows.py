@@ -18,7 +18,7 @@ class Solution:
             midV = nums[mid]
             if midV == target:
                 return True
-            elif midV > target:
+            if midV > target:
                 right = mid - 1
             else:
                 left = mid + 1

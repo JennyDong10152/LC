@@ -3,24 +3,24 @@ class Solution:
         maps = defaultdict(list)
         for idx, color in enumerate(colors):
             maps[color].append(idx)
-        
-        answer = []
+
+        ans = []
         for idx, color in queries:
-            if not color in maps:
-                answer.append(-1)
+            if color not in maps:
+                ans.append(-1)
             else:
-                answer.append(self.search(maps[color], idx))
-        return answer
+                ans.append(self.find(maps[color], idx))
+        return ans
     
-    def search(self, nums, target):
+    def find(self, arr, target):
         left = 0
-        right = len(nums) - 1
+        right = len(arr) - 1
         minDiff = float("inf")
 
         while left <= right:
-            mid = left + (right - left) // 2
-            midV = nums[mid]
-            minDiff = min(minDiff, abs(midV-target))
+            mid = left + (right -left) // 2
+            midV = arr[mid]
+            minDiff = min(minDiff, abs(midV - target))
             if not minDiff:
                 return 0
             if midV > target:

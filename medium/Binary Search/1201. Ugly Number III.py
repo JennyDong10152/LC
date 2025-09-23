@@ -8,18 +8,18 @@ class Solution:
         left = 1
         right = 2 * 10 ** 9
 
-        while left < right:
+        while left <= right:
             mid = left + (right - left) // 2
             cnt = mid//a + mid//b + mid//c - mid//multiple_ab - mid//multiple_bc - mid//multiple_ac + mid//multiple_abc
             if cnt >= n:
-                right = mid
+                right = mid - 1
             else:
                 left = mid + 1
         return left
-    
+
     def leastCommonFactor(self, x, y):
         def greatestCommonDivisor(x, y):
             if not x:
                 return y
             return greatestCommonDivisor(y%x, x)
-        return x * y / greatestCommonDivisor(x, y)
+        return x*y / greatestCommonDivisor(x, y)

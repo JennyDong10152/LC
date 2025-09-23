@@ -5,20 +5,19 @@ class Solution:
 
         while left <= right:
             mid = left + (right - left) // 2
-            contains = self.count(nums1, nums2, mid)
-            if contains:
+            found = self.find(nums1, nums2, mid)
+            if found:
                 left = mid + 1
             else:
                 right = mid - 1
         return right
     
-    def count(self, nums1, nums2, idx):
+    def find(self, nums1, nums2, length):
         nums1_set = set()
-
-        for i in range(idx, len(nums1) + 1):
-            nums1_set.add(tuple(nums1[i-idx:i]))
+        for idx in range(length, len(nums1)+1):
+            nums1_set.add(tuple(nums1[idx-length:idx]))
         
-        for i in range(idx, len(nums2)+1):
-            if tuple(nums2[i-idx:i]) in nums1_set:
+        for idx in range(length, len(nums2)+1):
+            if tuple(nums2[idx-length:idx]) in nums1_set:
                 return True
         return False
