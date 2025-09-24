@@ -5,17 +5,16 @@ class Solution:
 
         while left <= right:
             mid = left + (right - left) // 2
-            hours = self.count(piles, mid)
-            if hours > h:
+            hour = self.eat(piles, mid)
+            if hour > h:
                 left = mid + 1
             else:
                 right = mid - 1
         return left
     
-    def count(self, piles, target):
-        hours = 0
-        for pile in piles:
-            if pile % target:
-                hours += 1
-            hours += pile // target
-        return hours
+    def eat(self, piles, target):
+        hour = 0
+        for p in piles:
+            hour += p//target
+            hour += 1 if p%target else 0
+        return hour

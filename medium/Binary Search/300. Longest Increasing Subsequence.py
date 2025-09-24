@@ -9,14 +9,14 @@ class Solution:
                 ans.append(num)
         return len(ans)
     
-    def search(self, ans, num):
+    def search(self, arr, target):
         left = 0
-        right = len(ans) - 1
+        right = len(arr) - 1
 
         while left <= right:
-            mid = left + (right-left)//2
-            midV = ans[mid]
-            if midV >= num:
+            mid = left + (right - left) // 2
+            midV = arr[mid]
+            if midV >= target:
                 right = mid - 1
             else:
                 left = mid + 1

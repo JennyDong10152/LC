@@ -5,8 +5,8 @@ class Solution:
 
         while left <= right:
             mid = left + (right - left) // 2
-            day = self.count(weights, mid)
-            if day > days:
+            day_needed = self.count(weights, mid)
+            if day_needed > days:
                 left = mid + 1
             else:
                 right = mid - 1
@@ -14,10 +14,10 @@ class Solution:
     
     def count(self, weights, target):
         day = 1
-        currentSum = 0
-        for weight in weights:
-            if currentSum + weight > target:
+        curW = 0
+        for w in weights:
+            if curW + w > target:
                 day += 1
-                currentSum = 0
-            currentSum += weight
+                curW = 0
+            curW += w
         return day

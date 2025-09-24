@@ -2,23 +2,23 @@ class Solution:
     def findBestValue(self, arr: List[int], target: int) -> int:
         left = 0
         right = max(arr)
-        ans = max(arr) + 1
-        min_diff = float('inf')
+        ans = right + 1
+        minDiff = float("inf")
 
         while left <= right:
             mid = left + (right - left) // 2
-            temp_sum = sum(min(mid, num) for num in arr)
-            temp_diff = abs(temp_sum - target)
-            if not temp_diff:
+            tempSum = sum(min(num, mid) for num in arr)
+            tempDiff = abs(tempSum - target)
+            if not tempDiff:
                 return mid
             
-            if temp_diff == min_diff:
-                ans = min(ans, mid)
-            if temp_diff < min_diff:
+            if tempDiff == minDiff:
+                ans = min(mid, ans)
+            if tempDiff < minDiff:
                 ans = mid
-                min_diff = temp_diff
+                minDiff = tempDiff
             
-            if temp_sum > target:
+            if tempSum > target:
                 right = mid - 1
             else:
                 left = mid + 1

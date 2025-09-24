@@ -12,17 +12,16 @@ class Solution:
             else:
                 left = mid + 1
         return left
-
+    
     def count(self, matrix, target):
+        cnt = 0
         n = len(matrix)
-        count = 0
-
         for i in range(n):
-            j = n - 1
+            j = n-1
             while j >= 0 and matrix[i][j] > target:
                 j -= 1
             if j >= 0:
-                count += (j+1)
+                cnt += j + 1
             else:
                 break
-        return count
+        return cnt

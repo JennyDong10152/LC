@@ -1,13 +1,12 @@
-import random
 class Solution:
 
     def __init__(self, w: List[int]):
-        cur = 0
+        curr = 0
         self.prefix = []
         for weight in w:
-            cur += weight
-            self.prefix.append(cur)
-        self.total = cur
+            curr += weight
+            self.prefix.append(curr)
+        self.total = curr
 
     def pickIndex(self) -> int:
         target = random.randint(1, self.total)
@@ -16,12 +15,17 @@ class Solution:
     
     def search(self, target):
         left = 0
-        right = len(self.prefix)-1
+        right = len(self.prefix) - 1
+
         while left < right:
-            mid = left + (right-left)//2
+            mid = left + (right - left) // 2
             midV = self.prefix[mid]
             if midV >= target:
                 right = mid
             else:
                 left = mid + 1
         return left
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
