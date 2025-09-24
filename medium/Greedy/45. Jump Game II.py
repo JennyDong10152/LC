@@ -8,5 +8,5 @@ class Solution:
             if end < idx:
                 jumps += 1
                 end = farthest
-            farthest = max(farthest, idx+num)
+            farthest = max(farthest, idx + num)
         return jumps
