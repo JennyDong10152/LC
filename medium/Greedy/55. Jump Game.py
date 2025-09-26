@@ -6,3 +6,4 @@ class Solution:
                 return False
             current = max(current, idx+num)
         return True
+    

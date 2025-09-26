@@ -1,6 +1,6 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        intervals = sorted(intervals)
+        intervals.sort()
         sameTime = []
 
         for start, end in intervals:
