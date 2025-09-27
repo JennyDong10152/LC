@@ -9,3 +9,4 @@ class Solution:
             else:
                 heapreplace(sameTime, end)
         return len(sameTime)
+    

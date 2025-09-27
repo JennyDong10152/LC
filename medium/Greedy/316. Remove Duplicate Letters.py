@@ -3,6 +3,7 @@ class Solution:
         stack = []
         visited = set()
         lastOccur = defaultdict(int)
+
         for idx, char in enumerate(s):
             lastOccur[char] = idx
         
@@ -10,6 +11,6 @@ class Solution:
             if char not in visited:
                 while stack and stack[-1] > char and lastOccur[stack[-1]] > idx:
                     visited.remove(stack.pop())
-                stack.append(char)
                 visited.add(char)
+                stack.append(char)
         return ''.join(stack)
