@@ -11,8 +11,8 @@ class Solution:
             if currentSum == target:
                 return 1
             return 0
-        
-        negative = self.find(nums, target, idx-1, currentSum - nums[idx])
-        positive = self.find(nums, target, idx-1, currentSum + nums[idx])
+
+        positive = self.find(nums, target, idx-1, currentSum - nums[idx])
+        negative = self.find(nums, target, idx-1, currentSum + nums[idx])
         self.record[(idx, currentSum)] = positive + negative
         return self.record[(idx, currentSum)]
