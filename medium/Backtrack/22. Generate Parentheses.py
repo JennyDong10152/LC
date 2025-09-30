@@ -6,13 +6,14 @@ class Solution:
     
     def backtrack(self, n, left, right, temp):
         if n == left and n == right:
-            self.answer.append(''.join(temp))
+            self.answer.append("".join(temp))
+            return
         
         if left < n:
             temp.append('(')
             self.backtrack(n, left+1, right, temp)
             temp.pop()
-
+        
         if right < left:
             temp.append(')')
             self.backtrack(n, left, right+1, temp)

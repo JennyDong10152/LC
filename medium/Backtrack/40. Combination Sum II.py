@@ -7,7 +7,7 @@ class Solution:
     
     def find(self, temp, start, target):
         if target < 0:
-            return 
+            return
         if not target:
             self.answer.append(list(temp))
             return 
@@ -16,5 +16,5 @@ class Solution:
             if idx > start and self.candidates[idx] == self.candidates[idx-1]:
                 continue
             temp.append(self.candidates[idx])
-            self.find(temp, idx+1, target-self.candidates[idx])
+            self.find(temp, idx+1, target - self.candidates[idx])
             temp.pop()

@@ -8,12 +8,14 @@ class Solution:
     
     def search(self, temp):
         if len(temp) == len(self.nums):
-            self.answer.append(temp)
-            return 
-            
+            self.answer.append(list(temp))
+            return
+        
         for idx in range(len(self.nums)):
             if idx in self.visited:
                 continue
             self.visited.add(idx)
-            self.search(temp+[self.nums[idx]])
+            temp.append(self.nums[idx])
+            self.search(temp)
             self.visited.remove(idx)
+            temp.pop()

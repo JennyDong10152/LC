@@ -7,12 +7,12 @@ class Solution:
         self.backtrack(digits, 0, [])
         return self.answers
     
-    def backtrack(self, digits, idx, temp):
+    def backtrack(self, digits, idx, current):
         if idx == len(digits):
-            self.answers.append("".join(temp))
-            return
-        
+            self.answers.append("".join(current))
+            return 
+
         for letter in self.reference[digits[idx]]:
-            temp.append(letter)
-            self.backtrack(digits, idx+1, temp)
-            temp.pop()
+            current.append(letter)
+            self.backtrack(digits, idx+1, current)
+            current.pop()

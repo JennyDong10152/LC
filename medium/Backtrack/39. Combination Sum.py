@@ -10,11 +10,11 @@ class Solution:
             return
         if not target:
             self.answer.append(list(temp))
-            return
-
+            return 
+        
         for idx in range(start, len(self.candidates)):
             if self.candidates[idx] > target:
                 break
             temp.append(self.candidates[idx])
-            self.find(idx, temp, target-self.candidates[idx])
+            self.find(idx, temp, target - self.candidates[idx])
             temp.pop()
