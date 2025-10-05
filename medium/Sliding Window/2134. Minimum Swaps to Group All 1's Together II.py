@@ -9,3 +9,4 @@ class Solution:
             swap += not nums[idx % n]
             minSwap = min(minSwap, swap)
         return minSwap
+    

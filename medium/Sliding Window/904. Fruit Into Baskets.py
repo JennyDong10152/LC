@@ -1,8 +1,8 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
         left = 0
-        frequency = defaultdict(int)
         maxLength = 0
+        frequency = defaultdict(int)
 
         for right, fruit in enumerate(fruits):
             frequency[fruit] += 1

@@ -7,7 +7,7 @@ class Solution:
 
         for right, num in enumerate(nums):
             subsum += num
-            while (right-left+1) * num - subsum > k:
+            while (right - left + 1) * num - subsum > k:
                 subsum -= nums[left]
                 left += 1
             maxFrequency = max(maxFrequency, right - left + 1)
