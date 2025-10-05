@@ -5,16 +5,15 @@ class Solution:
         return self.answer
     
     def backtrack(self, n, left, right, temp):
-        if n == left and n == right:
+        if n == left == right:
             self.answer.append("".join(temp))
-            return
         
         if left < n:
-            temp.append('(')
-            self.backtrack(n, left+1, right, temp)
+            temp.append("(")
+            self.backtrack(n, left + 1, right, temp)
             temp.pop()
         
         if right < left:
-            temp.append(')')
-            self.backtrack(n, left, right+1, temp)
+            temp.append(")")
+            self.backtrack(n, left, right + 1, temp)
             temp.pop()
