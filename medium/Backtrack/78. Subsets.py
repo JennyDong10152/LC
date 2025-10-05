@@ -1,15 +1,16 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.subset = []
-        self.search(0, [], nums)
-        return self.subset
+        self.answer = []
+        self.nums = nums
+        self.backtrack(0, [])
+        return self.answer
     
-    def search(self, start, temp, nums):
-        if start == len(nums):
-            self.subset.append(list(temp))
-            return 
-
-        temp.append(nums[start])
-        self.search(start+1, temp, nums)
+    def backtrack(self, idx, temp):
+        if idx == len(self.nums):
+            self.answer.append(list(temp))
+            return
+        
+        temp.append(self.nums[idx])
+        self.backtrack(idx+1, temp)
         temp.pop()
-        self.search(start+1, temp, nums)
+        self.backtrack(idx+1, temp)
