@@ -3,10 +3,9 @@ class Solution:
         for idx, num in enumerate(numbers):
             left = idx + 1
             right = len(numbers) - 1
-
             while left <= right:
                 mid = left + (right - left) // 2
-                midV = numbers[mid] + num
+                midV = num + numbers[mid]
                 if midV == target:
                     return [idx+1, mid+1]
                 elif midV > target:
@@ -14,3 +13,4 @@ class Solution:
                 else:
                     left = mid + 1
         return [-1, -1]
+            
