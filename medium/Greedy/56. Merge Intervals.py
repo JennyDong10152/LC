@@ -12,4 +12,3 @@ class Solution:
                 temp = [start, end]
         answer.append(temp)
         return answer
-

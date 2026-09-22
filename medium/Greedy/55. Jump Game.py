@@ -3,7 +3,7 @@ class Solution:
         farthest = 0
 
         for idx, num in enumerate(nums):
-            if idx > farthest:
+            if farthest < idx:
                 return False
             farthest = max(farthest, idx + num)
         return True
