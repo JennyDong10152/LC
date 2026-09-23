@@ -1,5 +1,5 @@
 class Solution:
-    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+    def numSubarraysWithSum(self, nums: list[int], goal: int) -> int:
         count = 0
         prefix = defaultdict(int)
         prefixSum = 0
@@ -9,4 +9,4 @@ class Solution:
             prefixSum += num
             count += prefix[prefixSum - goal]
             prefix[prefixSum] += 1
-        return count 
+        return count
