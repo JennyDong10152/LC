@@ -10,3 +10,4 @@ class Solution:
             maxLength = max(maxLength, right - left + 1)
             visited[char] = right
         return maxLength
+            

@@ -1,10 +1,9 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        replace = 0
-        left = 0
         frequency = defaultdict(int)
-        maxFrequency = 0
         maxLength = 0
+        maxFrequency = 0
+        left = 0
 
         for right, char in enumerate(s):
             frequency[char] += 1
