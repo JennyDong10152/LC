@@ -10,4 +10,4 @@ class Solution:
                 frequency[nums[left]] -= 1
                 left += 1
             maxLength = max(maxLength, right - left + 1)
-        return maxLength
+        return maxLength 

@@ -10,4 +10,4 @@ class Solution:
                 window.remove(nums[left])
                 left += 1
             maxLength = max(maxLength, right - left + 1)
-        return maxLength
+        return maxLength 
