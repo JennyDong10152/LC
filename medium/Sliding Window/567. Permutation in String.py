@@ -15,4 +15,4 @@ class Solution:
                 return True
             s2Frequency[ord(s2[idx - len(s1)]) - ord('a')] -= 1
             s2Frequency[ord(s2[idx]) - ord('a')] += 1
-        return False
+        return s1Frequency == s2Frequency
