@@ -5,7 +5,7 @@ class Solution:
         prefixSum = 0
         prefix[0] = 1
 
-        for num in nums:
+        for idx, num in enumerate(nums):
             prefixSum += num
             count += prefix[prefixSum - goal]
             prefix[prefixSum] += 1

@@ -1,6 +1,6 @@
 class Solution:
     def canCompleteCircuit(self, gas: list[int], cost: list[int]) -> int:
-        answer = 0
+        ans = 0
         current = 0
         total = 0
 
@@ -8,6 +8,6 @@ class Solution:
             current += gas[idx] - cost[idx]
             total += gas[idx] - cost[idx]
             if current < 0:
-                answer = idx + 1
+                ans = idx + 1
                 current = 0
-        return answer if total >= 0 else -1
+        return ans if total >= 0 else -1 

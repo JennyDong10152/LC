@@ -11,6 +11,5 @@ class Solution:
         
         add = self.find(nums, target, idx+1, currentSum + nums[idx])
         sub = self.find(nums, target, idx+1, currentSum - nums[idx])
-
         self.record[(idx, currentSum)] = add + sub
         return self.record[(idx, currentSum)]
