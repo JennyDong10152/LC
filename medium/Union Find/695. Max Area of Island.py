@@ -1,21 +1,21 @@
 class Solution:
-    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        maxArea = 0
+    def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        parent = {(i,j):(i,j) for i in range(m) for j in range(n) if grid[i][j]}
+        maxArea = 0
+        parent = {(i, j) : (i, j) for i in range(m) for j in range(n) if grid[i][j] == 1}
         size = {(i,j): 1 for i in range(m) for j in range(n) if grid[i][j]}
-        direction = [(0, -1), (-1, 0)]
+
+        direction = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
         for i in range(m):
             for j in range(n):
                 if grid[i][j]:
                     for di, dj in direction:
-                        new_i = i + di
-                        new_j = j + dj
-                        if 0 <= new_i < m and 0 <= new_j < n and grid[new_i][new_j]:
+                        new_i, new_j = di+i, dj+j
+                        if 0<=new_i<m and 0<=new_j<n and grid[new_i][new_j]:
                             self.union(parent, size, (i, j), (new_i, new_j))
-        
+
         for x in parent:
             maxArea = max(maxArea, size[x])
         return maxArea
@@ -28,6 +28,6 @@ class Solution:
             size[root_x] += size[root_y]
     
     def find(self, parent, x):
-        if x != parent[x]:
+        if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
         return parent[x]
