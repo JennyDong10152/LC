@@ -1,8 +1,8 @@
 class Solution:
-    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+    def findRedundantConnection(self, edges: list[list[int]]) -> list[int]:
         n = len(edges)
         parent = [i for i in range(n+1)]
-        
+
         for edge1, edge2 in edges:
             connect = self.union(parent, edge1, edge2)
             if not connect:
@@ -20,4 +20,4 @@ class Solution:
     def find(self, parent, x):
         if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
-        return parent[x]
+        return parent[x] 

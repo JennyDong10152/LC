@@ -9,6 +9,7 @@ class Solution:
                 if isConnected[i][j] and self.union(parent, i, j):
                     disjoint -= 1
         return disjoint
+
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
@@ -21,4 +22,4 @@ class Solution:
     def find(self, parent, x):
         if parent[x] != x:
             parent[x] = self.find(parent, parent[x])
-        return parent[x] 
+        return parent[x]
