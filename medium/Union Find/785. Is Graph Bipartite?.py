@@ -1,15 +1,15 @@
 class Solution:
-    def isBipartite(self, graph: List[List[int]]) -> bool:
+    def isBipartite(self, graph: list[list[int]]) -> bool:
         n = len(graph)
         parent = [i for i in range(n)]
 
-        for i in range(n):
-            root_i = self.find(parent, i)
-            for neighbor in graph[i]:
-                root_j = self.find(parent, neighbor)
-                if root_i == root_j:
+        for u in range(n):
+            root_u = self.find(parent, u)
+            for v in graph[u]:
+                root_v = self.find(parent, v)
+                if root_u == root_v:
                     return False
-                parent[root_j] = self.find(parent, graph[i][0])
+                parent[root_v] = self.find(parent, graph[u][0])
         return True
     
     def find(self, parent, x):
