@@ -1,14 +1,13 @@
 class Solution:
     def minSwaps(self, s: str) -> int:
         stack = []
-        unmatched = 0
 
         for char in s:
             if char == '[':
                 stack.append(char)
             else:
-                if stack:
+                if stack and stack[-1] == '[':
                     stack.pop()
                 else:
-                    unmatched += 1
-        return (unmatched + 1) // 2
+                    stack.append(char)
+        return (len(stack) // 2 + 1) // 2

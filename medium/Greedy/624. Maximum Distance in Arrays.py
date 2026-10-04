@@ -1,11 +1,11 @@
 class Solution:
     def maxDistance(self, arrays: list[list[int]]) -> int:
-        minAns = arrays[0][0]
-        maxAns = arrays[0][-1]
         maxDis = 0
+        minCur = arrays[0][0]
+        maxCur = arrays[0][-1]
 
-        for interval in arrays[1:]:
-            maxDis = max(maxDis, maxAns - interval[0], interval[-1] - minAns)
-            minAns = min(minAns, interval[0])
-            maxAns = max(maxAns, interval[-1])
+        for array in arrays[1:]:
+            maxDis = max(maxDis, maxCur - array[0], array[-1] - minCur)
+            minCur = min(minCur, array[0])
+            maxCur = max(maxCur, array[-1])
         return maxDis

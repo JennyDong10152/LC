@@ -6,4 +6,4 @@ class Solution:
             if farthest < idx:
                 return False
             farthest = max(farthest, idx + num)
-        return True
+        return True 
