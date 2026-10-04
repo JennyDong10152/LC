@@ -6,7 +6,7 @@ class Solution:
 
         for idx in range(len(s) + 1):
             for word in wordDict:
-                n = len(word)
-                if idx >= n and s[idx - n : idx] == word and dp[idx - n]:
+                start = idx - len(word)
+                if start >=0 and s[start : idx] == word and dp[start]:
                     dp[idx] = True
         return dp[len(s)]
