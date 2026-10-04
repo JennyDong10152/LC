@@ -13,4 +13,4 @@ class Solution:
                 left += 1
 
             count += right - left + 1
-        return count
+        return count 
