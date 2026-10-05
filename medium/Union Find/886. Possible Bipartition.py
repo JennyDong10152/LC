@@ -6,14 +6,14 @@ class Solution:
         for a, b in dislikes:
             graph[a].append(b)
             graph[b].append(a)
-        
-        for i in range(1, n+1):
-            root_i = self.find(parent, i)
-            for enemy in graph[i]:
+
+        for person in range(1, n+1):
+            root_person = self.find(parent, person)
+            for enemy in graph[person]:
                 root_enemy = self.find(parent, enemy)
-                if root_i == root_enemy:
+                if root_person == root_enemy:
                     return False
-                parent[enemy] = self.find(parent, graph[i][0])
+                parent[enemy] = self.find(parent, graph[person][0])
         return True
     
     def find(self, parent, x):

@@ -1,15 +1,14 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
-        parent = [i for i in range(n)]
         disjoint = n
+        parent = [i for i in range(n)]
 
-        for i in range(n):
-            for j in range(i+1, n):
-                if isConnected[i][j] and self.union(parent, i, j):
+        for idx, cities in enumerate(isConnected):
+            for city in range(len(cities)):
+                if isConnected[idx][city] == 1 and self.union(parent, idx, city):
                     disjoint -= 1
         return disjoint
-
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
@@ -20,6 +19,6 @@ class Solution:
         return False
     
     def find(self, parent, x):
-        if parent[x] != x:
+        if x != parent[x]:
             parent[x] = self.find(parent, parent[x])
         return parent[x]

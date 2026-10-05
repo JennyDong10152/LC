@@ -6,12 +6,12 @@ class Solution:
         for equation in equations:
             if equation[1:3] == '==':
                 self.union(parent, equation[0], equation[3])
-
+        
         for equation in equations:
             if equation[1:3] == '!=':
-                root_first = self.find(parent, equation[0])
-                root_second = self.find(parent, equation[3])
-                if root_first == root_second:
+                root_a = self.find(parent, equation[0])
+                root_b = self.find(parent, equation[3])
+                if root_a == root_b:
                     return False
         return True
     
