@@ -1,18 +1,19 @@
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        self.answer = []
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+        self.ans = []
+        self.target = target
         self.candidates = sorted(candidates)
-        self.backtrack(0, target, [])
-        return self.answer
+        self.backtrack(0, 0, [])
+        return self.ans
     
-    def backtrack(self, start, target, temp):
-        if not target:
-            self.answer.append(list(temp))
+    def backtrack(self, idx, curSum, curCombo):
+        if self.target == curSum:
+            self.ans.append(list(curCombo))
+            return
+        if self.target < curSum:
             return
         
-        for idx in range(start, len(self.candidates)):
-            if self.candidates[idx] > target:
-                break
-            temp.append(self.candidates[idx])
-            self.backtrack(idx, target - self.candidates[idx], temp)
-            temp.pop()
+        for i in range(idx, len(self.candidates)):
+            curCombo.append(self.candidates[i])
+            self.backtrack(i, curSum + self.candidates[i], curCombo)
+            curCombo.pop()
