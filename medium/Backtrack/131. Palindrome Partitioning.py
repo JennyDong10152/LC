@@ -1,20 +1,17 @@
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
-        self.answer = []
+    def partition(self, s: str) -> list[list[str]]:
+        self.ans = []
         self.backtrack(s, 0, [])
-        return self.answer
+        return self.ans
     
-    def backtrack(self, s, start, temp):
+    def backtrack(self, s, start, current):
         if start == len(s):
-            self.answer.append(list(temp))
-            return 
+            self.ans.append(list(current))
+            return
         
         for end in range(start+1, len(s)+1):
             word = s[start:end]
-            if self.isPalindrome(word):
-                temp.append(word)
-                self.backtrack(s, end, temp)
-                temp.pop()
-    
-    def isPalindrome(self, word):
-        return word == word[::-1]
+            if word == word[::-1]:
+                current.append(word)
+                self.backtrack(s, end, current)
+                current.pop()

@@ -1,18 +1,20 @@
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        for row in range(len(board)):
-            for col in range(len(board[0])):
-                if self.backtrack(row, col, word, 0, board):
+    def exist(self, board: list[list[str]], word: str) -> bool:
+        m = len(board)
+        n = len(board[0])
+        for row in range(m):
+            for col in range(n):
+                if self.backtrack(board, word, 0, row, col):
                     return True
         return False
-    
-    def backtrack(self, row, col, word, idx, board):
+
+    def backtrack(self, board, word, idx, row, col):
         if idx == len(word):
             return True
-        if row < 0 or col < 0 or row >= len(board) or col >= len(board[0]) or board[row][col] != word[idx]:
+        
+        if not 0<=row<len(board) or not 0<=col<len(board[0]) or board[row][col] != word[idx]:
             return False
         
         board[row][col] = '.'
-        answer = self.backtrack(row+1, col, word, idx+1, board) or self.backtrack(row-1, col, word, idx+1, board) or self.backtrack(row, col+1, word, idx+1, board) or self.backtrack(row, col-1, word, idx+1, board)
+        ans = self.backtrack(board, word, idx+1, row+1, col) or self.backtrack(board, word, idx+1, row-1, col) or self.backtrack(board, word, idx+1, row, col+1) or self.backtrack(board, word, idx+1, row, col-1)
         board[row][col] = word[idx]
-        return answer
