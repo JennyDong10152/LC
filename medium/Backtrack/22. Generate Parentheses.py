@@ -1,19 +1,19 @@
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        self.answer = []
+    def generateParenthesis(self, n: int) -> list[str]:
+        self.ans = []
         self.backtrack(n, 0, 0, [])
-        return self.answer
+        return self.ans
     
-    def backtrack(self, n, left, right, temp):
-        if n == left == right:
-            self.answer.append("".join(temp))
+    def backtrack(self, n, left, right, current):
+        if left == right and right == n:
+            self.ans.append(''.join(current))
         
         if left < n:
-            temp.append("(")
-            self.backtrack(n, left + 1, right, temp)
-            temp.pop()
+            current.append('(')
+            self.backtrack(n, left+1, right, current)
+            current.pop()
         
-        if right < left:
-            temp.append(")")
-            self.backtrack(n, left, right + 1, temp)
-            temp.pop()
+        if right<left:
+            current.append(')')
+            self.backtrack(n, left, right+1, current)
+            current.pop()

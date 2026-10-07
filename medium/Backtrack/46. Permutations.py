@@ -1,21 +1,19 @@
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        self.answer = []
-        self.visited = set()
-        self.nums = sorted(nums)
-        self.backtrack([])
-        return self.answer
-    
-    def backtrack(self, temp):
-        if len(temp) == len(self.nums):
-            self.answer.append(list(temp))
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        self.ans = []
+        self.backtrack(sorted(nums), 0, [], set())
+        return self.ans
+
+    def backtrack(self, nums, start, curCombo, visited):
+        if len(curCombo) == len(nums):
+            self.ans.append(list(curCombo))
             return
         
-        for idx, num in enumerate(self.nums):
-            if idx in self.visited:
+        for idx in range(len(nums)):
+            if nums[idx] in visited:
                 continue
-            self.visited.add(idx)
-            temp.append(num)
-            self.backtrack(temp)
-            temp.pop()
-            self.visited.remove(idx)
+            visited.add(nums[idx])
+            curCombo.append(nums[idx])
+            self.backtrack(nums, idx+1, curCombo, visited)
+            visited.remove(nums[idx])
+            curCombo.pop()

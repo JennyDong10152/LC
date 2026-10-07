@@ -1,20 +1,22 @@
 class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum2(self, candidates: list[int], target: int) -> list[list[int]]:
         self.candidates = sorted(candidates)
-        self.answer = []
-        self.backtrack(0, target, [])
-        return self.answer
+        self.ans = []
+        self.target = target
+        self.backtrack(0, 0, [])
+        return self.ans
     
-    def backtrack(self, start, target, temp):
-        if not target:
-            self.answer.append(list(temp))
-            return 
+    def backtrack(self, curidx, curSum, curCombo):
+        if curSum == self.target:
+            self.ans.append(list(curCombo))
+            return
         
-        for idx in range(start, len(self.candidates)):
-            if idx != start and self.candidates[idx] == self.candidates[idx-1]:
+        if curSum > self.target:
+            return
+        
+        for idx in range(curidx, len(self.candidates)):
+            if idx > curidx and self.candidates[idx] == self.candidates[idx - 1]:
                 continue
-            if self.candidates[idx] > target:
-                break
-            temp.append(self.candidates[idx])
-            self.backtrack(idx+1, target - self.candidates[idx], temp)
-            temp.pop()
+            curCombo.append(self.candidates[idx])
+            self.backtrack(idx+1, curSum + self.candidates[idx], curCombo)
+            curCombo.pop()
