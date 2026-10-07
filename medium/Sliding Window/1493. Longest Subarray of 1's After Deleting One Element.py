@@ -1,8 +1,8 @@
 class Solution:
     def longestSubarray(self, nums: list[int]) -> int:
         zero = 0
-        left = 0
         maxLength = 0
+        left = 0
 
         for right, num in enumerate(nums):
             zero += not num
