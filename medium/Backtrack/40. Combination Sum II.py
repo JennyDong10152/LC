@@ -1,5 +1,6 @@
 class Solution:
     def combinationSum2(self, candidates: list[int], target: int) -> list[list[int]]:
+    def combinationSum2(self, candidates: list[int], target: int) -> list[list[int]]:
         self.candidates = sorted(candidates)
         self.ans = []
 <<<<<<< Updated upstream
@@ -12,6 +13,7 @@ class Solution:
             self.ans.append(list(curCombo))
 =======
         self.backtrack(0, target, [])
+        return self.ans
         return self.ans
     
     def backtrack(self, start, target, current):
