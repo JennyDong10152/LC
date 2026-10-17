@@ -3,7 +3,8 @@ class Solution:
         self.ans = []
         self.backtrack(s, 0, [])
         return self.ans
-    
+
+
     def backtrack(self, s, start, current):
         if start == len(s):
             self.ans.append(list(current))
@@ -15,3 +16,4 @@ class Solution:
                 current.append(word)
                 self.backtrack(s, end, current)
                 current.pop()
+            

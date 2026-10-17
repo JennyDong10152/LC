@@ -10,7 +10,7 @@ class Solution:
             return
         
         if k < len(curAns) or n < sum(curAns):
-            return 
+            return
         
         for num in range(curNum, 10):
             curAns.append(num)
