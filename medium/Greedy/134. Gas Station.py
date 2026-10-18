@@ -10,4 +10,4 @@ class Solution:
                 ans = idx 
             total += gas[idx] - cost[idx]
             current += gas[idx] - cost[idx]
-        return ans if total >= 0 else -1
+        return ans if total >= 0 else -1 

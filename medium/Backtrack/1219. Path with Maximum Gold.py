@@ -1,18 +1,20 @@
 class Solution:
-    def getMaximumGold(self, grid: List[List[int]]) -> int:
+    def getMaximumGold(self, grid: list[list[int]]) -> int:
         maxGold = 0
         for row in range(len(grid)):
             for col in range(len(grid[0])):
-                gold = self.get(row, col, 0, grid)
+                gold = self.backtrack(grid, row, col, 0)
                 maxGold = max(maxGold, gold)
         return maxGold
     
-    def get(self, row, col, gold, grid):
-        if row < 0 or col < 0 or row >= len(grid) or col >= len(grid[0]) or not grid[row][col]:
+    def backtrack(self, grid, row, col, gold):
+        if not 0<=row<len(grid) or not 0<=col<len(grid[0]) or not grid[row][col]:
             return gold
+        
+        gold += grid[row][col]
         current = grid[row][col]
         grid[row][col] = 0
-        gold += current
-        more = max(self.get(row+1, col, gold, grid), self.get(row-1, col, gold, grid), self.get(row, col+1, gold, grid), self.get(row, col-1, gold, grid))
+        optimal = max(self.backtrack(grid, row+1, col, gold), self.backtrack(grid, row-1, col, gold), self.backtrack(grid, row, col+1, gold), self.backtrack(grid, row, col-1, gold))
         grid[row][col] = current
-        return more
+        return optimal
+        
