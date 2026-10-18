@@ -4,9 +4,9 @@ class Solution:
         temp = intervals[0]
         ans = []
 
-        for start, end in intervals[1:]:
-            if temp[1] >= start:
-                temp[1] = max(temp[1], end)
+        for [start, end] in intervals[1:]:
+            if start <= temp[1]:
+                temp[1] = max(end, temp[1])
             else:
                 ans.append(temp)
                 temp = [start, end]

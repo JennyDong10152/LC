@@ -5,5 +5,5 @@ class Solution:
         for idx, num in enumerate(nums):
             if farthest < idx:
                 return False
-            farthest = max(farthest, idx + num)
-        return True 
+            farthest = max(farthest, idx+num)
+        return True

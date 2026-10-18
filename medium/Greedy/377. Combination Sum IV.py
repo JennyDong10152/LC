@@ -1,6 +1,6 @@
 class Solution:
     def combinationSum4(self, nums: list[int], target: int) -> int:
-        dp = [0] * (target + 1)
+        dp = [0] * (target+1)
         dp[0] = 1
 
         for current in range(target+1):
