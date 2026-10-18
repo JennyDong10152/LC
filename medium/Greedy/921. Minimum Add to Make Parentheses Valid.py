@@ -10,4 +10,4 @@ class Solution:
                     stack.pop()
                 else:
                     stack.append(char)
-        return len(stack)
+        return len(stack) 
