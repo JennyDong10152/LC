@@ -1,11 +1,11 @@
 class Solution:
     def possibleBipartition(self, n: int, dislikes: list[list[int]]) -> bool:
-        parent = [i for i in range(n+1)]
         graph = defaultdict(list)
-
-        for a, b in dislikes:
-            graph[a].append(b)
-            graph[b].append(a)
+        for pers1, pers2 in dislikes:
+            graph[pers1].append(pers2)
+            graph[pers2].append(pers1)
+        
+        parent = [i for i in range(n+1)]
 
         for person in range(1, n+1):
             root_person = self.find(parent, person)

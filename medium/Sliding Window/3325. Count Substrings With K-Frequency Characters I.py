@@ -1,8 +1,8 @@
 class Solution:
     def numberOfSubstrings(self, s: str, k: int) -> int:
         count = 0
-        frequency = defaultdict(int)
         left = 0
+        frequency = defaultdict(int)
 
         for right, char in enumerate(s):
             frequency[char] += 1

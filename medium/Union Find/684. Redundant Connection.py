@@ -2,12 +2,12 @@ class Solution:
     def findRedundantConnection(self, edges: list[list[int]]) -> list[int]:
         n = len(edges)
         parent = [i for i in range(n+1)]
-
+        
         for edge1, edge2 in edges:
             connect = self.union(parent, edge1, edge2)
             if connect:
                 return [edge1, edge2]
-        return [-1, -1]
+        return False
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)

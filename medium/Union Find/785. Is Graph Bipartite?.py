@@ -3,13 +3,13 @@ class Solution:
         n = len(graph)
         parent = [i for i in range(n)]
 
-        for u in range(n):
-            root_u = self.find(parent, u)
-            for v in graph[u]:
-                root_v = self.find(parent, v)
-                if root_u == root_v:
+        for node in range(n):
+            root_node = self.find(parent, node)
+            for neighbor in graph[node]:
+                root_neighbor = self.find(parent, neighbor)
+                if root_node == root_neighbor:
                     return False
-                parent[root_v] = self.find(parent, graph[u][0])
+                parent[neighbor] = self.find(parent, graph[node][0])
         return True
     
     def find(self, parent, x):
