@@ -1,13 +1,14 @@
 class Solution:
-    def longestSubarray(self, nums: list[int]) -> int:
-        zero = 0
-        maxLength = 0
+    def maxFrequency(self, nums: list[int], k: int) -> int:
+        nums.sort()
         left = 0
+        curSum = 0
+        maxLength = 0
 
         for right, num in enumerate(nums):
-            zero += not num
-            while zero > 1:
-                zero -= not nums[left]
+            curSum += num
+            while num * (right-left+1) - curSum > k:
+                curSum -= nums[left]
                 left += 1
-            maxLength = max(maxLength, right - left)
+            maxLength = max(maxLength, right-left+1)
         return maxLength

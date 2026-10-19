@@ -6,8 +6,8 @@ class Solution:
 
         for right, num in enumerate(nums):
             window.add(num)
-            while window[-1] - window[0] > 2:
+            while window[-1]-window[0] > 2:
                 window.remove(nums[left])
-                left += 1
-            count += right - left + 1
+                left+=1
+            count += right-left+1
         return count

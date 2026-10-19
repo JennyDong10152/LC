@@ -1,7 +1,7 @@
 class Solution:
     def maxSubarrayLength(self, nums: List[int], k: int) -> int:
-        maxLength = 0
         frequency = defaultdict(int)
+        maxLength = 0
         left = 0
 
         for right, num in enumerate(nums):
@@ -9,5 +9,5 @@ class Solution:
             while frequency[num] > k:
                 frequency[nums[left]] -= 1
                 left += 1
-            maxLength = max(maxLength, right - left + 1)
+            maxLength = max(maxLength, right-left+1)
         return maxLength
