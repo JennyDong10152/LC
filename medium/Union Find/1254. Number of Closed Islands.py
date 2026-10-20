@@ -17,10 +17,11 @@ class Solution:
         boundary_roots = set()
         roots = set()
         for i, j in parent:
-            root = self.find(parent, (i, j))
-            roots.add(root)
+            root = self.find(parent, (i,j))
             if not i or not j or i == m-1 or j == n-1:
                 boundary_roots.add(root)
+            roots.add(root)
+                
 
         return len(roots) - len(boundary_roots)
     
