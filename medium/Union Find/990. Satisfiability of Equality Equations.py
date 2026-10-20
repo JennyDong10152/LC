@@ -1,19 +1,20 @@
 class Solution:
     def equationsPossible(self, equations: list[str]) -> bool:
-        parent = {c[0] : c[0] for c in equations}
-        parent.update({c[3] : c[3] for c in equations})
-
-        for equation in equations:
-            if equation[1:3] == '==':
-                self.union(parent, equation[0], equation[3])
+        parent = {c[0]:c[0] for c in equations}
+        parent.update({c[-1]:c[-1] for c in equations})
         
         for equation in equations:
-            if equation[1:3] == '!=':
-                root_a = self.find(parent, equation[0])
-                root_b = self.find(parent, equation[3])
-                if root_a == root_b:
-                    return False
-        return True
+            first = equation[0]
+            second = equation[-1]
+            if equation[1:3] == '==':
+                self.union(parent, first, second)
+
+        for equation in equations:
+            first_root = self.find(parent, equation[0])
+            second_root = self.find(parent, equation[-1])
+            if equation[1:3] == '!=' and first_root == second_root:
+                return False
+        return True 
     
     def union(self, parent, x, y):
         root_x = self.find(parent, x)
