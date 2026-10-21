@@ -3,21 +3,22 @@ class Solution:
         for row in matrix:
             if row[0] > target:
                 return False
-            elif row[-1] < target:
+            if row[-1] < target:
                 continue
-            elif self.search(row, target):
+            if self.search(row, target):
                 return True
         return False
     
-    def search(self, row, target):
+    def search(self, nums, target):
         left = 0
-        right = len(row) - 1
+        right = len(nums) - 1
+
         while left <= right:
             mid = left + (right - left) // 2
-            midV = row[mid]
-            if midV == target:
+            midV = nums[mid]
+            if midV == target: 
                 return True
-            elif midV > target:
+            if midV > target:
                 right = mid - 1
             else:
                 left = mid + 1
