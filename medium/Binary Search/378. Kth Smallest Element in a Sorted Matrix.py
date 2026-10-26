@@ -1,9 +1,8 @@
 class Solution:
-    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        n = len(matrix)
+    def kthSmallest(self, matrix: list[list[int]], k: int) -> int:
         left = matrix[0][0]
         right = matrix[-1][-1]
-
+        
         while left <= right:
             mid = left + (right - left) // 2
             rank = self.count(matrix, mid)
@@ -16,12 +15,14 @@ class Solution:
     def count(self, matrix, target):
         cnt = 0
         n = len(matrix)
-        for i in range(n):
-            j = n-1
-            while j >= 0 and matrix[i][j] > target:
-                j -= 1
-            if j >= 0:
-                cnt += j + 1
-            else:
+        for row in matrix:
+            if row[-1] < target:
+                cnt += n
+            elif row[0] > target:
                 break
+            else:
+                idx = 0
+                while idx < n and row[idx] <= target:
+                    idx += 1
+                cnt += idx 
         return cnt

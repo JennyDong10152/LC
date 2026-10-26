@@ -1,20 +1,20 @@
 class Solution:
-    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
         left = 1
         right = sum(piles)
 
-        while left <= right:
+        while left < right:
             mid = left + (right - left) // 2
             hour = self.eat(piles, mid)
             if hour > h:
                 left = mid + 1
             else:
-                right = mid - 1
+                right = mid
         return left
-    
-    def eat(self, piles, target):
-        hour = 0
+
+    def eat(self, piles, rate):
+        count = 0
         for p in piles:
-            hour += p//target
-            hour += 1 if p%target else 0
-        return hour
+            count += p // rate
+            count += 1 if p % rate else 0
+        return count
